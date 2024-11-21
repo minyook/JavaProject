@@ -31,11 +31,8 @@
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="AdminButton" pref="139" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="EditButton" pref="139" max="32767" attributes="0"/>
-                      <Component id="RemoveButton" max="32767" attributes="0"/>
-                  </Group>
+                  <Component id="loginButton" pref="139" max="32767" attributes="0"/>
+                  <Component id="AdminButton" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -52,18 +49,16 @@
               <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="StudentButton" pref="98" max="32767" attributes="0"/>
-                  <Component id="EditButton" max="32767" attributes="0"/>
+                  <Component id="loginButton" max="32767" attributes="0"/>
                   <Component id="WriteButton" max="32767" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="SearchButton" pref="89" max="32767" attributes="0"/>
-                  <Component id="RemoveButton" max="32767" attributes="0"/>
+                  <Component id="AdminButton" max="32767" attributes="0"/>
                   <Component id="ProfessorButton" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-              <Component id="AdminButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="74" max="32767" attributes="0"/>
+              <EmptySpace pref="129" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -74,9 +69,9 @@
         <Property name="text" type="java.lang.String" value="&#xc815;&#xbcf4; &#xc785;&#xb825;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="EditButton">
+    <Component class="javax.swing.JButton" name="loginButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc815;&#xbcf4; &#xc218;&#xc815;"/>
+        <Property name="text" type="java.lang.String" value="&#xb85c;&#xadf8;&#xc778;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="StudentButton">
@@ -89,19 +84,14 @@
         <Property name="text" type="java.lang.String" value="&#xc815;&#xbcf4; &#xc870;&#xd68c;"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="RemoveButton">
+    <Component class="javax.swing.JButton" name="AdminButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="&#xc815;&#xbcf4; &#xc0ad;&#xc81c;"/>
+        <Property name="text" type="java.lang.String" value="&#xad00;&#xb9ac;&#xc790; &#xd398;&#xc774;&#xc9c0;"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="ProfessorButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xad50;&#xc218; &#xd398;&#xc774;&#xc9c0;"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="AdminButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xad00;&#xb9ac;&#xc790; &#xd398;&#xc774;&#xc9c0;"/>
       </Properties>
     </Component>
   </SubComponents>

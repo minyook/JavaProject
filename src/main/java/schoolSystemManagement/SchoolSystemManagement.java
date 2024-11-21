@@ -4,31 +4,103 @@
  */
 package schoolSystemManagement;
 import javax.swing.*;
-
+import java.awt.*;
+import java.util.HashMap;
 /**
  *
  * @author limmi
  */
 public class SchoolSystemManagement extends javax.swing.JFrame {
     private static final long serialVersionUID = 1L;
+    
+    // 데이터를 저장할 HashMap
+    private HashMap<String, String> dataMap = new HashMap<>();
 
     public SchoolSystemManagement() {
         setTitle("School System Management");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);
+        // JPanel을 사용하여 버튼 정렬
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.setLayout(new java.awt.GridLayout(3, 3, 10, 10)); // 3x3 레이아웃, 10px 간격 설정
 
         JButton writeButton = new JButton("정보 입력");
         writeButton.addActionListener(e -> {
             JDialog dialog = new JDialog(this, "Write", true);
-            dialog.add(new Write());
+            Write writePanel = new Write(dataMap); // dataMap 전달
+            dialog.add(writePanel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        });
+
+        JButton loginButton = new JButton("로그인");
+        loginButton.addActionListener(e -> {
+            JDialog dialog = new JDialog(this, "Login", true);
+            Login loginPanel = new Login(dataMap); // dataMap 전달
+            dialog.add(loginPanel);
+            dialog.pack();
+            dialog.setLocationRelativeTo(this);
+            dialog.setVisible(true);
+        });
+        
+        JButton searchButton = new JButton("정보 조회");
+        searchButton.addActionListener(e -> {
+            JDialog dialog = new JDialog(this, "Search", true);
+            dialog.add(new Search());
             dialog.pack(); // 패널 크기에 맞게 창 크기 자동 조정
             dialog.setLocationRelativeTo(this); // 화면 중앙에 위치
             dialog.setVisible(true);
         });
+        
+        JButton adminButton = new JButton("관리자 페이지");
+        adminButton.addActionListener(e -> {
+            if (isLoggedIn() && isAdmin()) {
+                JDialog dialog = new JDialog(this, "Admin", true);
+                dialog.add(new Admin()); // Admin 패널을 추가합니다.
+                dialog.pack();
+                dialog.setLocationRelativeTo(this);
+                dialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(this, "관리자 권한이 필요합니다.", "오류", JOptionPane.ERROR_MESSAGE);
+            }
+        });
 
-        add(writeButton);
+  
+
+        // 버튼을 버튼 패널에 추가
+        buttonPanel.add(writeButton);
+        buttonPanel.add(searchButton);
+        buttonPanel.add(loginButton);
+        buttonPanel.add(adminButton);
+
+        // 버튼 패널을 프레임에 추가
+        add(buttonPanel);
+
         setVisible(true);
+    }
+    
+    private boolean isLoggedIn() {
+        // 로그인 상태 확인 로직 추가
+        return true; // 예시로 항상 로그인된 상태로 설정
+    }
+
+    // 관리자 여부를 확인하는 메서드
+    private boolean isAdmin() {
+        // 현재 사용자가 관리자 권한을 가지고 있는지 확인하는 로직 추가
+        return true; // 예시로 항상 관리자 상태로 설정
+    }
+
+    // 로그인한 사용자의 데이터를 가져오는 메서드
+    private HashMap<String, String> getUserData() {
+        // 예시 데이터를 준비 (실제 데이터는 필요에 따라 준비)
+        HashMap<String, String> dataMap = new HashMap<>();
+        dataMap.put("id", "12345");
+        dataMap.put("name", "홍길동");
+        dataMap.put("dept", "전산학과");
+        dataMap.put("ssn", "920101-1234567");
+        return dataMap;
     }
 
     /**
@@ -41,28 +113,25 @@ public class SchoolSystemManagement extends javax.swing.JFrame {
     private void initComponents() {
 
         WriteButton = new javax.swing.JButton();
-        EditButton = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         StudentButton = new javax.swing.JButton();
         SearchButton = new javax.swing.JButton();
-        RemoveButton = new javax.swing.JButton();
-        ProfessorButton = new javax.swing.JButton();
         AdminButton = new javax.swing.JButton();
+        ProfessorButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         WriteButton.setText("정보 입력");
 
-        EditButton.setText("정보 수정");
+        loginButton.setText("로그인");
 
         StudentButton.setText("학생 페이지");
 
         SearchButton.setText("정보 조회");
 
-        RemoveButton.setText("정보 삭제");
+        AdminButton.setText("관리자 페이지");
 
         ProfessorButton.setText("교수 페이지");
-
-        AdminButton.setText("관리자 페이지");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -75,10 +144,8 @@ public class SchoolSystemManagement extends javax.swing.JFrame {
                     .addComponent(WriteButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(AdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(EditButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
-                        .addComponent(RemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
+                    .addComponent(AdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(StudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, 139, Short.MAX_VALUE)
@@ -91,16 +158,14 @@ public class SchoolSystemManagement extends javax.swing.JFrame {
                 .addGap(90, 90, 90)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(StudentButton, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                    .addComponent(EditButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(loginButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(WriteButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(SearchButton, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
-                    .addComponent(RemoveButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(AdminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(ProfessorButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addComponent(AdminButton)
-                .addContainerGap(74, Short.MAX_VALUE))
+                .addContainerGap(129, Short.MAX_VALUE))
         );
 
         pack();
@@ -115,11 +180,10 @@ public class SchoolSystemManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminButton;
-    private javax.swing.JButton EditButton;
     private javax.swing.JButton ProfessorButton;
-    private javax.swing.JButton RemoveButton;
     private javax.swing.JButton SearchButton;
     private javax.swing.JButton StudentButton;
     private javax.swing.JButton WriteButton;
+    private javax.swing.JButton loginButton;
     // End of variables declaration//GEN-END:variables
 }

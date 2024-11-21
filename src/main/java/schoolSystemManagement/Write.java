@@ -16,11 +16,13 @@ public class Write extends javax.swing.JPanel {
     private static final long serialVersionUID = 1L;
     private HashMap<String, String> dataMap;
 
-    public Write() {
-        setPreferredSize(new Dimension(400, 300)); // 패널 크기 설정
-        setBackground(Color.LIGHT_GRAY); // 배경색 설정
+    public Write(HashMap<String, String> dataMap) {
+        this.dataMap = dataMap;
+
+        setPreferredSize(new Dimension(400, 600));
+        setBackground(Color.LIGHT_GRAY);
+
         initComponents();
-        dataMap = new HashMap<>();
         setupActions();
     }
 
@@ -38,6 +40,12 @@ public class Write extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(Write.this, "모든 필드를 입력하세요!", "오류", JOptionPane.ERROR_MESSAGE);
                     return;
                 }
+                // 중복된 학번/교수번호가 있는지 검사
+                if (dataMap.containsKey(id)) {
+                    JOptionPane.showMessageDialog(Write.this, "중복된 학번/교수 번호가 존재합니다. 다른 번호를 입력하세요.", "오류", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+                
 
                 dataMap.put("name", name);
                 dataMap.put("ssn", ssn);
@@ -47,6 +55,8 @@ public class Write extends javax.swing.JPanel {
 
                 JOptionPane.showMessageDialog(Write.this, "정보가 성공적으로 저장되었습니다.", "성공", JOptionPane.INFORMATION_MESSAGE);
                 System.out.println("저장된 데이터: " + dataMap);
+                
+                SwingUtilities.getWindowAncestor(Write.this).dispose();
             }
         });
     }
@@ -74,7 +84,6 @@ public class Write extends javax.swing.JPanel {
         typeBox = new javax.swing.JComboBox<>();
         addButton = new javax.swing.JButton();
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 0, 14)); // NOI18N
         jLabel1.setText("정보 입력");
 
         jLabel2.setText("이름");
