@@ -5,6 +5,19 @@
     <artifactId>JavaProject</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version> <!-- 플러그인 버전을 명시 -->
+                <configuration>
+                    <source>21</source>   <!-- Java 소스 버전 -->
+                    <target>21</target>   <!-- 컴파일 타겟 버전 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>21</maven.compiler.source>
