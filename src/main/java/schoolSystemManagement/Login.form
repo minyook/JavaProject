@@ -16,7 +16,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="176" max="-2" attributes="0"/>
@@ -30,8 +30,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="idField" max="32767" attributes="0"/>
-                          <Component id="passwordField" pref="122" max="32767" attributes="0"/>
+                          <Component id="idField" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordField" alignment="0" pref="122" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -66,6 +66,16 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JTextField" name="passwordField">
+    </Component>
+    <Component class="javax.swing.JButton" name="loginButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#xb85c;&#xadf8;&#xc778;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="loginButtonActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
         <Property name="text" type="java.lang.String" value="&#xb85c;&#xadf8;&#xc778;"/>
@@ -82,13 +92,6 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="idField">
-    </Component>
-    <Component class="javax.swing.JTextField" name="passwordField">
-    </Component>
-    <Component class="javax.swing.JButton" name="loginButton">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="&#xb85c;&#xadf8;&#xc778;"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

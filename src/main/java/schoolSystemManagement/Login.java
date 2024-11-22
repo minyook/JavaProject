@@ -3,54 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package schoolSystemManagement;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.HashMap;
+
 /**
  *
  * @author limmi
  */
 public class Login extends javax.swing.JPanel {
 
-    private HashMap<String, String> dataMap; // 사용자 정보를 저장하는 해쉬맵
-
     /**
      * Creates new form Login
-     * @param dataMap 사용자 데이터를 저장하는 해쉬맵
      */
-    public Login(HashMap<String, String> dataMap) {
-        this.dataMap = dataMap; // 데이터 맵을 초기화
+    public Login() {
         initComponents();
-        setupActions(); // 로그인 버튼 동작 설정
     }
 
-    /**
-     * 로그인 버튼의 동작을 설정하는 메서드
-     */
-    private void setupActions() {
-        loginButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                String inputId = idField.getText();
-                String inputPassword = passwordField.getText();
-
-                // 해쉬맵에서 입력한 아이디로 사용자 정보를 찾음
-                if (dataMap.containsKey("id") && dataMap.get("id").equals(inputId)) {
-                    String savedSSN = dataMap.get("ssn");
-                    String expectedPassword = savedSSN != null && savedSSN.length() >= 7 ? savedSSN.substring(savedSSN.length() - 7) : "";
-
-                    if (expectedPassword.equals(inputPassword)) {
-                        JOptionPane.showMessageDialog(Login.this, "로그인 성공!", "성공", JOptionPane.INFORMATION_MESSAGE);
-                    } else {
-                        JOptionPane.showMessageDialog(Login.this, "비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(Login.this, "아이디가 존재하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
-                }
-            }
-        });
-    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -60,20 +26,25 @@ public class Login extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        passwordField = new javax.swing.JTextField();
+        loginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         idField = new javax.swing.JTextField();
-        passwordField = new javax.swing.JTextField();
-        loginButton = new javax.swing.JButton();
+
+        loginButton.setText("로그인");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("로그인");
 
         jLabel2.setText("학번/교수 번호");
 
         jLabel3.setText("비밀번호");
-
-        loginButton.setText("로그인");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -116,6 +87,10 @@ public class Login extends javax.swing.JPanel {
                 .addContainerGap(65, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_loginButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
