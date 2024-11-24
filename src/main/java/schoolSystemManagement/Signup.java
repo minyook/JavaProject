@@ -3,6 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package schoolSystemManagement;
+//import com.fasterxml.jackson.databind.ObjectMapper;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -10,11 +18,63 @@ package schoolSystemManagement;
  */
 public class Signup extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Signup
-     */
+    private HashMap<String, HashMap<String, String>> userMap = new HashMap<>(); // 주민번호를 키로 사용하는 HashMap
+    private static final String FILE_PATH = "user_data.json"; // JSON 파일 경로
+    private final Gson gson = new Gson(); // GSON 객체
+
     public Signup() {
         initComponents();
+        customizeComponents();
+        loadFromJson(); // 시작 시 JSON 파일에서 데이터 로드
+    }
+
+    private void customizeComponents() {
+        userNumber.setColumns(6);
+        userNumber1.setColumns(7);
+    }
+
+    private void saveToJson() {
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            gson.toJson(userMap, writer);
+            System.out.println("데이터가 JSON 파일에 저장되었습니다.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "데이터를 저장하는 중 오류가 발생했습니다.");
+        }
+    }
+
+    // JSON 파일에서 불러오기
+    private void loadFromJson() {
+        try (Reader reader = new FileReader(FILE_PATH)) {
+            Type type = new TypeToken<HashMap<String, HashMap<String, String>>>() {
+            }.getType();
+            userMap = gson.fromJson(reader, type);
+            if (userMap == null) {
+                userMap = new HashMap<>();
+            }
+            System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
+        } catch (FileNotFoundException e) {
+            System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
+        }
+    }
+
+    private boolean isBackPartDuplicate(String backPart) {
+        for (HashMap<String, String> userData : userMap.values()) {
+            String existingBackPart = userData.get("number"); // 저장된 주민번호 뒷자리
+            if (existingBackPart != null && existingBackPart.equals(backPart)) {
+                return true; // 중복 발견
+            }
+        }
+        return false; // 중복 없음
+    }
+
+    // 사용자 추가
+    private void addUser(String fullNumber, HashMap<String, String> userData) {
+        userMap.put(fullNumber, userData);
+        saveToJson(); // 사용자 추가 후 데이터 저장
     }
 
     /**
@@ -36,6 +96,8 @@ public class Signup extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        userNumber1 = new javax.swing.JTextField();
 
         userName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,8 +112,18 @@ public class Signup extends javax.swing.JPanel {
         });
 
         Major.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전산학과", "전자공학과", "기계공학과", "화학공학과", "항공우주공학과" }));
+        Major.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MajorActionPerformed(evt);
+            }
+        });
 
-        Usertype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "학생", "교수", "관리자" }));
+        Usertype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "학생", "교수", "학사 담당자", "수업 담당자" }));
+        Usertype.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UsertypeActionPerformed(evt);
+            }
+        });
 
         Submit.setText("회원가입");
         Submit.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +142,14 @@ public class Signup extends javax.swing.JPanel {
 
         jLabel5.setText("회원가입");
 
+        jLabel6.setText("-");
+
+        userNumber1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                userNumber1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -81,26 +161,26 @@ public class Signup extends javax.swing.JPanel {
                         .addComponent(Submit))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(109, 109, 109)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(143, 143, 143)
-                                .addComponent(Usertype, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(Major, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(userNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(userNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(userNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Major, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Usertype, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(userName, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(jLabel5)))
-                .addContainerGap(118, Short.MAX_VALUE))
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,7 +194,9 @@ public class Signup extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(userNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(userNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Major, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -138,8 +220,81 @@ public class Signup extends javax.swing.JPanel {
     }//GEN-LAST:event_userNumberActionPerformed
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
-        // TODO add your handling code here:
+
+        // 회원가입 버튼 클릭 시
+        try {
+            // 입력값 가져오기
+            String name = userName.getText().trim();
+            String numberPart1 = userNumber.getText().trim(); // 주민번호 앞자리
+            String numberPart2 = userNumber1.getText().trim(); // 주민번호 뒷자리
+            String major = Major.getSelectedItem().toString();
+            String userType = Usertype.getSelectedItem().toString();
+
+            if (name.isEmpty() || numberPart1.isEmpty() || numberPart2.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "모든 필드를 채워주세요!");
+                return;
+            }
+
+            // 주민번호 형식 유지
+            String fullNumber = numberPart1 + "-" + numberPart2; // 앞자리-뒷자리 형식
+
+            // 중복 확인: 주민번호 뒷자리 중복 확인
+            if (isBackPartDuplicate(numberPart2)) {
+                JOptionPane.showMessageDialog(this, "이미 존재하는 주민번호 뒷자리입니다!");
+                return;
+            }
+
+            // 사용자 유형에 따른 ID 생성
+            String prefix = switch (userType) {
+                case "학생" ->
+                    "S";
+                case "교수" ->
+                    "P";
+                case "학사 담당자" ->
+                    "H";
+                case "수업 담당자" ->
+                    "G";
+                default ->
+                    "E";
+            };
+            String uniqueId = prefix + "-" + String.format("%03d", (int) (Math.random() * 1000)); // ID 생성
+
+            // 사용자 데이터 생성
+            HashMap<String, String> userData = new HashMap<>();
+            userData.put("name", name);
+            userData.put("major", major);
+            userData.put("userType", userType);
+            userData.put("userId", uniqueId);
+            userData.put("number", numberPart2); // 주민번호 뒷자리 저장 (비밀번호)
+
+            // 새로운 사용자 추가
+            addUser(fullNumber, userData);
+            saveToJson(); // JSON 저장
+
+            JOptionPane.showMessageDialog(this, "회원가입 완료! ID: " + uniqueId);
+            Management main = new Management();
+            main.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "알 수 없는 오류가 발생했습니다.");
+        }
+
+        // 회원가입 완료 후 초기 화면으로 이동 (기능 추가 필요)
+        // 예: MainScreen main = new MainScreen(); main.setVisible(true);
     }//GEN-LAST:event_SubmitActionPerformed
+
+    private void MajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MajorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_MajorActionPerformed
+
+    private void UsertypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsertypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UsertypeActionPerformed
+
+    private void userNumber1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNumber1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_userNumber1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -151,7 +306,9 @@ public class Signup extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField userName;
     private javax.swing.JTextField userNumber;
+    private javax.swing.JTextField userNumber1;
     // End of variables declaration//GEN-END:variables
 }

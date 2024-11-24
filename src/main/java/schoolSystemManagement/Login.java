@@ -4,17 +4,46 @@
  */
 package schoolSystemManagement;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import java.io.*;
+import java.lang.reflect.Type;
+import java.util.HashMap;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author limmi
  */
 public class Login extends javax.swing.JPanel {
 
-    /**
-     * Creates new form Login
-     */
+    // 주민번호 키를 String으로 처리
+    private HashMap<String, HashMap<String, String>> userMap = new HashMap<>();
+    private static final String FILE_PATH = "user_data.json"; // JSON 파일 경로
+    private final Gson gson = new Gson(); // GSON 객체
+
     public Login() {
         initComponents();
+        loadFromJson(); // 프로그램 시작 시 사용자 데이터 로드
+    }
+
+    private void loadFromJson() {
+        try (Reader reader = new FileReader(FILE_PATH)) {
+            // HashMap<String, HashMap<String, String>>으로 타입 지정
+            Type type = new TypeToken<HashMap<String, HashMap<String, String>>>() {
+            }.getType();
+            userMap = gson.fromJson(reader, type);
+            if (userMap == null) {
+                userMap = new HashMap<>();
+            }
+            System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
+            userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
+        } catch (FileNotFoundException e) {
+            System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
+        }
     }
 
     /**
@@ -89,7 +118,41 @@ public class Login extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        // TODO add your handling code here:
+        try {
+            String idInput = idField.getText().trim(); // 사용자 ID
+            String passwordInput = passwordField.getText().trim(); // 비밀번호 (주민번호 뒷자리)
+
+            if (idInput.isEmpty() || passwordInput.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "아이디와 비밀번호를 입력해주세요!");
+                return;
+            }
+
+            // 로그인 검증
+            boolean loginSuccess = false;
+
+            for (HashMap<String, String> userData : userMap.values()) {
+                String userId = userData.get("userId"); // 저장된 ID
+                String userPassword = userData.get("number"); // 비밀번호 (주민번호 뒷자리)
+
+                if (userId != null && userPassword != null
+                        && userId.equals(idInput)
+                        && userPassword.equals(passwordInput)) {
+                    loginSuccess = true;
+                    JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
+                    break;
+                }
+            }
+            Management main = new Management();
+            main.setVisible(true);
+
+            if (!loginSuccess) {
+                JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 일치하지 않습니다.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "로그인 처리 중 오류가 발생했습니다.");
+        }
     }//GEN-LAST:event_loginButtonActionPerformed
 
 
