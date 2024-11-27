@@ -128,25 +128,44 @@ public class Login extends javax.swing.JPanel {
             }
 
             // 로그인 검증
-            boolean loginSuccess = false;
+            HashMap<String, String> loggedInUser = null;
 
             for (HashMap<String, String> userData : userMap.values()) {
-                String userId = userData.get("userId"); // 저장된 ID
-                String userPassword = userData.get("number"); // 비밀번호 (주민번호 뒷자리)
+                String userId = userData.get("userId");
+                String userPassword = userData.get("number");
 
                 if (userId != null && userPassword != null
                         && userId.equals(idInput)
                         && userPassword.equals(passwordInput)) {
-                    loginSuccess = true;
+                    loggedInUser = userData; // 로그인한 사용자 정보 저장
                     JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
                     break;
                 }
             }
-            Management main = new Management();
-            main.setVisible(true);
 
-            if (!loginSuccess) {
+            if (loggedInUser == null) {
                 JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            // 사용자 유형에 따른 화면 이동
+            String userType = loggedInUser.get("userType");
+
+            if ("학생".equals(userType)) {
+                // 학생 화면으로 이동 (JFrame 기반)
+                StudentScreen studentScreen = new StudentScreen(loggedInUser);
+                studentScreen.setVisible(true);
+                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
+            } else if ("교수".equals(userType)) {
+                // 교수 화면으로 이동
+                ProfessorScreen professorScreen = new ProfessorScreen(loggedInUser);
+                professorScreen.setVisible(true);
+                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
+            } else if ("관리자".equals(userType)) {
+                // 관리자 화면으로 이동
+                AdminScreen adminScreen = new AdminScreen(loggedInUser);
+                adminScreen.setVisible(true);
+                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
             }
 
         } catch (Exception e) {
