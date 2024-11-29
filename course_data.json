@@ -1,0 +1,20 @@
+{
+    "강의1": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 3,
+        "name": "객체지향프로그래밍",
+        "maxStudents": 40,
+        "userId": "P-092",
+        "status": "true"
+    },
+    "강의2": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 2,
+        "name": "임베디드소프트웨어",
+        "maxStudents": 40,
+        "userId": "P-092",
+        "status": "false"
+    }
+}
