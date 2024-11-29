@@ -14,25 +14,27 @@ import java.util.Map;
 import com.google.gson.*;
 
 public class StudentProfessorUpdate extends JFrame {
-
+    private String currentUserId;
     private JTextField nameField, idField, departmentField, idNumberField;
     private JPasswordField passwordField;
     private JButton updateButton;
     private static final String JSON_FILE_PATH = "user_data.json"; // JSON 파일 경로
     private Map<String, Map<String, String>> userMap; // 사용자 정보 저장
 
-    public StudentProfessorUpdate() {
-        setTitle("학생/교수 정보 수정");
-        setSize(450, 380);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(null);
+  public StudentProfessorUpdate(String currentUserId) {
+    this.currentUserId = currentUserId; // 전달받은 사용자 ID로 초기화
+    setTitle("학생/교수 정보 수정");
+    setSize(450, 380);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setLayout(null);
 
-        // 컴포넌트 초기화
-        initComponents();
+    // 컴포넌트 초기화
+    initComponents();
 
-        // 데이터 로드
-        loadDataFromJSON();
-    }
+    // 데이터 로드
+    loadDataFromJSON();
+}
+
 
     private void initComponents() {
         // 이름 필드
@@ -134,14 +136,8 @@ private void loadDataFromJSON() {
         }
 
         JsonObject jsonObject = JsonParser.parseString(content).getAsJsonObject();
-
-        if (jsonObject == null || jsonObject.entrySet().isEmpty()) {
-            System.out.println("JSON 데이터가 비어 있습니다. 기본 데이터를 생성합니다.");
-            initializeDefaultData();
-            return;
-        }
-
         userMap = new HashMap<>();
+
         for (Map.Entry<String, JsonElement> entry : jsonObject.entrySet()) {
             String idNumber = entry.getKey(); // 주민등록번호 전체는 JSON의 키로 사용
             JsonObject userData = entry.getValue().getAsJsonObject();
@@ -157,14 +153,15 @@ private void loadDataFromJSON() {
             userMap.put(userData.get("userId").getAsString(), userMapData); // userId를 key로 사용
         }
 
-        // 특정 사용자 정보 로드
-        String currentUserId = "S-027"; // 예시로 "S-027" 사용
+        // currentUserId 사용
         if (userMap.containsKey(currentUserId)) {
             Map<String, String> currentUser = userMap.get(currentUserId);
             nameField.setText(currentUser.get("name"));
             idField.setText(currentUser.get("userId"));
             departmentField.setText(currentUser.get("major"));
             idNumberField.setText(currentUser.get("idNumber")); // 주민등록번호 전체 표시
+        } else {
+            System.out.println("사용자 정보를 찾을 수 없습니다.");
         }
 
     } catch (IOException e) {
@@ -173,6 +170,7 @@ private void loadDataFromJSON() {
         initializeDefaultData();
     }
 }
+
 
 
 private void initializeDefaultData() {
@@ -218,9 +216,10 @@ private void saveDataToJSON() {
 
 
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            new StudentProfessorUpdate().setVisible(true);
-        });
-    }
+   public static void main(String[] args) {
+    String currentLoggedInUserId = "S-027"; // 로그인한 사용자 ID (임시)
+    SwingUtilities.invokeLater(() -> {
+    new StudentProfessorUpdate(currentLoggedInUserId).setVisible(true);
+    });
+}
 }
