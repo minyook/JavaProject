@@ -12,7 +12,7 @@ import org.json.JSONObject;
 import java.util.List;
 import java.io.*;
 import java.lang.reflect.Type;
-import java.util.HashMap;
+import java.util.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,43 +32,37 @@ public class Login extends javax.swing.JPanel {
     }
 
     private void loadFromJson() {
-    try (Reader reader = new FileReader(FILE_PATH)) {
-        // JSON 파일을 HashMap<String, Object>로 파싱
-        Type type = new TypeToken<HashMap<String, Object>>() {}.getType();
-        HashMap<String, Object> rawMap = gson.fromJson(reader, type); // HashMap으로 명시적 파싱
+        try (Reader reader = new FileReader(FILE_PATH)) {
+            // JSON 데이터를 읽어오는 Map 타입
+            Type type = new TypeToken<HashMap<String, Map<String, Object>>>() {}.getType();
+            Map<String, Map<String, Object>> rawMap = gson.fromJson(reader, type);
 
-        userMap = new HashMap<>();
+            userMap = new HashMap<>();
 
-        if (rawMap != null) {
-            for (HashMap.Entry<String, Object> entry : rawMap.entrySet()) { // HashMap.Entry 사용
-                String key = entry.getKey();
-                Object value = entry.getValue();
+            if (rawMap != null) {
+                for (Map.Entry<String, Map<String, Object>> entry : rawMap.entrySet()) {
+                    String key = entry.getKey();
+                    Map<String, Object> userData = entry.getValue();
 
-                if (value instanceof LinkedTreeMap) {
-                    // LinkedTreeMap → HashMap<String, String> 변환
-                    HashMap<String, String> userData = gson.fromJson(
-                        gson.toJson(value), new TypeToken<HashMap<String, String>>() {}.getType()
-                    );
-                    userMap.put(key, userData);
-                } else if (value instanceof List) {
-                    // List 타입 처리 (필요 시 추가 로직 작성 가능)
-                    System.out.println("키: " + key + "는 JSON 배열입니다: " + value);
-                } else {
-                    // 예상치 못한 데이터 타입 로깅
-                    System.out.println("키: " + key + "는 예상치 못한 타입입니다: " + value.getClass().getSimpleName());
+                    // 원본 그대로 userMap에 저장
+                    HashMap<String, String> processedUserData = new HashMap<>();
+                    for (Map.Entry<String, Object> userEntry : userData.entrySet()) {
+                        processedUserData.put(userEntry.getKey(), userEntry.getValue().toString());  // 값 그대로 저장
+                    }
+
+                    userMap.put(key, processedUserData);
                 }
             }
-        }
 
-        System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
-        userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
-    } catch (FileNotFoundException e) {
-        System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
+            System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
+            userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
+        } catch (FileNotFoundException e) {
+            System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
+        }
     }
-}
 
 
 
@@ -145,29 +139,39 @@ public class Login extends javax.swing.JPanel {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
-            String idInput = idField.getText().trim(); // 사용자 ID 입력
-            String passwordInput = passwordField.getText().trim(); // 비밀번호 입력
+            String idInput = idField.getText().trim(); // 사용자 ID
+            String passwordInput = passwordField.getText().trim(); // 비밀번호
 
             if (idInput.isEmpty() || passwordInput.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "아이디와 비밀번호를 입력해주세요!");
                 return;
             }
 
+            // 로그인 검증
             HashMap<String, String> loggedInUser = null;
 
-            for (HashMap<String, String> userData : userMap.values()) {
-                String userId = userData.get("userId");
-                String userPassword = userData.get("number");
+            // userMap을 순회하여 사용자가 입력한 아이디와 비밀번호 일치 여부 체크
+            for (Map.Entry<String, HashMap<String, String>> entry : userMap.entrySet()) {
+                HashMap<String, String> userData = entry.getValue();
 
+                String userId = userData.get("userId").trim();  // userId에서 불필요한 공백 제거
+                String userPassword = userData.get("number").trim();  // number에서 불필요한 공백 제거
+
+                // 디버깅 출력을 추가하여 확인
+                System.out.println("입력된 ID: " + idInput + ", 입력된 비밀번호: " + passwordInput);
+                System.out.println("비교할 ID: " + userId + ", 비교할 비밀번호: " + userPassword);
+
+                // 아이디(userId)와 비밀번호(number)가 일치하는지 비교
                 if (userId != null && userPassword != null
                         && userId.equals(idInput)
                         && userPassword.equals(passwordInput)) {
-                    loggedInUser = userData;
+                    loggedInUser = userData; // 로그인한 사용자 정보 저장
                     JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
                     break;
                 }
             }
 
+            // 일치하는 사용자 정보가 없으면 로그인 실패 처리
             if (loggedInUser == null) {
                 JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 일치하지 않습니다.");
                 return;
@@ -176,22 +180,22 @@ public class Login extends javax.swing.JPanel {
             // 사용자 유형에 따른 화면 이동
             String userType = loggedInUser.get("userType");
 
-            // HashMap -> JSONObject 변환
-            JSONObject userJson = new JSONObject(loggedInUser);
-
             if ("학생".equals(userType)) {
-                CourseManagementSystemForStudents studentScreen = new CourseManagementSystemForStudents(
-                        userJson.getString("userId"), userJson.getString("name"));
+                CourseManagementSystemForStudents studentScreen = new CourseManagementSystemForStudents(loggedInUser.get("userId"), loggedInUser.get("name"));
                 studentScreen.setVisible(true);
                 this.setVisible(false);
             } else if ("교수".equals(userType)) {
-                CourseManagementSystemForProfessor professorScreen = new CourseManagementSystemForProfessor(
-                        userJson.getString("userId"), userJson.getString("name"));
+                CourseManagementSystemForProfessor professorScreen = new CourseManagementSystemForProfessor(loggedInUser.get("userId"), loggedInUser.get("name"));
                 professorScreen.setVisible(true);
                 this.setVisible(false);
-            } else if ("관리자".equals(userType)) {
-                CourseManagementSystemForManager adminScreen = new CourseManagementSystemForManager(
-                        userJson.getString("userId"), userJson.getString("name"));
+            } else if ("수업 담당자".equals(userType)) {
+                // 수업 담당자 화면 처리
+                CourseManagementSystemForManager classInstructorScreen = new CourseManagementSystemForManager(loggedInUser.get("userId"), loggedInUser.get("userId"));
+                classInstructorScreen.setVisible(true);
+                this.setVisible(false);
+            } else if ("학사 담당자".equals(userType)) {
+                // 학사 담당자 화면 처리
+                CourseManagementSystemForManager adminScreen = new CourseManagementSystemForManager(loggedInUser.get("userId"), loggedInUser.get("userId"));
                 adminScreen.setVisible(true);
                 this.setVisible(false);
             }
@@ -200,6 +204,7 @@ public class Login extends javax.swing.JPanel {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "로그인 처리 중 오류가 발생했습니다.");
         }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
 
