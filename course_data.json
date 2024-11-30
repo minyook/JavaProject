@@ -11,10 +11,10 @@
     "강의2": {
         "professor": "이선권",
         "unit": 3,
-        "countStudents": 2,
+        "countStudents": 3,
         "name": "임베디드소프트웨어",
         "maxStudents": 40,
         "userId": "P-092",
-        "status": "false"
+        "status": "true"
     }
 }
