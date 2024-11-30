@@ -12,19 +12,20 @@ import javax.swing.JPanel;
  * @author limmi
  */
 public class Management extends javax.swing.JFrame {
+
     private JPanel newpanel;
+
     /**
      * Creates new form Management s
      */
 
-    
     public Management() {
         setTitle("School System Management");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 400);
         setLocationRelativeTo(null);
         initComponents();
-         
+
     }
 
     /**
@@ -108,37 +109,67 @@ public class Management extends javax.swing.JFrame {
     private void Signupbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Signupbutton1ActionPerformed
         // TODO add your handling code here:
 
+        try {
+        // 디버깅: 회원가입 버튼 클릭 확인
+        System.out.println("회원가입 버튼이 클릭되었습니다.");
+
         // 새로운 Signup 패널 생성
-         Signup newpanel1 = new Signup();
+        Signup newpanel1 = new Signup();
 
-         // 기존 패널 제거
-         jPanel1.removeAll();
+        // 디버깅: 새로운 패널 생성 확인
+        System.out.println("새로운 Signup 패널이 생성되었습니다.");
 
-         // 새로운 패널 추가
-         jPanel1.setLayout(new java.awt.BorderLayout());
-         jPanel1.add(newpanel1);
+        // 기존 패널 제거
+        jPanel1.removeAll();
+        System.out.println("기존 패널이 제거되었습니다.");
 
-         // 레이아웃 갱신 및 화면 다시 그리기
-         jPanel1.revalidate();
-         jPanel1.repaint();
-       
-        
+        // 새로운 패널 추가
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(newpanel1);
+        System.out.println("새로운 Signup 패널이 추가되었습니다.");
+
+        // 레이아웃 갱신 및 화면 다시 그리기
+        jPanel1.revalidate();
+        jPanel1.repaint();
+        System.out.println("화면이 갱신되었습니다.");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("회원가입 화면 이동 중 오류 발생: " + e.getMessage());
+    }
+
+
     }//GEN-LAST:event_Signupbutton1ActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         // TODO add your handling code here:Signup newpanel1 = new Signup();
-        Login newpanel2 = new Login();
-         // 기존 패널 제거
-         jPanel1.removeAll();
+        try {
+        // 디버깅: 로그인 버튼 클릭 확인
+        System.out.println("로그인 버튼이 클릭되었습니다.");
 
-         // 새로운 패널 추가
-         jPanel1.setLayout(new java.awt.BorderLayout());
-         jPanel1.add(newpanel2);
+        // 새로운 Login 패널 생성
+        Login newPanel = new Login();
+        System.out.println("새로운 Login 패널이 생성되었습니다.");
 
-         // 레이아웃 갱신 및 화면 다시 그리기
-         jPanel1.revalidate();
-         jPanel1.repaint();
-        
+        // 기존 패널 제거
+        jPanel1.removeAll();
+        System.out.println("기존 패널이 제거되었습니다.");
+
+        // 새로운 패널 추가
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel1.add(newPanel, java.awt.BorderLayout.CENTER);
+        System.out.println("새로운 Login 패널이 추가되었습니다.");
+
+        // 레이아웃 갱신 및 화면 다시 그리기
+        jPanel1.revalidate();
+        jPanel1.repaint();
+        System.out.println("화면이 갱신되었습니다.");
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        System.out.println("로그인 화면 이동 중 오류 발생: " + e.getMessage());
+    }
+
     }//GEN-LAST:event_loginButtonActionPerformed
 
     /**

@@ -4,8 +4,12 @@
  */
 package schoolSystemManagement;
 
+import schoolSystemManagement.course.management.*;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.google.gson.internal.LinkedTreeMap;
+import org.json.JSONObject;
+import java.util.List;
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.HashMap;
@@ -28,23 +32,45 @@ public class Login extends javax.swing.JPanel {
     }
 
     private void loadFromJson() {
-        try (Reader reader = new FileReader(FILE_PATH)) {
-            // HashMap<String, HashMap<String, String>>으로 타입 지정
-            Type type = new TypeToken<HashMap<String, HashMap<String, String>>>() {
-            }.getType();
-            userMap = gson.fromJson(reader, type);
-            if (userMap == null) {
-                userMap = new HashMap<>();
+    try (Reader reader = new FileReader(FILE_PATH)) {
+        // JSON 파일을 HashMap<String, Object>로 파싱
+        Type type = new TypeToken<HashMap<String, Object>>() {}.getType();
+        HashMap<String, Object> rawMap = gson.fromJson(reader, type); // HashMap으로 명시적 파싱
+
+        userMap = new HashMap<>();
+
+        if (rawMap != null) {
+            for (HashMap.Entry<String, Object> entry : rawMap.entrySet()) { // HashMap.Entry 사용
+                String key = entry.getKey();
+                Object value = entry.getValue();
+
+                if (value instanceof LinkedTreeMap) {
+                    // LinkedTreeMap → HashMap<String, String> 변환
+                    HashMap<String, String> userData = gson.fromJson(
+                        gson.toJson(value), new TypeToken<HashMap<String, String>>() {}.getType()
+                    );
+                    userMap.put(key, userData);
+                } else if (value instanceof List) {
+                    // List 타입 처리 (필요 시 추가 로직 작성 가능)
+                    System.out.println("키: " + key + "는 JSON 배열입니다: " + value);
+                } else {
+                    // 예상치 못한 데이터 타입 로깅
+                    System.out.println("키: " + key + "는 예상치 못한 타입입니다: " + value.getClass().getSimpleName());
+                }
             }
-            System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
-            userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
-        } catch (FileNotFoundException e) {
-            System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
-        } catch (IOException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
         }
+
+        System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
+        userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
+    } catch (FileNotFoundException e) {
+        System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
+    } catch (IOException e) {
+        e.printStackTrace();
+        JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
     }
+}
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -119,15 +145,14 @@ public class Login extends javax.swing.JPanel {
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
-            String idInput = idField.getText().trim(); // 사용자 ID
-            String passwordInput = passwordField.getText().trim(); // 비밀번호 (주민번호 뒷자리)
+            String idInput = idField.getText().trim(); // 사용자 ID 입력
+            String passwordInput = passwordField.getText().trim(); // 비밀번호 입력
 
             if (idInput.isEmpty() || passwordInput.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "아이디와 비밀번호를 입력해주세요!");
                 return;
             }
 
-            // 로그인 검증
             HashMap<String, String> loggedInUser = null;
 
             for (HashMap<String, String> userData : userMap.values()) {
@@ -137,7 +162,7 @@ public class Login extends javax.swing.JPanel {
                 if (userId != null && userPassword != null
                         && userId.equals(idInput)
                         && userPassword.equals(passwordInput)) {
-                    loggedInUser = userData; // 로그인한 사용자 정보 저장
+                    loggedInUser = userData;
                     JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
                     break;
                 }
@@ -151,21 +176,24 @@ public class Login extends javax.swing.JPanel {
             // 사용자 유형에 따른 화면 이동
             String userType = loggedInUser.get("userType");
 
+            // HashMap -> JSONObject 변환
+            JSONObject userJson = new JSONObject(loggedInUser);
+
             if ("학생".equals(userType)) {
-                // 학생 화면으로 이동 (JFrame 기반)
-                StudentScreen studentScreen = new StudentScreen(loggedInUser);
+                CourseManagementSystemForStudents studentScreen = new CourseManagementSystemForStudents(
+                        userJson.getString("userId"), userJson.getString("name"));
                 studentScreen.setVisible(true);
-                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
+                this.setVisible(false);
             } else if ("교수".equals(userType)) {
-                // 교수 화면으로 이동
-                ProfessorScreen professorScreen = new ProfessorScreen(loggedInUser);
+                CourseManagementSystemForProfessor professorScreen = new CourseManagementSystemForProfessor(
+                        userJson.getString("userId"), userJson.getString("name"));
                 professorScreen.setVisible(true);
-                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
+                this.setVisible(false);
             } else if ("관리자".equals(userType)) {
-                // 관리자 화면으로 이동
-                AdminScreen adminScreen = new AdminScreen(loggedInUser);
+                CourseManagementSystemForManager adminScreen = new CourseManagementSystemForManager(
+                        userJson.getString("userId"), userJson.getString("name"));
                 adminScreen.setVisible(true);
-                this.setVisible(false); // 현재 로그인 화면 닫기 (옵션)
+                this.setVisible(false);
             }
 
         } catch (Exception e) {
