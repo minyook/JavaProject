@@ -13,8 +13,8 @@ import java.util.ArrayList;
  */
 public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
-    public String studentName = "S-123";
-    public String studentId = "S-123";
+    public String studentName = "임민욱";
+    public String studentId = "S-027";
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 

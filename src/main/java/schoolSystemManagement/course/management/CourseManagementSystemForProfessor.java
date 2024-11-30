@@ -411,7 +411,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
 
         jLabel11.setText("학점 입력");
 
-        jLabel12.setText("학번");
+        jLabel12.setText("학생 아이디");
 
         selectStudentNumberFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -750,7 +750,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
 
         // courseDataList에서 강의 이름을 가져와 JList에 추가
         for (UserData value : userDataList) {
-            listModel.addElement("이름: " + value.getName() + "    학번:" + value.getNumber() + "    학과: " + value.getMajor() + "    userId: " + value.getUserId());
+            listModel.addElement("이름: " + value.getName() + "    학과: " + value.getMajor() + "    userId: " + value.getUserId());
         }
 
         // JList에 모델 설정
@@ -773,24 +773,23 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         String[] parts = fullString.split("    ");  // 공백 4개를 기준으로 분리
 
         // 배열의 길이가 4가 아닌 경우, 즉 필요한 데이터가 없다면 종료
-        if (parts.length < 4) {
+        if (parts.length < 3) {
             JOptionPane.showMessageDialog(this, "선택된 학생 데이터가 올바르지 않습니다. 다시 선택해주세요.");
             return;  // 종료
         }
 
         // 각 항목을 분리하여 변수에 저장
         String name = parts[0].replace("이름: ", "").trim();  // 이름
-        String number = parts[1].replace("학번:", "").trim(); // 학번
-        String major = parts[2].replace("학과:", "").trim();  // 학과
-        String userId = parts[3].replace("userId:", "").trim(); // userId
+        String major = parts[1].replace("학과:", "").trim();  // 학과
+        String userId = parts[2].replace("userId:", "").trim(); // userId
 
         // 필수 데이터가 없다면 종료
-        if (name.isEmpty() || number.isEmpty() || major.isEmpty() || userId.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "학생의 이름, 학번, 학과, 또는 userId가 누락되었습니다.");
+        if (name.isEmpty() || major.isEmpty() || userId.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "학생의 이름, 학과, 또는 userId가 누락되었습니다.");
             return;  // 종료
         }
 
-        selectStudentNumberFrame.setText(number);
+        selectStudentNumberFrame.setText(userId);
         selectStudentNameFrame.setText(name);
         selectStudentMajorFrame.setText(major);
 
@@ -825,12 +824,12 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String score = (String) selectUnitScore.getSelectedItem();
         String courseNameData = courseNameFromProfessor.getText();
-        String numberData = selectStudentNumberFrame.getText();
+        String userIdData = selectStudentNumberFrame.getText();
         String nameData = selectStudentNameFrame.getText();
         String majorData = selectStudentMajorFrame.getText();
 
         // 값이 null이면 알림창 띄우고 종료
-        if (score.isEmpty() || courseNameData.isEmpty() || numberData.isEmpty() || nameData.isEmpty() || majorData.isEmpty()) {
+        if (score.isEmpty() || courseNameData.isEmpty() || userIdData.isEmpty() || nameData.isEmpty() || majorData.isEmpty()) {
             JOptionPane.showMessageDialog(this, "학생 목록에서 학생을 선택 해 주세요.");
             return; // 메서드 종료
         }
@@ -839,7 +838,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "점수를 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 4.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 4.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
@@ -847,7 +846,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "입력한 학점를 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 3.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 3.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
@@ -855,7 +854,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "입력한 학점를 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 2.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 2.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
@@ -863,7 +862,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "입력한 학점를 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 1.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 1.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
@@ -871,7 +870,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "입력한 학점를 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 0.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 0.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
@@ -879,7 +878,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             int result = JOptionPane.showConfirmDialog(null, "비 정상적인 값이 들어있습니다.\n그래도 저장하시겠습니까?", "확인", JOptionPane.YES_NO_CANCEL_OPTION);
 
             if (result == JOptionPane.YES_OPTION) {
-                usersFile.setJsonArrayValue("number", numberData, "courseList", "course", courseNameData, "score", 0.0);
+                usersFile.setJsonArrayValue("userId", userIdData, "courseList", "course", courseNameData, "score", 0.0);
                 JOptionPane.showMessageDialog(this, "성공적으로 저장되었습니다.");
             } else if (result == JOptionPane.NO_OPTION) { }
             else if (result == JOptionPane.CANCEL_OPTION) { }
