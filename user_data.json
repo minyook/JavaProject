@@ -3,12 +3,20 @@
         "number": "3588210",
         "major": "전산학과",
         "name": "임민욱",
-        "courseList": [{
-            "score": 4,
-            "unit": 3,
-            "course": "객체지향프로그래밍"
-        }],
+        "courseList": [
+            {
+                "score": 4,
+                "unit": 3,
+                "course": "객체지향프로그래밍"
+            },
+            {
+                "score": 4,
+                "unit": 3,
+                "course": "임베디드소프트웨어"
+            }
+        ],
         "userType": "학생",
+        "tuition": "300000",
         "userId": "S-027"
     },
     "020919-3588001": {
