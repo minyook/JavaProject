@@ -118,8 +118,8 @@ public class StudentScreen extends javax.swing.JFrame {
                 // 임의의 사용자 데이터를 생성해 테스트
                 HashMap<String, String> testUserData = new HashMap<>();
                 testUserData.put("userId", "S-123");
-                testUserData.put("name", "임민욱");
-                testUserData.put("major", "전산학과");
+                testUserData.put("name", "김영진");
+                testUserData.put("major", "창의 소프트웨어 공학과");
 
                 new StudentScreen(testUserData).setVisible(true);
             }
