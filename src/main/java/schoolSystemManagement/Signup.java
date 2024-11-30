@@ -18,8 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class Signup extends javax.swing.JPanel {
 
-    private HashMap<String, HashMap<String, String>> userMap = new HashMap<>(); // 주민번호를 키로 사용하는 HashMap
-    private static final String FILE_PATH = "user_data.json"; // JSON 파일 경로
+    private HashMap<String, HashMap<String, Object>> userMap = new HashMap<>();    private static final String FILE_PATH = "user_data.json"; // JSON 파일 경로
     private final Gson gson = new Gson(); // GSON 객체
 
     public Signup() {
@@ -34,25 +33,29 @@ public class Signup extends javax.swing.JPanel {
     }
 
     private void saveToJson() {
-        try (Writer writer = new FileWriter(FILE_PATH)) {
+        try (FileWriter writer = new FileWriter(FILE_PATH)) {
+            // Save the entire userMap to JSON
             gson.toJson(userMap, writer);
             System.out.println("데이터가 JSON 파일에 저장되었습니다.");
         } catch (IOException e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "데이터를 저장하는 중 오류가 발생했습니다.");
+            System.out.println("데이터를 저장하는 중 오류가 발생했습니다.");
         }
     }
 
     // JSON 파일에서 불러오기
     private void loadFromJson() {
         try (Reader reader = new FileReader(FILE_PATH)) {
-            Type type = new TypeToken<HashMap<String, HashMap<String, String>>>() {
-            }.getType();
+            // JSON을 HashMap<String, HashMap<String, Object>> 형식으로 읽어오기
+            Type type = new TypeToken<HashMap<String, HashMap<String, Object>>>() {}.getType();
             userMap = gson.fromJson(reader, type);
+
             if (userMap == null) {
-                userMap = new HashMap<>();
+                userMap = new HashMap<>(); // 데이터가 없으면 새로운 HashMap 초기화
             }
+
             System.out.println("JSON 파일에서 데이터가 로드되었습니다.");
+            userMap.forEach((key, value) -> System.out.println("키: " + key + ", 값: " + value));
         } catch (FileNotFoundException e) {
             System.out.println("JSON 파일이 존재하지 않습니다. 새로 생성해야 합니다.");
         } catch (IOException e) {
@@ -62,19 +65,21 @@ public class Signup extends javax.swing.JPanel {
     }
 
     private boolean isBackPartDuplicate(String backPart) {
-        for (HashMap<String, String> userData : userMap.values()) {
-            String existingBackPart = userData.get("number"); // 저장된 주민번호 뒷자리
+        for (HashMap<String, Object> userData : userMap.values()) {
+            // 'number' 필드를 String으로 안전하게 캐스팅
+            String existingBackPart = (String) userData.get("number"); // 주민번호 뒷자리
             if (existingBackPart != null && existingBackPart.equals(backPart)) {
                 return true; // 중복 발견
             }
         }
         return false; // 중복 없음
     }
+    
 
     // 사용자 추가
-    private void addUser(String fullNumber, HashMap<String, String> userData) {
+    private void addUser(String fullNumber, HashMap<String, Object> userData) {
         userMap.put(fullNumber, userData);
-        saveToJson(); // 사용자 추가 후 데이터 저장
+        saveToJson(); // Save the updated userMap
     }
 
     /**
@@ -230,6 +235,7 @@ public class Signup extends javax.swing.JPanel {
             String major = Major.getSelectedItem().toString();
             String userType = Usertype.getSelectedItem().toString();
 
+            // 필드 값이 비어 있으면 오류 메시지 출력
             if (name.isEmpty() || numberPart1.isEmpty() || numberPart2.isEmpty()) {
                 JOptionPane.showMessageDialog(this, "모든 필드를 채워주세요!");
                 return;
@@ -246,39 +252,41 @@ public class Signup extends javax.swing.JPanel {
 
             // 사용자 유형에 따른 ID 생성
             String prefix = switch (userType) {
-                case "학생" ->
-                    "S";
-                case "교수" ->
-                    "P";
-                case "학사 담당자" ->
-                    "H";
-                case "수업 담당자" ->
-                    "G";
-                default ->
-                    "E";
+                case "학생" -> "S";
+                case "교수" -> "P";
+                case "학사 담당자" -> "H";
+                case "수업 담당자" -> "G";
+                default -> "E";
             };
             String uniqueId = prefix + "-" + String.format("%03d", (int) (Math.random() * 1000)); // ID 생성
 
             // 사용자 데이터 생성
-            HashMap<String, String> userData = new HashMap<>();
+            HashMap<String, Object> userData = new HashMap<>();
             userData.put("name", name);
             userData.put("major", major);
             userData.put("userType", userType);
             userData.put("userId", uniqueId);
-            userData.put("number", numberPart2); // 주민번호 뒷자리 저장 (비밀번호)
+            userData.put("number", numberPart2); // 주민번호 뒷자리 저장
 
             // 새로운 사용자 추가
             addUser(fullNumber, userData);
-            saveToJson(); // JSON 저장
 
+            // 전체 userMap을 JSON으로 저장
+            saveToJson(); // 전체 userMap 저장
+
+            // 성공 메시지 출력
             JOptionPane.showMessageDialog(this, "회원가입 완료! ID: " + uniqueId);
+
+            // 관리 화면으로 이동
             Management main = new Management();
             main.setVisible(true);
+            this.setVisible(false); // 현재 화면을 숨기기
 
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "알 수 없는 오류가 발생했습니다.");
         }
+
 
         // 회원가입 완료 후 초기 화면으로 이동 (기능 추가 필요)
         // 예: MainScreen main = new MainScreen(); main.setVisible(true);
