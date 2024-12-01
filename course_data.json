@@ -2,19 +2,19 @@
     "강의1": {
         "professor": "이선권",
         "unit": 3,
-        "countStudents": 3,
+        "countStudents": 1,
         "name": "객체지향프로그래밍",
         "maxStudents": 40,
-        "userId": "P-092",
-        "status": "true"
+        "userId": "P-908",
+        "status": "false"
     },
     "강의2": {
         "professor": "이선권",
         "unit": 3,
-        "countStudents": 3,
+        "countStudents": 1,
         "name": "임베디드소프트웨어",
         "maxStudents": 40,
-        "userId": "P-092",
+        "userId": "P-908",
         "status": "true"
     }
 }

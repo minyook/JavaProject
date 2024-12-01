@@ -23,7 +23,7 @@ public class TestFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Manager 프레임을 메인 프레임 옆에 띄우기
-                CourseManagementSystemForManager managerFrame = new CourseManagementSystemForManager("김영진", "S-027");
+                ChargeTuitionFeeSystemForManager managerFrame = new ChargeTuitionFeeSystemForManager("김영진", "S-027");
                 positionNextTo(managerFrame);
                 managerFrame.setVisible(true);
             }

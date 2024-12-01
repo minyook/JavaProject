@@ -1,5 +1,11 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
 package schoolSystemManagement.course.management;
 
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import schoolSystemManagement.course.management.dto.CourseData;
 import schoolSystemManagement.course.management.json.JsonFile;
 import org.json.JSONObject;
@@ -24,6 +30,18 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     public CourseManagementSystemForStudents() {
         initComponents();
         setTitle("[학생] 수강 관리 시스템");
+        setSize(860,560);
+        // 크기 조정 완전 금지
+        setResizable(false);
+
+        // 추가로 크기 조정 이벤트 리스너 제거
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                // 크기 변경 무시
+                setSize(860, 560);
+            }
+        });
         // 패널을 숨기기
         panel_MyCourseList.setVisible(true);
         panel_SubCourse.setVisible(false);
@@ -33,6 +51,18 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         this.studentId = studentId;
         initComponents();
         setTitle("[학생] 수강 관리 시스템");
+        setSize(860,560);
+        // 크기 조정 완전 금지
+        setResizable(false);
+
+        // 추가로 크기 조정 이벤트 리스너 제거
+        addComponentListener(new ComponentAdapter() {
+            @Override
+            public void componentResized(ComponentEvent e) {
+                // 크기 변경 무시
+                setSize(860, 560);
+            }
+        });
         // 패널을 숨기기
         panel_MyCourseList.setVisible(true);
         panel_SubCourse.setVisible(false);
@@ -90,13 +120,15 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         second_menu_CMSForStudents = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
         addContainerListener(new java.awt.event.ContainerAdapter() {
             public void componentAdded(java.awt.event.ContainerEvent evt) {
                 formComponentAdded(evt);
             }
         });
 
+        panel_MyCourseList.setBackground(new java.awt.Color(255, 255, 255));
         panel_MyCourseList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 panel_MyCourseListAncestorAdded(evt);
@@ -108,6 +140,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             }
         });
 
+        professorName.setBackground(new java.awt.Color(255, 255, 255));
         professorName.setColumns(20);
         professorName.setRows(5);
         professorName.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -125,6 +158,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             }
         });
 
+        CourseScore.setBackground(new java.awt.Color(255, 255, 255));
         CourseScore.setColumns(20);
         CourseScore.setRows(5);
         CourseScore.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -137,6 +171,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             }
         });
 
+        CourseName.setBackground(new java.awt.Color(255, 255, 255));
         CourseName.setColumns(20);
         CourseName.setRows(5);
         CourseName.addContainerListener(new java.awt.event.ContainerAdapter() {
@@ -154,11 +189,13 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             }
         });
 
+        display_CourseList.setBackground(new java.awt.Color(255, 255, 255));
         display_CourseList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        display_CourseList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         display_CourseList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 display_CourseListAncestorAdded(evt);
@@ -181,7 +218,9 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel5.setText("담당 교수");
 
+        goSubCourse.setBackground(new java.awt.Color(255, 255, 255));
         goSubCourse.setText("수강 신청하기");
+        goSubCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         goSubCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goSubCourseActionPerformed(evt);
@@ -190,6 +229,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel12.setText("신청 한 과목 목록");
 
+        studentIdFrame.setBackground(new java.awt.Color(255, 255, 255));
         studentIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 studentIdFrameAncestorAdded(evt);
@@ -202,6 +242,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel13.setText("학생 아이디");
 
+        studentNameFrame.setBackground(new java.awt.Color(255, 255, 255));
         studentNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 studentNameFrameAncestorAdded(evt);
@@ -275,11 +316,14 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(goSubCourse)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(goSubCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        panel_SubCourse.setBackground(new java.awt.Color(255, 255, 255));
+
+        display_SubCourseList.setBackground(new java.awt.Color(255, 255, 255));
         display_SubCourseList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -301,6 +345,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(display_SubCourseList);
 
+        MyCourseList.setBackground(new java.awt.Color(255, 255, 255));
         MyCourseList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -321,11 +366,13 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel3.setText("강의 목록");
 
+        maxStudents.setBackground(new java.awt.Color(255, 255, 255));
         maxStudents.setColumns(20);
         maxStudents.setRows(5);
 
         jLabel6.setText("현재 수강 인원");
 
+        countStudents.setBackground(new java.awt.Color(255, 255, 255));
         countStudents.setColumns(20);
         countStudents.setRows(5);
 
@@ -333,9 +380,11 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel8.setText("내가 신청 가능한 학점");
 
+        myUnit.setBackground(new java.awt.Color(255, 255, 255));
         myUnit.setColumns(20);
         myUnit.setRows(5);
 
+        courseName.setBackground(new java.awt.Color(255, 255, 255));
         courseName.setColumns(20);
         courseName.setRows(5);
 
@@ -343,28 +392,35 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         jLabel10.setText("담당 교수");
 
+        professor.setBackground(new java.awt.Color(255, 255, 255));
         professor.setColumns(20);
         professor.setRows(5);
 
+        courseUnit.setBackground(new java.awt.Color(255, 255, 255));
         courseUnit.setColumns(20);
         courseUnit.setRows(5);
 
         jLabel11.setText("과목의 학점");
 
+        submit.setBackground(new java.awt.Color(255, 255, 255));
         submit.setText("신청하기");
+        submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
             }
         });
 
+        goMyCourse.setBackground(new java.awt.Color(255, 255, 255));
         goMyCourse.setText("내 강의 목록");
+        goMyCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         goMyCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goMyCourseActionPerformed(evt);
             }
         });
 
+        explainPage.setBackground(new java.awt.Color(255, 255, 255));
         explainPage.setColumns(20);
         explainPage.setRows(5);
         explainPage.addAncestorListener(new javax.swing.event.AncestorListener() {
@@ -382,7 +438,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         panel_SubCourseLayout.setHorizontalGroup(
             panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
-                .addContainerGap(11, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panel_SubCourseLayout.createSequentialGroup()
                         .addComponent(goMyCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -423,13 +479,13 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
                         .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_SubCourseLayout.setVerticalGroup(
             panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel_SubCourseLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(explainPage, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                .addComponent(explainPage, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel_SubCourseLayout.createSequentialGroup()
@@ -464,12 +520,14 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(7, 7, 7)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(submit)
-                    .addComponent(goMyCourse))
-                .addGap(17, 17, 17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(submit, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                    .addComponent(goMyCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
+
+        menubar_CMSForStudents.setBackground(new java.awt.Color(255, 255, 255));
 
         menu_CMSForStudents.setText("메뉴");
         menu_CMSForStudents.addActionListener(new java.awt.event.ActionListener() {
@@ -503,10 +561,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panel_MyCourseList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(panel_MyCourseList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(panel_SubCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -767,12 +822,27 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
             // 결과 계산
             int unitSum = 0;
-            for (Object unitValue : courseUnitValues) {
-                // Object를 String으로 변환한 후, Integer로 변환
-                unitSum += Integer.parseInt(unitValue.toString());  // toString()을 호출하여 Object를 String으로 변환
+
+            if (courseUnitValues != null) {
+                for (Object unitValue : courseUnitValues) {
+                    if (unitValue != null) {
+                        String valueStr = unitValue.toString();
+                        try {
+                            double parsedValue = Double.parseDouble(valueStr); // 소수점 포함 숫자 처리
+                            unitSum += (int) parsedValue; // 필요에 따라 반올림은 Math.round()로 교체
+                        } catch (NumberFormatException e) {
+                            System.out.println("올바르지 않은 값: " + valueStr);
+                        }
+                    } else {
+                        System.out.println("스킵 처리 합니다.");
+                    }
+                }
+            } else {
+                System.out.println("courseUnitValues 값이 존재하지 않습니다.");
             }
-            // myUnit 텍스트 필드에 합산된 학점을 표시
-            myUnit.setText(Integer.toString(18-unitSum));  // Integer.toString() 사용
+
+            myUnit.setText(Integer.toString(18 - unitSum));
+
         }
         // 읽기 전용으로 설정
         courseName.setEnabled(false);  // 입력 불가
