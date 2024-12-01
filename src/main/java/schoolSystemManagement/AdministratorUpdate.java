@@ -385,6 +385,7 @@ private void showEditDialog(String name, String id, String department, String us
             if (confirm == JOptionPane.YES_OPTION) {
                 userMap.remove(jumin); // JSON 데이터에서 해당 사용자 삭제
                 saveDataToJSON(); // 변경 사항 저장
+				populateTable();
                 editDialog.dispose();
                 JOptionPane.showMessageDialog(null, "사용자가 삭제되었습니다.");//삭제
             }
