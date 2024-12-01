@@ -6,8 +6,10 @@ package schoolSystemManagement;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import schoolSystemManagement.home.*;
-import schoolSystemManagement.home.UserManagerHome;
+import schoolSystemManagement.manager.user.UserManagerHome;
+import schoolSystemManagement.manager.course.CourseManagerHome;
+import schoolSystemManagement.professor.ProfessorHome;
+import schoolSystemManagement.student.StudentHome;
 
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
