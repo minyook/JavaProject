@@ -13,7 +13,7 @@
  * - 수정자: oxxultus
  * - 수정일: 2024-11-26
  */
-package schoolSystemManagement.course.management.json;
+package schoolSystemManagement.file;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

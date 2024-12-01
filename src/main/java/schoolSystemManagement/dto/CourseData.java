@@ -1,4 +1,4 @@
-package schoolSystemManagement.course.management.dto;
+package schoolSystemManagement.dto;
 
 public class CourseData {
 
