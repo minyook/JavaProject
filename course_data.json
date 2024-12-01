@@ -2,19 +2,55 @@
     "강의1": {
         "professor": "이선권",
         "unit": 3,
-        "countStudents": 3,
+        "countStudents": 1,
         "name": "객체지향프로그래밍",
         "maxStudents": 40,
-        "userId": "P-092",
+        "userId": "P-908",
         "status": "true"
     },
     "강의2": {
         "professor": "이선권",
         "unit": 3,
-        "countStudents": 3,
+        "countStudents": 1,
         "name": "임베디드소프트웨어",
         "maxStudents": 40,
-        "userId": "P-092",
+        "userId": "P-908",
+        "status": "true"
+    },
+    "강의3": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 0,
+        "name": "프로그래밍 실습",
+        "maxStudents": 40,
+        "userId": "P-908",
+        "status": "true"
+    },
+    "강의4": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 0,
+        "name": "프로그래밍 실습2",
+        "maxStudents": 40,
+        "userId": "P-908",
+        "status": "true"
+    },
+    "강의5": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 0,
+        "name": "프로그래밍 실습3",
+        "maxStudents": 40,
+        "userId": "P-908",
+        "status": "true"
+    },
+    "강의6": {
+        "professor": "이선권",
+        "unit": 3,
+        "countStudents": 0,
+        "name": "프로그래밍 실습3",
+        "maxStudents": 40,
+        "userId": "P-908",
         "status": "true"
     }
 }
