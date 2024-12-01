@@ -80,7 +80,16 @@ public class JsonFile {
     }
 
     /**
-     * JSON 파일의 경로를 반환합니다.
+     * JSONObject 를 반환합니다.
+     *
+     * @return jsonObject 값.
+     */
+    public JSONObject getJsonObject() {
+        return jsonObject;
+    }
+
+    /**
+     * 파일의 경로를 반환합니다.
      *
      * @return JSON 파일 경로.
      */

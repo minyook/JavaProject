@@ -31,6 +31,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         setSize(860,560);
         // 크기 조정 완전 금지
         setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 추가로 크기 조정 이벤트 리스너 제거
         addComponentListener(new ComponentAdapter() {
@@ -51,6 +52,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         setSize(860,560);
         // 크기 조정 완전 금지
         setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 추가로 크기 조정 이벤트 리스너 제거
         addComponentListener(new ComponentAdapter() {

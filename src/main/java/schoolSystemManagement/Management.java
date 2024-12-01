@@ -5,8 +5,9 @@
 package schoolSystemManagement;
 
 import com.google.gson.Gson;
-import schoolSystemManagement.course.management.*;
 import com.google.gson.reflect.TypeToken;
+import schoolSystemManagement.home.*;
+import schoolSystemManagement.home.UserManagerHome;
 
 import java.awt.*;
 import java.awt.event.ComponentAdapter;
@@ -43,7 +44,7 @@ public class Management extends javax.swing.JFrame {
     public Management() {
         setTitle("대학 정보 시스템");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(884, 600);
+        setSize(884, 610);
         setLocationRelativeTo(null);
         
         initComponents();
@@ -71,14 +72,7 @@ public class Management extends javax.swing.JFrame {
         // 크기 조정 완전 금지
         setResizable(false);
 
-        // 추가로 크기 조정 이벤트 리스너 제거
-        addComponentListener(new ComponentAdapter() {
-            @Override
-            public void componentResized(ComponentEvent e) {
-                // 크기 변경 무시
-                setSize(884, 600);
-            }
-        });
+        
         
         jPanel2.setVisible(false);
         jPanel1.setVisible(true);
@@ -265,16 +259,16 @@ public class Management extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 572, Short.MAX_VALUE)
+            .addGap(0, 584, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 560, Short.MAX_VALUE)
+            .addGap(0, 578, Short.MAX_VALUE)
         );
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("맑은 고딕", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("맑은 고딕", Font.BOLD, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(73, 73, 73));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("대학 정보 시스템");
@@ -287,7 +281,7 @@ public class Management extends javax.swing.JFrame {
         loginButton.setBackground(new java.awt.Color(255, 255, 255));
         loginButton.setText("로그인");
         loginButton.setToolTipText("");
-        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        loginButton.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         loginButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 loginButtonActionPerformed(evt);
@@ -299,7 +293,7 @@ public class Management extends javax.swing.JFrame {
 
         Signupbutton1.setBackground(new java.awt.Color(255, 255, 255));
         Signupbutton1.setText("회원가입");
-        Signupbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Signupbutton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Signupbutton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Signupbutton1ActionPerformed(evt);
@@ -313,26 +307,19 @@ public class Management extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(passwordField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel4)
-                                    .addGap(230, 230, 230)))
-                            .addComponent(loginButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(idField)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(Signupbutton1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                        .addComponent(idField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(Signupbutton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(passwordField, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(loginButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel4))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(191, Short.MAX_VALUE)
+                .addContainerGap(207, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(111, 111, 111)
                 .addComponent(jLabel4)
@@ -383,7 +370,7 @@ public class Management extends javax.swing.JFrame {
 
         Submit.setBackground(new java.awt.Color(255, 255, 255));
         Submit.setText("회원가입");
-        Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Submit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 SubmitActionPerformed(evt);
@@ -398,7 +385,7 @@ public class Management extends javax.swing.JFrame {
 
         jLabel6.setText("사용자 유형");
 
-        jLabel7.setFont(new java.awt.Font("Helvetica Neue", 1, 24)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Helvetica Neue", Font.BOLD, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(73, 73, 73));
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel7.setText("회원가입");
@@ -414,7 +401,7 @@ public class Management extends javax.swing.JFrame {
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("돌아가기");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -450,7 +437,7 @@ public class Management extends javax.swing.JFrame {
                     .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userName, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                        .addComponent(userNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                        .addComponent(userNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(userNumber1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(Major, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -470,11 +457,11 @@ public class Management extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jLabel7)
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,102 +491,28 @@ public class Management extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(572, 572, 572)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 582, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 312, Short.MAX_VALUE)))
+                    .addGap(0, 310, Short.MAX_VALUE)))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                    .addGap(0, 571, Short.MAX_VALUE)
+                    .addGap(0, 582, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Signupbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Signupbutton1ActionPerformed
-        jPanel1.setVisible(false);
-        jPanel2.setVisible(true);
-    }//GEN-LAST:event_Signupbutton1ActionPerformed
-
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-        try {
-            String idInput = idField.getText().trim(); // 사용자 ID
-            String passwordInput = passwordField.getText().trim(); // 비밀번호
-
-            if (idInput.isEmpty() || passwordInput.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "아이디와 비밀번호를 입력해주세요!");
-                return;
-            }
-
-            // 로그인 검증
-            HashMap<String, String> loggedInUser = null;
-
-            // userMap을 순회하여 사용자가 입력한 아이디와 비밀번호 일치 여부 체크
-            for (Map.Entry<String, HashMap<String, String>> entry : userMap.entrySet()) {
-                HashMap<String, String> userData = entry.getValue();
-
-                String userId = userData.get("userId").trim();  // userId에서 불필요한 공백 제거
-                String userPassword = userData.get("number").trim();  // number에서 불필요한 공백 제거
-
-                // 디버깅 출력을 추가하여 확인
-                System.out.println("입력된 ID: " + idInput + ", 입력된 비밀번호: " + passwordInput);
-                System.out.println("비교할 ID: " + userId + ", 비교할 비밀번호: " + userPassword);
-
-                // 아이디(userId)와 비밀번호(number)가 일치하는지 비교
-                if (userId != null && userPassword != null
-                    && userId.equals(idInput)
-                    && userPassword.equals(passwordInput)) {
-                    loggedInUser = userData; // 로그인한 사용자 정보 저장
-                    JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
-                    break;
-                }
-            }
-
-            // 일치하는 사용자 정보가 없으면 로그인 실패 처리
-            if (loggedInUser == null) {
-                JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 일치하지 않습니다.");
-                return;
-            }
-
-            // 사용자 유형에 따른 화면 이동
-            String userType = loggedInUser.get("userType");
-
-            if ("학생".equals(userType)) {
-                CourseManagementSystemForStudents studentScreen = new CourseManagementSystemForStudents(loggedInUser.get("name"), loggedInUser.get("userId"));
-                studentScreen.setVisible(true);
-                this.setVisible(false);
-            } else if ("교수".equals(userType)) {
-                CourseManagementSystemForProfessor professorScreen = new CourseManagementSystemForProfessor(loggedInUser.get("name"), loggedInUser.get("userId"));
-                professorScreen.setVisible(true);
-                this.setVisible(false);
-            } else if ("수업 담당자".equals(userType)) {
-                // 수업 담당자 화면 처리
-                ChargeTuitionFeeSystemForManager classInstructorScreen = new ChargeTuitionFeeSystemForManager(loggedInUser.get("name"), loggedInUser.get("userId"));
-                classInstructorScreen.setVisible(true);
-                this.setVisible(false);
-            } else if ("학사 담당자".equals(userType)) {
-                // 학사 담당자 화면 처리
-                ChargeTuitionFeeSystemForManager adminScreen = new ChargeTuitionFeeSystemForManager(loggedInUser.get("name"), loggedInUser.get("userId"));
-                adminScreen.setVisible(true);
-                this.setVisible(false);
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "로그인 처리 중 오류가 발생했습니다.");
-        }
-    }//GEN-LAST:event_loginButtonActionPerformed
 
     private void jPanel3AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jPanel3AncestorAdded
 
@@ -702,6 +615,86 @@ public class Management extends javax.swing.JFrame {
     private void signUpExplainAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_signUpExplainAncestorAdded
         signUpExplain.setText(" - 회원 가입시 ID는 회원가입 시 자동 생성 됩니다.\n - 첫 비밀번호는 주민번호 뒷자리 입니다.");
     }//GEN-LAST:event_signUpExplainAncestorAdded
+
+    private void Signupbutton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Signupbutton1ActionPerformed
+        jPanel1.setVisible(false);
+        jPanel2.setVisible(true);
+    }//GEN-LAST:event_Signupbutton1ActionPerformed
+
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        try {
+            String idInput = idField.getText().trim(); // 사용자 ID
+            String passwordInput = passwordField.getText().trim(); // 비밀번호
+
+            if (idInput.isEmpty() || passwordInput.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "아이디와 비밀번호를 입력해주세요!");
+                return;
+            }
+
+            // 로그인 검증
+            HashMap<String, String> loggedInUser = null;
+
+            // userMap을 순회하여 사용자가 입력한 아이디와 비밀번호 일치 여부 체크
+            for (Map.Entry<String, HashMap<String, String>> entry : userMap.entrySet()) {
+                HashMap<String, String> userData = entry.getValue();
+
+                String userId = userData.get("userId").trim();  // userId에서 불필요한 공백 제거
+                String userPassword = userData.get("number").trim();  // number에서 불필요한 공백 제거
+
+                // 디버깅 출력을 추가하여 확인
+                System.out.println("입력된 ID: " + idInput + ", 입력된 비밀번호: " + passwordInput);
+                System.out.println("비교할 ID: " + userId + ", 비교할 비밀번호: " + userPassword);
+
+                // 아이디(userId)와 비밀번호(number)가 일치하는지 비교
+                if (userId != null && userPassword != null
+                    && userId.equals(idInput)
+                    && userPassword.equals(passwordInput)) {
+                    loggedInUser = userData; // 로그인한 사용자 정보 저장
+                    JOptionPane.showMessageDialog(this, "로그인 성공! " + userData.get("name") + "님 환영합니다.");
+                    break;
+                }
+            }
+
+            // 일치하는 사용자 정보가 없으면 로그인 실패 처리
+            if (loggedInUser == null) {
+                JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 일치하지 않습니다.");
+                return;
+            }
+
+            // 사용자 유형에 따른 화면 이동
+            String userType = loggedInUser.get("userType");
+
+            if ("학생".equals(userType)) {
+                StudentHome studentHomeScreen = new StudentHome(loggedInUser.get("name"), loggedInUser.get("userId"));
+                // 기존 창 기준으로 좌측에 위치 설정
+                studentHomeScreen.setLocation(this.getX() - studentHomeScreen.getWidth(), this.getY());
+                studentHomeScreen.setVisible(true);
+                this.setVisible(false);
+            } else if ("교수".equals(userType)) {
+                ProfessorHome professorScreen = new ProfessorHome(loggedInUser.get("name"), loggedInUser.get("userId"));
+                // 기존 창 기준으로 좌측에 위치 설정
+                professorScreen.setLocation(this.getX() - professorScreen.getWidth(), this.getY());
+                professorScreen.setVisible(true);
+                this.setVisible(false);
+            } else if ("수업 담당자".equals(userType)) {
+                CourseManagerHome courseManagerScreen = new CourseManagerHome(loggedInUser.get("name"), loggedInUser.get("userId"));
+                // 기존 창 기준으로 좌측에 위치 설정
+                courseManagerScreen.setLocation(this.getX() - courseManagerScreen.getWidth(), this.getY());
+                courseManagerScreen.setVisible(true);
+                this.setVisible(false);
+            } else if ("학사 담당자".equals(userType)) {
+                UserManagerHome userManagerScreen = new UserManagerHome(loggedInUser.get("name"), loggedInUser.get("userId"));
+                // 기존 창 기준으로 좌측에 위치 설정
+                userManagerScreen.setLocation(this.getX() - userManagerScreen.getWidth(), this.getY());
+                userManagerScreen.setVisible(true);
+                this.setVisible(false);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "로그인 처리 중 오류가 발생했습니다.");
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
 
     /**
      * @param args the command line arguments
