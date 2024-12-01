@@ -165,7 +165,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="submitPrice" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="subStudentsFrame" min="-2" pref="405" max="-2" attributes="0"/>
+                      <Component id="subStudentsFrame" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
               </Group>

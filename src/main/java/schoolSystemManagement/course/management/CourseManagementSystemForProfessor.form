@@ -165,7 +165,7 @@
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
                 </Property>
               </Properties>
               <Events>
@@ -210,7 +210,7 @@
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
+                  <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
                 </Property>
               </Properties>
               <Events>
@@ -245,7 +245,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xad00;&#xb9ac;&#xd558;&#xae30;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
             </Property>
           </Properties>
           <Events>
@@ -481,7 +481,7 @@
                   </StringArray>
                 </Property>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Hand Cursor"/>
+                  <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
                 </Property>
               </Properties>
               <Events>
@@ -587,7 +587,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xbaa9;&#xb85d;&#xc73c;&#xb85c; &#xb3cc;&#xc544;&#xac00;&#xae30;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
             </Property>
           </Properties>
           <Events>
@@ -622,7 +622,7 @@
             </Property>
             <Property name="text" type="java.lang.String" value="&#xc800;&#xc7a5;"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
             </Property>
           </Properties>
           <Events>
@@ -658,7 +658,7 @@
               </StringArray>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Hand Cursor"/>
+              <Color id="&#xae30;&#xbcf8; &#xcee4;&#xc11c;"/>
             </Property>
           </Properties>
           <Events>

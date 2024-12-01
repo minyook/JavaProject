@@ -29,16 +29,17 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
     public ChargeTuitionFeeSystemForManager() {
         initComponents();
         setTitle("[수업관리자] 학비 청구 시스템");
-        setSize(860,560);
+        setSize(860,590);
         // 크기 조정 완전 금지
         setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 추가로 크기 조정 이벤트 리스너 제거
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 560);
+                setSize(860, 590);
             }
         });
     }
@@ -47,16 +48,17 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         this.managerId = managerId;
         initComponents();
         setTitle("[수업관리자] 학비 청구 시스템");
-        setSize(860,560);
+        setSize(860,590);
         // 크기 조정 완전 금지
         setResizable(false);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         // 추가로 크기 조정 이벤트 리스너 제거
         addComponentListener(new ComponentAdapter() {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 560);
+                setSize(860, 590);
             }
         });
     }
@@ -323,7 +325,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
                         .addComponent(coursesPriceFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(submitPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(subStudentsFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(subStudentsFrame))
                 .addGap(14, 14, 14))
         );
 
