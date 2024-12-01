@@ -351,23 +351,26 @@ private void showEditDialog(String name, String id, String department, String us
 
     saveButton.addActionListener(new ActionListener() {
         @Override
-        public void actionPerformed(ActionEvent e) {
-            String updatedName = nameField.getText().trim();
-            String updatedDepartment = (String) departmentComboBox.getSelectedItem();
-            String updatedUserType = (String) userTypeComboBox.getSelectedItem();
-            String updatedPassword = new String(passwordField.getPassword()).trim();
+      public void actionPerformed(ActionEvent e) {
+    String updatedName = nameField.getText().trim();
+    String updatedDepartment = (String) departmentComboBox.getSelectedItem();
+    String updatedUserType = (String) userTypeComboBox.getSelectedItem();
+    String updatedPassword = new String(passwordField.getPassword()).trim();
 
-            // JSON 데이터 업데이트
-            Map<String, String> updatedUser = userMap.get(jumin); // 주민등록번호를 키로 가져옴
-            updatedUser.put("name", updatedName);
-            updatedUser.put("major", updatedDepartment);
-            updatedUser.put("userType", updatedUserType);
-            updatedUser.put("number", updatedPassword); // 비밀번호 업데이트
+    // JSON 데이터 업데이트
+    Map<String, String> updatedUser = userMap.get(jumin); // 주민등록번호를 키로 가져옴
+    updatedUser.put("name", updatedName);
+    updatedUser.put("major", updatedDepartment);
+    updatedUser.put("userType", updatedUserType);
+    updatedUser.put("number", updatedPassword); // 비밀번호 업데이트
 
-            saveDataToJSON(); // JSON 저장
-            editDialog.dispose();
-            JOptionPane.showMessageDialog(null, "정보가 수정되었습니다.");
-        }
+    saveDataToJSON(); // JSON 저장
+
+    populateTable(); // 테이블 즉시 갱신 (추가된 부분)
+
+    editDialog.dispose();
+    JOptionPane.showMessageDialog(null, "정보가 수정되었습니다.");
+}
     });
 
     // 삭제 버튼
