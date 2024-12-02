@@ -16,6 +16,8 @@ public class CourseData {
     
     private String userId;
 
+    private String description;
+
     public CourseData(String name, String professor, int maxStudents, int unit) {
         this.name = name;
         this.professor = professor;
@@ -28,6 +30,19 @@ public class CourseData {
         this.maxStudents = maxStudents;
         this.unit = unit;
         this.userId = userId;
+    }
+
+    public CourseData(String name, String professor, int maxStudents, int unit, String userId, String description) {
+        this.name = name;
+        this.professor = professor;
+        this.maxStudents = maxStudents;
+        this.unit = unit;
+        this.userId = userId;
+        this.description = description;
+    }
+
+    public CourseData(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -45,4 +60,5 @@ public class CourseData {
     public String getUserId(){
         return userId;
     }
+    public String getDescription() { return description; }
 }

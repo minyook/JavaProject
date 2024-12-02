@@ -31,6 +31,12 @@ public class UserData {
         this.studentNumber = studentNumber;
     }
 
+    public UserData(String name, String userId, String userType) {
+        this.name = name;
+        this.userId = userId;
+        this.userType = userType;
+    }
+
     public String getNumber() {
         return number;
     }

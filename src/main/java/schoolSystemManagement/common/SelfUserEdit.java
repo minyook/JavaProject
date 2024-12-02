@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package schoolSystemManagement.update;
+package schoolSystemManagement.common;
 
 import schoolSystemManagement.file.JsonFile;
 import schoolSystemManagement.student.StudentHome;
@@ -29,6 +29,7 @@ public class SelfUserEdit extends javax.swing.JFrame {
         // 크기 조정 완전 금지
         setResizable(false);
         setTitle("내 정보 수정");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     
     public SelfUserEdit(String userName, String userId) {
@@ -38,6 +39,7 @@ public class SelfUserEdit extends javax.swing.JFrame {
         // 크기 조정 완전 금지
         setResizable(false);
         setTitle("내 정보 수정");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -57,11 +59,13 @@ public class SelfUserEdit extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         studentNameFrame = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
-        studentMajorFrame1 = new javax.swing.JTextField();
+        studentNumberFrame = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         userMajor = new javax.swing.JComboBox<>();
         userType = new javax.swing.JComboBox<>();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -85,6 +89,7 @@ public class SelfUserEdit extends javax.swing.JFrame {
         studentIdFrame.setBackground(new java.awt.Color(255, 255, 255));
         studentIdFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         studentIdFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        studentIdFrame.setEnabled(false);
         studentIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 studentIdFrameAncestorAdded(evt);
@@ -102,6 +107,7 @@ public class SelfUserEdit extends javax.swing.JFrame {
         studentNameFrame.setBackground(new java.awt.Color(255, 255, 255));
         studentNameFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         studentNameFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        studentNameFrame.setEnabled(false);
         studentNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 studentNameFrameAncestorAdded(evt);
@@ -116,13 +122,12 @@ public class SelfUserEdit extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("내 정보 수정");
 
-        studentMajorFrame1.setEditable(false);
-        studentMajorFrame1.setBackground(new java.awt.Color(255, 255, 255));
-        studentMajorFrame1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        studentMajorFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        studentMajorFrame1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        studentNumberFrame.setBackground(new java.awt.Color(255, 255, 255));
+        studentNumberFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        studentNumberFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        studentNumberFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentMajorFrame1AncestorAdded(evt);
+                studentNumberFrameAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -162,33 +167,43 @@ public class SelfUserEdit extends javax.swing.JFrame {
             }
         });
 
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setText("비밀번호를 변경 할 수 있습니다.\n - 조건: 6자 이상 15자 미만\n추가적인 아이디 변경, 학과, 직책 변경은 관리자를 통해 진행 해 주세요.\n");
+        jTextArea1.setEnabled(false);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(userType, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentEditProfil, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentIdFrame, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentNameFrame, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(studentMajorFrame1, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(userMajor, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userType, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentEditProfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentIdFrame)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentNameFrame)
+                    .addComponent(studentNumberFrame)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(userMajor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(96, 96, 96)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -199,7 +214,7 @@ public class SelfUserEdit extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(studentMajorFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentNumberFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -228,7 +243,31 @@ public class SelfUserEdit extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void studentEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditProfilActionPerformed
-        // TODO add your handling code here:
+        // 저장하기 버튼을 눌렀을 때 실행되는 부분
+        String userPasswordData = studentNumberFrame.getText();
+
+        // 입력값 검증
+        if (userPasswordData == null || userPasswordData.trim().isEmpty()) {
+            // 공백 또는 null 값일 경우 메시지를 표시하고 종료
+            JOptionPane.showMessageDialog(this, "비밀번호를 입력해주세요.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (userPasswordData.length() < 6 || userPasswordData.length() > 15) {
+            // 비밀번호가 6자 미만이거나 15자를 초과할 경우 메시지를 표시하고 종료
+            JOptionPane.showMessageDialog(this, "비밀번호는 6자 이상 15자 이하로 입력해야 합니다.", "입력 오류", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // 데이터 저장
+        try {
+            usersFile.setValueByStandardKey("userId", userId, "number", userPasswordData);
+            JOptionPane.showMessageDialog(this, "프로필이 성공적으로 저장되었습니다.", "저장 완료", JOptionPane.INFORMATION_MESSAGE);
+        } catch (Exception e) {
+            // 예외 처리
+            JOptionPane.showMessageDialog(this, "프로필 저장 중 오류가 발생했습니다: " + e.getMessage(), "저장 실패", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace(); // 디버깅 용도로 예외를 콘솔에 출력
+        }
     }//GEN-LAST:event_studentEditProfilActionPerformed
 
     private void studentNameFrameAncestorAdded(AncestorEvent evt) {//GEN-FIRST:event_studentNameFrameAncestorAdded
@@ -239,30 +278,40 @@ public class SelfUserEdit extends javax.swing.JFrame {
         studentIdFrame.setText(userId);
     }//GEN-LAST:event_studentIdFrameAncestorAdded
 
-    private void studentMajorFrame1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentMajorFrame1AncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_studentMajorFrame1AncestorAdded
+    private void studentNumberFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNumberFrameAncestorAdded
+        // 사용자 비밀번호 가져오기
+        String userPasswordData = usersFile.getUserValueByStandardKey("userId", userId, "number").toString();
+        studentNumberFrame.setText(userPasswordData);
+    }//GEN-LAST:event_studentNumberFrameAncestorAdded
 
     private void userMajorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_userMajorAncestorAdded
+        String userMajorData = usersFile.getUserValueByStandardKey("userId", userId, "major").toString();
+       
         // 기존 항목 제거
         userMajor.removeAllItems();
 
         // 콤보박스 항목 추가
-        String[] majors = {"","전산학과", "전자공학과", "기계공학과", "화학공학과", "항공우주공학과"};
+        String[] majors = {"전산학과", "전자공학과", "기계공학과", "화학공학과", "항공우주공학과"};
         for (String major : majors) {
             userMajor.addItem(major);
         }
+        
+        userMajor.setSelectedItem(userMajorData);
     }//GEN-LAST:event_userMajorAncestorAdded
 
     private void userTypeAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_userTypeAncestorAdded
+        String userMajorData = usersFile.getUserValueByStandardKey("userId", userId, "userType").toString();
+
         // 기존 항목 제거
         userType.removeAllItems();
 
         // 새로운 항목 추가
-        String[] majors = {"","학생", "교수", "기계공학과", "학사당담자", "수업당담자"};
+        String[] majors = {"학생", "교수", "기계공학과", "학사당담자", "수업당담자"};
         for (String major : majors) {
             userType.addItem(major);
         }
+
+        userType.setSelectedItem(userMajorData);
     }//GEN-LAST:event_userTypeAncestorAdded
 
     /**
@@ -308,10 +357,12 @@ public class SelfUserEdit extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton studentEditProfil;
     private javax.swing.JTextField studentIdFrame;
-    private javax.swing.JTextField studentMajorFrame1;
     private javax.swing.JTextField studentNameFrame;
+    private javax.swing.JTextField studentNumberFrame;
     private javax.swing.JComboBox<String> userMajor;
     private javax.swing.JComboBox<String> userType;
     // End of variables declaration//GEN-END:variables

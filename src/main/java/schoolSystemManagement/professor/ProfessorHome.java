@@ -7,6 +7,7 @@ package schoolSystemManagement.professor;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import org.json.JSONObject;
+import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.file.JsonFile;
 
@@ -61,6 +62,7 @@ public class ProfessorHome extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         professorOpenCoursesListFrame = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        reData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -153,9 +155,18 @@ public class ProfessorHome extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(professorOpenCoursesListFrame);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("교수 메뉴");
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        reData.setBackground(new java.awt.Color(255, 255, 255));
+        reData.setText("새로고침");
+        reData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reDataActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -174,14 +185,17 @@ public class ProfessorHome extends javax.swing.JFrame {
                     .addComponent(professorIdFrame)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(professorNameFrame)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -232,7 +246,14 @@ public class ProfessorHome extends javax.swing.JFrame {
     }//GEN-LAST:event_professorCourseManagementButtonActionPerformed
 
     private void professorEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorEditProfilActionPerformed
-        // TODO add your handling code here:
+        // 내 정보 수정 버튼을 눌렀을 때 이벤트
+        SelfUserEdit selfUserEditManagementScreen = new SelfUserEdit(professorName, professorId);
+
+        // 기존 창 기준으로 우측에 위치 설정
+        selfUserEditManagementScreen.setLocation(this.getX() + this.getWidth(), this.getY());
+
+        // 새 창을 표시
+        selfUserEditManagementScreen.setVisible(true);
     }//GEN-LAST:event_professorEditProfilActionPerformed
 
     private void professorNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_professorNameFrameAncestorAdded
@@ -290,6 +311,45 @@ public class ProfessorHome extends javax.swing.JFrame {
         professorOpenCoursesListFrame.setEnabled(false);  // 입력 불가
     }//GEN-LAST:event_professorOpenCoursesListFrameAncestorAdded
 
+    private void reDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDataActionPerformed
+        // 본인에 대한 개설 된 강의 목록 가져오기 및 업데이트
+        coursesFile = new JsonFile("course_data.json", "course_data.json");
+         JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
+
+        ArrayList<CourseData> courseDataList = new ArrayList<>();
+
+        // 반복하여 필터링된 객체의 특정 속성을 출력
+        for (String key : filteredObjects.keySet()) {
+            JSONObject course = filteredObjects.getJSONObject(key);
+
+            // 원하는 속성 출력
+            String name = course.optString("name", "N/A");
+            int maxStudents = course.optInt("maxStudents", 0);
+            String professor = course.optString("professor", "N/A");
+            int unit = course.optInt("unit", 0);
+            String userId = course.optString("userId", "N/A");
+
+            // 결과를 DTO 객체로 만들어 ArrayList에 저장
+            CourseData courseDTO = new CourseData(name, professor, maxStudents, unit, userId);
+            courseDataList.add(courseDTO);
+        }
+
+        // JList에 데이터를 설정하기 위한 DefaultListModel 생성
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+
+        for (CourseData value : courseDataList) {
+            if (value.getUserId().equals(professorId)){
+                listModel.addElement(value.getName());
+            }
+        }
+
+        // JList에 모델 설정
+        professorOpenCoursesListFrame.setModel(listModel);
+
+        // 읽기 전용으로 설정
+        professorOpenCoursesListFrame.setEnabled(false);  // 입력 불가
+    }//GEN-LAST:event_reDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -340,5 +400,6 @@ public class ProfessorHome extends javax.swing.JFrame {
     private javax.swing.JTextField professorMajorFrame;
     private javax.swing.JTextField professorNameFrame;
     private javax.swing.JList<String> professorOpenCoursesListFrame;
+    private javax.swing.JButton reData;
     // End of variables declaration//GEN-END:variables
 }
