@@ -110,7 +110,7 @@ public class JsonFile {
      * JSON 데이터를 파일에서 읽어 JSONObject에 저장합니다.
      * 파일을 찾을 수 없거나 읽기 오류가 발생할 경우 빈 JSON 객체를 초기화합니다.
      */
-    private void loadJsonData() {
+    public void loadJsonData() {
         try (FileReader reader = new FileReader(filePath)) {
             // JSONTokener를 통해 JSON 파일 내용을 읽어와 JSONObject로 변환
             this.jsonObject = new JSONObject(new JSONTokener(reader));
@@ -668,21 +668,43 @@ public class JsonFile {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     * 기준 키와 키값에 해당하는 객체를 삭제합니다.
+     *
+     * @param standardKey 기준 키의 이름 (예: "userId", "userKey" 등).
+     * @param standardKeyValue 기준이 될 키값 (예: "S-027").
+     * @return 삭제된 객체의/ 키 (JSON 최상위 키) 또는 null (삭제 대상이 없을 경우).
+     */
+    public String deleteJsonObject(String standardKey, String standardKeyValue) {
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // 기준 키가 일치하는 경우
+            if (userObject.getString(standardKey).equals(standardKeyValue)) {
+                // JSON에서 해당 키 제거
+                jsonObject.remove(key);
+                saveToFile(); // 삭제 한 뒤 파일 저장
+                return key; // 삭제된 객체의 키 반환
+            }
+        }
+        return null; // 삭제 대상이 없으면 null 반환
+    }
+
 }
 
 /* 사용 예시 */
 /*
-*
-* //JsonFile 객체 생성 (data.json 파일을 로드)
-* JsonFile jsonFile = new JsonFile("data.json", "src/data.json");
-*
-* // 'userId':'S-027'을 가지는 객체 중 'age' 값
-* System.out.println("'userId':'S-027'을 가지는 객체 중 'age' 의 값: " + jsonFile.getUserValueByStandardKey("userId", "S-027", "age"));
-*
-* // 'userId':'S-027'을 가지는 객체 중 'age' 값 30 으로 수정
-* jsonFile.setValueByStandardKey("userId", "S-027", "age", 30);
-*
-* // 수정 후 S-027의 'name' 값을 출력 (age 만 수정되었지만 전체 JSON 객체를 다시 출력)
-* System.out.println("Updated name for S-027: " + jsonFile.getUserValueByStandardKey("userId","S-027",  "name"));
-*
-*/
+ *
+ * //JsonFile 객체 생성 (data.json 파일을 로드)
+ * JsonFile jsonFile = new JsonFile("data.json", "src/data.json");
+ *
+ * // 'userId':'S-027'을 가지는 객체 중 'age' 값
+ * System.out.println("'userId':'S-027'을 가지는 객체 중 'age' 의 값: " + jsonFile.getUserValueByStandardKey("userId", "S-027", "age"));
+ *
+ * // 'userId':'S-027'을 가지는 객체 중 'age' 값 30 으로 수정
+ * jsonFile.setValueByStandardKey("userId", "S-027", "age", 30);
+ *
+ * // 수정 후 S-027의 'name' 값을 출력 (age 만 수정되었지만 전체 JSON 객체를 다시 출력)
+ * System.out.println("Updated name for S-027: " + jsonFile.getUserValueByStandardKey("userId","S-027",  "name"));
+ *
+ */

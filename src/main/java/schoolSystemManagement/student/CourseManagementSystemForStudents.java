@@ -12,6 +12,7 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  *
@@ -19,8 +20,8 @@ import java.util.ArrayList;
  */
 public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
-    public String studentName = "임민욱";
-    public String studentId = "S-027";
+    public String studentName = "김영진";
+    public String studentId = "S-695";
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
@@ -29,8 +30,8 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
      */
     public CourseManagementSystemForStudents() {
         initComponents();
-        setTitle("내 수강 관리");
-        setSize(860,580);
+        setTitle("수강 관리 시스템");
+        setSize(860,560);
         // 크기 조정 완전 금지
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -40,7 +41,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 580);
+                setSize(860, 560);
             }
         });
         // 패널을 숨기기
@@ -51,8 +52,8 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         this.studentName = studentName;
         this.studentId = studentId;
         initComponents();
-        setTitle("내 수강 관리");
-        setSize(860,580);
+        setTitle("수강 관리 시스템");
+        setSize(860,560);
         // 크기 조정 완전 금지
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -62,7 +63,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 580);
+                setSize(860, 560);
             }
         });
         // 패널을 숨기기
@@ -116,8 +117,6 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         submit = new javax.swing.JButton();
         goMyCourse = new javax.swing.JButton();
         explainPage = new javax.swing.JTextArea();
-        courseDiscription = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
         menubar_CMSForStudents = new javax.swing.JMenuBar();
         menu_CMSForStudents = new javax.swing.JMenu();
         first_menu_CMSForStudents = new javax.swing.JMenuItem();
@@ -199,7 +198,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        display_CourseList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        display_CourseList.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         display_CourseList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 display_CourseListAncestorAdded(evt);
@@ -224,7 +223,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         goSubCourse.setBackground(new java.awt.Color(255, 255, 255));
         goSubCourse.setText("수강 신청하기");
-        goSubCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        goSubCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         goSubCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goSubCourseActionPerformed(evt);
@@ -262,67 +261,67 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         javax.swing.GroupLayout panel_MyCourseListLayout = new javax.swing.GroupLayout(panel_MyCourseList);
         panel_MyCourseList.setLayout(panel_MyCourseListLayout);
         panel_MyCourseListLayout.setHorizontalGroup(
-            panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_MyCourseListLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_MyCourseListLayout.createSequentialGroup()
-                        .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_MyCourseListLayout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(CourseName, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(professorName, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(CourseScore, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)))
-                    .addComponent(jScrollPane1)
-                    .addComponent(goSubCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MyCourseListLayout.createSequentialGroup()
-                        .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel14)
-                            .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(6, 6, 6)
-                        .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(studentIdFrame)
-                            .addGroup(panel_MyCourseListLayout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap())
+                panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_MyCourseListLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel_MyCourseListLayout.createSequentialGroup()
+                                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(panel_MyCourseListLayout.createSequentialGroup()
+                                                                .addComponent(jLabel2)
+                                                                .addGap(0, 0, Short.MAX_VALUE))
+                                                        .addComponent(CourseName, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(professorName, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel5))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(CourseScore, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jLabel4)))
+                                        .addComponent(jScrollPane1)
+                                        .addComponent(goSubCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_MyCourseListLayout.createSequentialGroup()
+                                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel12)
+                                                        .addComponent(jLabel14)
+                                                        .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(6, 6, 6)
+                                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(studentIdFrame)
+                                                        .addGroup(panel_MyCourseListLayout.createSequentialGroup()
+                                                                .addComponent(jLabel13)
+                                                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addContainerGap())
         );
         panel_MyCourseListLayout.setVerticalGroup(
-            panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_MyCourseListLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel13))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(studentIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(1, 1, 1)
-                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CourseScore, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(professorName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(goSubCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_MyCourseListLayout.createSequentialGroup()
+                                .addGap(14, 14, 14)
+                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel14)
+                                        .addComponent(jLabel13))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(studentIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(1, 1, 1)
+                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel_MyCourseListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                        .addComponent(CourseName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(CourseScore, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(professorName, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(goSubCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         panel_SubCourse.setBackground(new java.awt.Color(255, 255, 255));
@@ -408,7 +407,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         submit.setBackground(new java.awt.Color(255, 255, 255));
         submit.setText("신청하기");
-        submit.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        submit.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         submit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitActionPerformed(evt);
@@ -417,7 +416,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         goMyCourse.setBackground(new java.awt.Color(255, 255, 255));
         goMyCourse.setText("내 강의 목록");
-        goMyCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        goMyCourse.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         goMyCourse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 goMyCourseActionPerformed(evt);
@@ -437,123 +436,98 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             }
         });
 
-        courseDiscription.setEditable(false);
-        courseDiscription.setBackground(new java.awt.Color(255, 255, 255));
-        courseDiscription.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                courseDiscriptionAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        jLabel16.setText("강의 설명");
-
         javax.swing.GroupLayout panel_SubCourseLayout = new javax.swing.GroupLayout(panel_SubCourse);
         panel_SubCourse.setLayout(panel_SubCourseLayout);
         panel_SubCourseLayout.setHorizontalGroup(
-            panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                                .addComponent(goMyCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(explainPage)
-                            .addComponent(courseDiscription, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
+                panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(countStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel16))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(maxStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel7))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel8)
-                                            .addComponent(myUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(7, 7, 7))
-                                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(courseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel9))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel10))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel11)
-                                            .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                                                .addComponent(courseUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                                .addGap(7, 7, 7)))))
-                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                .addComponent(goMyCourse, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(submit, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 837, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(explainPage)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(countStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel6))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(maxStudents, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel7))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel8)
+                                                                        .addComponent(myUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 205, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                                .addGap(7, 7, 7))
+                                                        .addComponent(jLabel3)
+                                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(courseName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel9))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                                        .addComponent(jLabel10))
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                                        .addComponent(jLabel11)
+                                                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                                                .addComponent(courseUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                                                                                .addGap(7, 7, 7)))))
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(jLabel1)
+                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel_SubCourseLayout.setVerticalGroup(
-            panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(explainPage, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(explainPage, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(courseName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
+                                                                .addComponent(jLabel9)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(courseName, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseLayout.createSequentialGroup()
+                                                                .addComponent(jLabel10)
+                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                                .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel6)
+                                                        .addComponent(jLabel7)
+                                                        .addComponent(jLabel8))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(maxStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(countStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(myUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(panel_SubCourseLayout.createSequentialGroup()
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                        .addComponent(jLabel11)
+                                                        .addComponent(jLabel1))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                        .addComponent(courseUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(professor, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel8))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(maxStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(countStudents, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(myUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(panel_SubCourseLayout.createSequentialGroup()
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(courseUnit, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(4, 4, 4)
-                .addComponent(jLabel16)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseDiscription, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(submit, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
-                    .addComponent(goMyCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                                .addComponent(jLabel3)
+                                .addGap(7, 7, 7)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(panel_SubCourseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(submit, javax.swing.GroupLayout.DEFAULT_SIZE, 41, Short.MAX_VALUE)
+                                        .addComponent(goMyCourse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap())
         );
 
         menubar_CMSForStudents.setBackground(new java.awt.Color(255, 255, 255));
@@ -589,16 +563,16 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_MyCourseList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_SubCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panel_MyCourseList, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panel_SubCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_MyCourseList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(panel_SubCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panel_MyCourseList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(panel_SubCourse, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -638,29 +612,29 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_display_CourseListAncestorAdded
 
     private void display_CourseListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_display_CourseListValueChanged
-            // 선택된 항목의 과목 이름 가져오기
-            String selectedCourseName = display_CourseList.getSelectedValue();
+        // 선택된 항목의 과목 이름 가져오기
+        String selectedCourseName = display_CourseList.getSelectedValue();
 
-            if (selectedCourseName != null) {
-                // 선택된 과목 이름을 CourseName 텍스트 영역에 출력
-                CourseName.setText(selectedCourseName);
+        if (selectedCourseName != null) {
+            // 선택된 과목 이름을 CourseName 텍스트 영역에 출력
+            CourseName.setText(selectedCourseName);
 
-                // 선택된 과목 이름을 사용하여 score 가져오기
-                String courseScore = (usersFile.getJsonArrayValue("userId", studentId, "courseList", "course", selectedCourseName, "score")).toString();
+            // 선택된 과목 이름을 사용하여 score 가져오기
+            String courseScore = (usersFile.getJsonArrayValue("userId", studentId, "courseList", "course", selectedCourseName, "score")).toString();
 
-                // CourseScore 텍스트 영역에 점수 출력
-                CourseScore.setText(courseScore);
+            // CourseScore 텍스트 영역에 점수 출력
+            CourseScore.setText(courseScore);
 
-                // 담당 교수 이름을 가져오는 부분 (강의 데이터파일 읽어오기)
-                String professor = (coursesFile.getUserValueByStandardKey("name", selectedCourseName , "professor")).toString();
-                // professorName 텍스트 영역에 점수 출력
-                professorName.setText(professor);
+            // 담당 교수 이름을 가져오는 부분 (강의 데이터파일 읽어오기)
+            String professor = (coursesFile.getUserValueByStandardKey("name", selectedCourseName , "professor")).toString();
+            // professorName 텍스트 영역에 점수 출력
+            professorName.setText(professor);
 
-            }
-            // CourseName과 CourseScore를 읽기 전용으로 설정
-            CourseName.setEditable(false);  // 입력 불가
-            CourseScore.setEditable(false); // 입력 불가
-            professorName.setEditable(false); // 입력 불가
+        }
+        // CourseName과 CourseScore를 읽기 전용으로 설정
+        CourseName.setEditable(false);  // 입력 불가
+        CourseScore.setEditable(false); // 입력 불가
+        professorName.setEditable(false); // 입력 불가
     }//GEN-LAST:event_display_CourseListValueChanged
 
     private void CourseNameComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_CourseNameComponentAdded
@@ -698,7 +672,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
         // 텍스트 필드가 비어있거나 null일 경우 예외 처리
         if (myUnit.getText().trim().isEmpty() || courseUnit.getText().trim().isEmpty() ||
-            countStudents.getText().trim().isEmpty() || maxStudents.getText().trim().isEmpty()) {
+                countStudents.getText().trim().isEmpty() || maxStudents.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(this, "교과목을 선택 해 주세요.");
             return;
         }
@@ -776,7 +750,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         }
         // JList에 모델 설정
         MyCourseList.setModel(listModel);
-        
+
         // 내 남은 학점 갱신 시키기
         Object[] updateCourseUnitValues = usersFile.getAllJsonArrayValue("userId", studentId, "courseList", "unit");
 
@@ -788,11 +762,11 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         }
         // myUnit 텍스트 필드에 합산된 학점을 표시
         myUnit.setText(Integer.toString(18-unitSum));  // Integer.toString() 사용
-        
+
         // 현재 신청 인원 갱신 시키기
         String updateCountStudentsData = coursesFile.getUserValueByStandardKey("name", courseNameData, "countStudents").toString();
         countStudents.setText(updateCountStudentsData);
-        
+
         // 신청 완료 확인 알림창
         JOptionPane.showMessageDialog(this, "과목 신청이 완료되었습니다.");
     }//GEN-LAST:event_submitActionPerformed
@@ -823,7 +797,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_MyCourseListAncestorAdded
 
     private void display_SubCourseListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_display_SubCourseListValueChanged
-       // 선택된 항목의 과목 이름 가져오기
+        // 선택된 항목의 과목 이름 가져오기
         String selectedCourseName = display_SubCourseList.getSelectedValue();
 
         if (selectedCourseName != null) {
@@ -883,7 +857,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     }//GEN-LAST:event_display_SubCourseListValueChanged
 
     private void display_SubCourseListAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_display_SubCourseListAncestorAdded
-       JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
+        JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
 
         ArrayList<CourseData> courseDataList = new ArrayList<>();
 
@@ -899,7 +873,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
             // 결과 확인
             System.out.printf("강의 이름: %s, 최대 학생수: %d, 담당 교수: %s, 학점: %d%n",
-                name, maxStudents, professor, unit);
+                    name, maxStudents, professor, unit);
 
             // 결과를 DTO 객체로 만들어 ArrayList에 저장
             CourseData courseDTO = new CourseData(name, professor, maxStudents, unit);
@@ -983,10 +957,6 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         CourseScore.setEnabled(false);
     }//GEN-LAST:event_CourseScoreAncestorAdded
 
-    private void courseDiscriptionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseDiscriptionAncestorAdded
-        courseDiscription.setEnabled(false);
-    }//GEN-LAST:event_courseDiscriptionAncestorAdded
-
     /**
      * @param args the command line arguments
      */
@@ -1027,7 +997,6 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     private javax.swing.JTextArea CourseScore;
     private javax.swing.JList<String> MyCourseList;
     private javax.swing.JTextArea countStudents;
-    private javax.swing.JTextField courseDiscription;
     private javax.swing.JTextArea courseName;
     private javax.swing.JTextArea courseUnit;
     private javax.swing.JList<String> display_CourseList;
@@ -1042,7 +1011,6 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

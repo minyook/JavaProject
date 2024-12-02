@@ -5,6 +5,7 @@
 package schoolSystemManagement.manager.user;
 
 import java.util.ArrayList;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import org.json.JSONObject;
@@ -12,15 +13,15 @@ import schoolSystemManagement.dto.UserData;
 import schoolSystemManagement.file.JsonFile;
 
 /**
- *
  * @author admin
  */
 public class UserManagerHome extends javax.swing.JFrame {
-    
+
     public String userManagerName = "김영진";
     public String userManagerId = "S-027";
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
+
 
     /**
      * Creates new form StudentHome
@@ -31,6 +32,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         setResizable(false);
         setTitle("수업 담당자 메뉴");
     }
+
     public UserManagerHome(String userManagerName, String userManagerId) {
         this.userManagerName = userManagerName;
         this.userManagerId = userManagerId;
@@ -59,9 +61,10 @@ public class UserManagerHome extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         userManagerNameFrame = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        reData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,10 +137,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jLabel5.setText("가입 된 모든 사용자");
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("수업 담당자 메뉴");
-
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -160,6 +160,18 @@ public class UserManagerHome extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
+        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("수업 담당자 메뉴");
+
+        reData.setBackground(new java.awt.Color(255, 255, 255));
+        reData.setText("새로고침");
+        reData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reDataActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -176,15 +188,20 @@ public class UserManagerHome extends javax.swing.JFrame {
                     .addComponent(userManagerIdFrame)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userManagerNameFrame)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(reData, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(reData)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,13 +241,13 @@ public class UserManagerHome extends javax.swing.JFrame {
 
     private void userManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagementButtonActionPerformed
         // 해당 방식으로 추가할겁니다.
-        //ChargeTuitionFeeSystemForManager chargeTuitionFeeManagementScreen = new ChargeTuitionFeeSystemForManager(courseManagerName, courseManagerId);
+        UserEditData userEditDataManagementScreen = new UserEditData();
 
         // 기존 창 기준으로 우측에 위치 설정
-        //chargeTuitionFeeManagementScreen.setLocation(this.getX() + this.getWidth(), this.getY());
+        userEditDataManagementScreen.setLocation(this.getX() + this.getWidth(), this.getY());
 
         // 새 창을 표시
-        //chargeTuitionFeeManagementScreen.setVisible(true);
+        userEditDataManagementScreen.setVisible(true);
     }//GEN-LAST:event_userManagementButtonActionPerformed
 
     private void userManagerEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagerEditProfilActionPerformed
@@ -253,24 +270,24 @@ public class UserManagerHome extends javax.swing.JFrame {
 
     private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
         // JSON 데이터 가져오기 (테스트용 예제 JSON)
-    JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
+        JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
 
-    ArrayList<UserData> usersDataList = new ArrayList<>();
+        ArrayList<UserData> usersDataList = new ArrayList<>();
 
-    // JSON 데이터를 파싱하여 DTO 객체로 변환
-    for (String key : filteredObjects.keySet()) {
-        JSONObject course = filteredObjects.getJSONObject(key);
+        // JSON 데이터를 파싱하여 DTO 객체로 변환
+        for (String key : filteredObjects.keySet()) {
+            JSONObject course = filteredObjects.getJSONObject(key);
 
-        // 속성 추출
-        String name = course.optString("name", "N/A");
-        String userId = course.optString("userId", "N/A");
-        String number = course.optString("number", "N/A");
-        String major = course.optString("major", "N/A");
-        String userType = course.optString("userType", "N/A");
+            // 속성 추출
+            String name = course.optString("name", "N/A");
+            String userId = course.optString("userId", "N/A");
+            String number = course.optString("number", "N/A");
+            String major = course.optString("major", "N/A");
+            String userType = course.optString("userType", "N/A");
 
-        // DTO 객체로 저장
-        UserData usersDTO = new UserData(name, userId, number, major, userType);
-        usersDataList.add(usersDTO);
+            // DTO 객체로 저장
+            UserData usersDTO = new UserData(name, userId, number, major, userType);
+            usersDataList.add(usersDTO);
         }
 
         // JTable 테이블 모델 생성
@@ -280,10 +297,10 @@ public class UserManagerHome extends javax.swing.JFrame {
         // 데이터를 테이블 모델에 추가
         for (UserData user : usersDataList) {
             Object[] rowData = {
-                user.getName(),
-                user.getUserId(),
-                user.getMajor(),
-                user.getUserType()
+                    user.getName(),
+                    user.getUserId(),
+                    user.getMajor(),
+                    user.getUserType()
             };
             tableModel.addRow(rowData);
         }
@@ -295,6 +312,51 @@ public class UserManagerHome extends javax.swing.JFrame {
         jTable1.setEnabled(false);
     }//GEN-LAST:event_jTable1AncestorAdded
 
+    private void reDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDataActionPerformed
+        JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
+
+        ArrayList<UserData> usersDataList = new ArrayList<>();
+
+        // JSON 데이터를 파싱하여 DTO 객체로 변환
+        for (String key : filteredObjects.keySet()) {
+
+            // 파일 내용 업데이트
+            usersFile = new JsonFile("user_data.json", "user_data.json");
+
+            JSONObject userObject = filteredObjects.getJSONObject(key); // 'course' 대신 'userObject'로 변경
+
+            // 속성 추출
+            String name = userObject.optString("name", "N/A");
+            String userId = userObject.optString("userId", "N/A");
+            String number = userObject.optString("number", "N/A");
+            String major = userObject.optString("major", "N/A");
+            String userType = userObject.optString("userType", "N/A");
+
+            // DTO 객체로 저장
+            UserData userData = new UserData(name, userId, number, major, userType);
+            usersDataList.add(userData);
+        }
+
+        // JTable 테이블 모델 생성 및 초기화
+        String[] columnNames = {"이름", "아이디", "전공", "직책"};
+        DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0); // 모델 초기화
+
+        // 데이터를 테이블 모델에 추가
+        for (UserData user : usersDataList) {
+            Object[] rowData = {
+                    user.getName(),
+                    user.getUserId(),
+                    user.getMajor(),
+                    user.getUserType()
+            };
+            tableModel.addRow(rowData);
+        }
+
+        // jTable1에 모델 설정 및 초기화
+        jTable1.setModel(tableModel);
+        jTable1.setEnabled(false); // 읽기 전용 설정
+    }//GEN-LAST:event_reDataActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -302,7 +364,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -355,6 +417,7 @@ public class UserManagerHome extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton reData;
     private javax.swing.JButton userManagementButton;
     private javax.swing.JButton userManagerEditProfil;
     private javax.swing.JTextField userManagerIdFrame;

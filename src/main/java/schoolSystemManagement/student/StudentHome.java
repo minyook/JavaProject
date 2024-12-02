@@ -20,6 +20,25 @@ public class StudentHome extends javax.swing.JFrame {
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
+    public void updateCoursesListFrame(){
+        // 수강신청 한 목록
+        // 특정 조건에 따라 JSON 배열 값 가져오기
+        usersFile = new JsonFile("user_data.json", "user_data.json");
+        Object[] courseValues = usersFile.getAllJsonArrayValue("userId", studentId, "courseList", "course");
+
+        // JList에 데이터를 설정하기 위한 DefaultListModel 생성
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+        for (Object value : courseValues) {
+            System.out.println(value.toString());
+            listModel.addElement(value.toString());
+        }
+
+        // JList에 모델 설정
+        studentCoursesListFrame.setModel(listModel);
+
+        // 읽기 전용
+        studentCoursesListFrame.setEnabled(false);
+    }
     /**
      * Creates new form StudentHome
      */
@@ -61,6 +80,7 @@ public class StudentHome extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         studentCoursesListFrame = new javax.swing.JList<>();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -157,6 +177,14 @@ public class StudentHome extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("학생 메뉴");
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("새로고침");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -164,6 +192,7 @@ public class StudentHome extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addComponent(studentMajorFrame)
@@ -174,14 +203,18 @@ public class StudentHome extends javax.swing.JFrame {
                     .addComponent(studentIdFrame)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentNameFrame)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1)
+                .addGap(4, 4, 4)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -250,7 +283,7 @@ public class StudentHome extends javax.swing.JFrame {
 
     private void studentCoursesListFrameAncestorAdded(AncestorEvent evt) {//GEN-FIRST:event_studentCoursesListFrameAncestorAdded
         // 수강신청 한 목록
-          // 특정 조건에 따라 JSON 배열 값 가져오기
+        // 특정 조건에 따라 JSON 배열 값 가져오기
         Object[] courseValues = usersFile.getAllJsonArrayValue("userId", studentId, "courseList", "course");
 
         // JList에 데이터를 설정하기 위한 DefaultListModel 생성
@@ -266,6 +299,10 @@ public class StudentHome extends javax.swing.JFrame {
         // 읽기 전용
         studentCoursesListFrame.setEnabled(false);
     }//GEN-LAST:event_studentCoursesListFrameAncestorAdded
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        updateCoursesListFrame();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -303,6 +340,7 @@ public class StudentHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
