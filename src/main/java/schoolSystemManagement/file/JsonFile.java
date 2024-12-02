@@ -116,8 +116,9 @@ public class JsonFile {
             this.jsonObject = new JSONObject(new JSONTokener(reader));
         } catch (Exception e) {
             // Java에서 예외가 발생했을 때 해당 예외의 스택 추적(Stack Trace)을 콘솔에 출력하는 메서드입니다.
-            e.printStackTrace();
+            //e.printStackTrace();
             // 오류 발생 시 빈 JSON 객체로 초기화
+            System.out.println("파일 혹은 내용이 존재하지 않습니다.");
             this.jsonObject = new JSONObject();
         }
     }
@@ -688,6 +689,39 @@ public class JsonFile {
             }
         }
         return null; // 삭제 대상이 없으면 null 반환
+    }
+
+    /**
+     * 강의 정보를 업데이트하거나 추가하여 파일에 저장합니다.
+     * @param courseName 강의명.
+     * @param courseProfessor 교수명.
+     * @param courseProfessorId 교수 ID.
+     * @param courseUnitStr 학점.
+     * @param courseStatus 강의 상태.
+     * @param courseCountStudentsStr 학생 수.
+     * @param courseMaxStudentsStr 최대 학생 수.
+     * @param courseDescription 강의 설명.
+     */
+    public void updateCourse(String courseName, String courseProfessor, String courseProfessorId, String courseUnitStr,
+                             String courseStatus, String courseCountStudentsStr, String courseMaxStudentsStr, String courseDescription) {
+
+        // 강의 정보 추가
+        String courseKey = "course-" + (jsonObject.length() + 1);  // 새로운 강의는 기존 강의 수+1로 키를 만듬
+        JSONObject courseObject = new JSONObject();
+        courseObject.put("professor", courseProfessor);
+        courseObject.put("unit", courseUnitStr);
+        courseObject.put("countStudents", courseCountStudentsStr);
+        courseObject.put("name", courseName);
+        courseObject.put("maxStudents", courseMaxStudentsStr);
+        courseObject.put("description", courseDescription);
+        courseObject.put("userId", courseProfessorId);
+        courseObject.put("status", courseStatus);
+
+        // 강의 정보 추가
+        jsonObject.put(courseKey, courseObject);
+
+        // 변경된 JSON 데이터를 파일에 저장
+        saveToFile();
     }
 
 }

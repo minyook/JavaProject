@@ -7,6 +7,7 @@ package schoolSystemManagement.student;
 import javax.swing.DefaultListModel;
 import javax.swing.event.AncestorEvent;
 
+import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.file.JsonFile;
 
 /**
@@ -173,9 +174,10 @@ public class StudentHome extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(studentCoursesListFrame);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("학생 메뉴");
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         jButton1.setBackground(new java.awt.Color(255, 255, 255));
         jButton1.setText("새로고침");
@@ -203,9 +205,7 @@ public class StudentHome extends javax.swing.JFrame {
                     .addComponent(studentIdFrame)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentNameFrame)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -264,7 +264,16 @@ public class StudentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_studentCourseManagementButtonActionPerformed
 
     private void studentEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditProfilActionPerformed
-        // TODO add your handling code here:
+        // 내 정보 수정 버튼을 눌렀을 때 이벤트
+        SelfUserEdit selfUserEditManagementScreen = new SelfUserEdit(studentName, studentId);
+
+        // 기존 창 기준으로 우측에 위치 설정
+        selfUserEditManagementScreen.setLocation(this.getX() + this.getWidth(), this.getY());
+
+        // 새 창을 표시
+        selfUserEditManagementScreen.setVisible(true);
+        
+        //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_studentEditProfilActionPerformed
 
     private void studentNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNameFrameAncestorAdded

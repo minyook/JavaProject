@@ -31,7 +31,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
     public CourseManagementSystemForStudents() {
         initComponents();
         setTitle("수강 관리 시스템");
-        setSize(860,560);
+        setSize(860,580);
         // 크기 조정 완전 금지
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -41,7 +41,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 560);
+                setSize(860, 580);
             }
         });
         // 패널을 숨기기
@@ -53,7 +53,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
         this.studentId = studentId;
         initComponents();
         setTitle("수강 관리 시스템");
-        setSize(860,560);
+        setSize(860,580);
         // 크기 조정 완전 금지
         setResizable(false);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -63,7 +63,7 @@ public class CourseManagementSystemForStudents extends javax.swing.JFrame {
             @Override
             public void componentResized(ComponentEvent e) {
                 // 크기 변경 무시
-                setSize(860, 560);
+                setSize(860, 580);
             }
         });
         // 패널을 숨기기

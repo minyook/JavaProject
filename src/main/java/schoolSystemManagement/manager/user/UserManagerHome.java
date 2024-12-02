@@ -9,6 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import org.json.JSONObject;
+import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.dto.UserData;
 import schoolSystemManagement.file.JsonFile;
 
@@ -31,6 +32,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         // 크기 조정 완전 금지
         setResizable(false);
         setTitle("수업 담당자 메뉴");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public UserManagerHome(String userManagerName, String userManagerId) {
@@ -40,6 +42,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         // 크기 조정 완전 금지
         setResizable(false);
         setTitle("수업 담당자 메뉴");
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -160,9 +163,10 @@ public class UserManagerHome extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTable1);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("수업 담당자 메뉴");
+        jLabel1.setText("학사 담당자 메뉴");
+        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         reData.setBackground(new java.awt.Color(255, 255, 255));
         reData.setText("새로고침");
@@ -190,9 +194,7 @@ public class UserManagerHome extends javax.swing.JFrame {
                     .addComponent(userManagerNameFrame)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(reData, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(reData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -251,7 +253,14 @@ public class UserManagerHome extends javax.swing.JFrame {
     }//GEN-LAST:event_userManagementButtonActionPerformed
 
     private void userManagerEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userManagerEditProfilActionPerformed
-        // TODO add your handling code here:
+        // 내 정보 수정 버튼을 눌렀을 때 이벤트
+        SelfUserEdit selfUserEditManagementScreen = new SelfUserEdit(userManagerName, userManagerId);
+
+        // 기존 창 기준으로 우측에 위치 설정
+        selfUserEditManagementScreen.setLocation(this.getX() + this.getWidth(), this.getY());
+
+        // 새 창을 표시
+        selfUserEditManagementScreen.setVisible(true);
     }//GEN-LAST:event_userManagerEditProfilActionPerformed
 
     private void courseManagerMajorFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagerMajorFrameActionPerformed
@@ -313,6 +322,7 @@ public class UserManagerHome extends javax.swing.JFrame {
     }//GEN-LAST:event_jTable1AncestorAdded
 
     private void reDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDataActionPerformed
+        usersFile = new JsonFile("user_data.json", "user_data.json");
         JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
 
         ArrayList<UserData> usersDataList = new ArrayList<>();
