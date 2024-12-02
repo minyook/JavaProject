@@ -7,6 +7,7 @@ public class UserData {
     private String number;
     private String major;
     private String userType;
+    private String studentNumber;
 
     public UserData(String name, String userId, String number, String major) {
         this.name = name;
@@ -20,6 +21,14 @@ public class UserData {
         this.number = number;
         this.major = major;
         this.userType = userType;
+    }
+    public UserData(String name, String userId, String number, String major, String userType, String studentNumber) {
+        this.name = name;
+        this.userId = userId;
+        this.number = number;
+        this.major = major;
+        this.userType = userType;
+        this.studentNumber = studentNumber;
     }
 
     public String getNumber() {
@@ -35,5 +44,6 @@ public class UserData {
         return major;
     }
     public String getUserType(){ return userType; }
+    public String getStudentNumber(){ return studentNumber; }
 
 }
