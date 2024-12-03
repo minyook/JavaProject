@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class CourseManagementSystemForStudents extends javax.swing.JFrame {

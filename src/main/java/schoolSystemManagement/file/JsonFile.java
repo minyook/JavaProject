@@ -36,26 +36,29 @@ public class JsonFile {
 
     // JSON 데이터를 담고 있는 JSONObject 인스턴스
     public JSONObject jsonObject;
-
+    
     // @생성자
+    /**
+     * JsonFile 생성자.
+     */
     public JsonFile(){
         this.fileName = "";
         this.filePath = "";
         this.jsonObject = null;
     }
 
+    /**
+     * JsonFile 생성자.
+     * 새로운 JSONObject를 가져와 jsonObject 데이터로 저장 합니다.
+     *
+     * @param filteredObjects
+     */
     public JsonFile(JSONObject filteredObjects) {
         this.fileName = "";
         this.filePath = "";
         this.jsonObject = filteredObjects;
     }
 
-    /*
-      절대경로란?
-      파일이나 디렉토리의 위치를 루트 디렉토리로부터 전체 경로로 나타냅니다.
-      상대경로란?
-      일이나 디렉토리의 위치를 현재 작업 디렉토리(CWD)를 기준으로 나타냅니다.
-     */
     /**
      * JsonFile 생성자.
      * 파일 이름과 경로를 기반으로 JSON 데이터를 로드하여 객체에 저장합니다.
@@ -123,6 +126,7 @@ public class JsonFile {
         }
     }
 
+    // 값을 일부만 가져오거나 전체를 가져오는 메서드 모음 입니다.
     /**
      * arrayKeyName 매개변수를 받는 메서드 (검색할 리스트가 배열이라면 이름을 지정해 검색 가능하다)
      * <p>
@@ -259,11 +263,6 @@ public class JsonFile {
     }
 
     /**
-     * 현재 객체의 JSON 데이터를 원본 파일에 저장합니다.
-     * 수정된 내용이 있을 경우 이 메서드를 호출하여 저장할 수 있습니다.
-     */
-
-    /**
      * JSON 객체를 업데이트하여 기준 키와 값으로 식별된 객체에 새로운 키-값 쌍을 추가하거나 수정합니다.
      *
      * @param jsonObject        수정할 JSON 객체.
@@ -285,7 +284,10 @@ public class JsonFile {
         }
     }
 
-
+    /**
+     * 현재 객체의 JSON 데이터를 원본 파일에 저장합니다.
+     * 수정된 내용이 있을 경우 이 메서드를 호출하여 저장할 수 있습니다.
+     */
     public void saveToFile() {
         try (FileWriter writer = new FileWriter(filePath)) {
             // JSON 데이터를 예쁘게 포맷팅(들여쓰기 포함)하여 파일에 작성
@@ -320,6 +322,189 @@ public class JsonFile {
         return result; // 결과 반환
     }
 
+    /**
+     * 기준 키를 기준으로 특정 사용자의 값을 반환합니다.
+     *
+     * @param standardKey 기준 키의 이름 (예: "userId", "userKey" 등).
+     * @param standardKeyValue 기준이 될 키값 (예: "S-027").
+     * @param targetKey 사용자 정보에서 가져올 키 (예: "name").
+     * @return 해당 키에 해당하는 값.
+     */
+    public Object getUserValueByStandardKey(String standardKey, String standardKeyValue, String targetKey) {
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // 기준 키가 일치하는 경우
+            if (userObject.getString(standardKey).equals(standardKeyValue)) {
+                // 해당 키에 해당하는 값을 반환
+                return userObject.opt(targetKey);
+            }
+        }
+        return null; // 해당 userId를 찾을 수 없으면 null 반환
+    }
+
+    /**
+     * JSON 객체에서 특정 기준 키와 값에 맞는 사용자 정보를 찾고, 해당 사용자의 배열 안에서 지정된 값을 반환합니다.
+     *
+     * @param standardKey 기준 키의 이름 (예: "userId").
+     * @param standardKeyValue 기준 키의 값 (예: "P-092").
+     * @param targetArrayKey 탐색할 배열의 키 이름 (예: "courseList").
+     * @param targetKey 배열 항목의 키 이름 (예: "course").
+     * @param targetValue 배열 항목에서 찾아야 할 값 (예: "비주얼프로그래밍").
+     * @param arrayKeyName 반환할 값의 키 이름 (예: "unit").
+     * @return 해당 값 (예: "unit" 값) 또는 해당 값이 없으면 null.
+     *
+     * @부가설명 원하는 사용자의 성적 정보에 접근해서 출력할때 사용하기 위한 메서드 입니다.
+     * @사용예시 Object unitValue = jsonFile.getJsonArrayValue("userId", "P-092", "courseList", "course", "비주얼프로그래밍", "score");
+     * @출력 System.out.println("Unit Value: " + unitValue);
+     */
+    public Object getJsonArrayValue(String standardKey, String standardKeyValue, String targetArrayKey, String targetKey, String targetValue, String arrayKeyName) {
+        // JSON 객체의 모든 키 탐색 (예: user1, user2 등)
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // 기준 키가 일치하는 경우 (예: userId가 P-092인 경우)
+            if (userObject.getString(standardKey).equals(standardKeyValue)) {
+
+                // targetArrayKey (예: "courseList") 배열을 찾음
+                if (userObject.has(targetArrayKey)) {
+                    JSONArray courseList = userObject.getJSONArray(targetArrayKey);
+
+                    // 배열 내에서 targetKey ("course") 값이 targetValue ("비주얼프로그래밍")인 항목을 찾음
+                    for (int i = 0; i < courseList.length(); i++) {
+                        JSONObject courseObject = courseList.getJSONObject(i);
+
+                        // targetKey ("course")의 값이 targetValue ("비주얼프로그래밍")과 일치하는 항목 찾기
+                        if (courseObject.getString(targetKey).equals(targetValue)) {
+                            // 해당 항목의 arrayKeyName ("unit") 값을 반환
+                            return courseObject.get(arrayKeyName);
+                        }
+                    }
+                }
+            }
+        }
+
+        // 값이 없으면 null 반환
+        return null;
+    }
+
+    /**
+     * 특정 기준 키와 값에 맞는 JSON 객체에서 배열을 찾아, 해당 배열의 특정 키 값을 모두 반환합니다.
+     *
+     * @param standardKey 기준 키의 이름 (예: "userId", "userKey" 등).
+     * @param standardKeyValue 기준이 될 키값 (예: "S-027").
+     * @param targetArrayKey Json 배열의 키 이름 (예: "courseList").
+     * @param targetKey Json 배열의 키의 값 (예: "course").
+     * @return Object[] targetKey에 해당하는 값을 포함하는 배열 (예: "courseList" 배열 내의 "course" 값들).
+     *                  반환되는 배열은 다양한 타입(int, double, String 등)을 처리할 수 있습니다.
+     * @부가설명 현재 자신이 신청한 과목, 현재 자신이 신청 한 학점, 현재 자신의 과목 별 성적, 을 처리하기 위해 만들어진 함수 입니다.
+     * @사용예시 Object[] courseValues = jsonFile.getAllJsonArrayValue("userId", "S-027", "courseList", "course");
+     * @출력 for (Object value : courseValues) {System.out.println(value);}
+     */
+    public Object[] getAllJsonArrayValue(String standardKey, String standardKeyValue, String targetArrayKey, String targetKey) {
+        // 결과를 담을 리스트 (Object 타입으로 선언하여 다양한 타입을 처리)
+        List<Object> courseList = new ArrayList<>();
+
+        // JSON 객체의 모든 키 탐색
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // 기준 키가 일치하는 경우
+            if (userObject.optString(standardKey).equals(standardKeyValue)) {
+
+                // targetArrayKey 배열을 찾음
+                JSONArray courses = userObject.optJSONArray(targetArrayKey);
+                if (courses != null) {
+
+                    // 배열 내에서 targetKey 값을 추출
+                    for (int i = 0; i < courses.length(); i++) {
+                        JSONObject courseObject = courses.optJSONObject(i);
+
+                        if (courseObject != null && courseObject.has(targetKey)) {
+                            // targetKey 값 추가
+                            courseList.add(courseObject.get(targetKey));
+                        }
+                    }
+                }
+            }
+        }
+
+        // 결과가 없으면 빈 배열 반환
+        return courseList.toArray(new Object[0]);
+    }
+
+    /**
+     * 특정 배열의 내부 요소 조건에 따라 JSON 객체 전체를 반환합니다.
+     *
+     * @param targetArrayKey JSON 배열의 키 이름 (예: "courseList").
+     * @param targetKey 배열 내부 요소의 키 이름 (예: "course").
+     * @param targetKeyValue 배열 내부 요소에서 찾을 값 (예: "Math101").
+     * @return Object[] 조건을 만족하는 JSON 객체 배열.
+     */
+    public Object[] getAllJsonObjectWhereTargetKeyValue(String targetArrayKey, String targetKey, String targetKeyValue) {
+        // 조건을 만족하는 JSON 객체를 담을 리스트
+        List<JSONObject> matchingObjects = new ArrayList<>();
+
+        // JSON 객체의 모든 키 탐색
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // targetArrayKey 배열 탐색
+            JSONArray courses = userObject.optJSONArray(targetArrayKey);
+            if (courses != null) {
+                // 배열의 요소를 탐색
+                for (int i = 0; i < courses.length(); i++) {
+                    JSONObject courseObject = courses.optJSONObject(i);
+
+                    // 조건을 만족하는 경우
+                    if (courseObject != null && targetKeyValue.equals(courseObject.optString(targetKey))) {
+                        matchingObjects.add(userObject);
+                        break; // 조건을 만족하면 현재 객체를 추가하고 루프 종료
+                    }
+                }
+            }
+        }
+
+        // 결과 반환
+        return matchingObjects.toArray(new Object[0]);
+    }
+
+    /**
+     * 특정 배열의 내부 요소 중 targetKey의 값이 하나라도 존재하는 모든 JSON 객체를 반환합니다.
+     *
+     * @param targetArrayKey JSON 배열의 키 이름 (예: "courseList").
+     * @param targetKey 배열 내부 요소의 키 이름 (예: "course").
+     * @return Object[] targetKey의 값이 하나라도 존재하는 JSON 객체 배열.
+     */
+    public Object[] getAllJsonObjectWhereTargetKeyExists(String targetArrayKey, String targetKey) {
+        // 조건을 만족하는 JSON 객체를 담을 리스트
+        List<JSONObject> matchingObjects = new ArrayList<>();
+
+        // JSON 객체의 모든 키 탐색
+        for (String key : jsonObject.keySet()) {
+            JSONObject userObject = jsonObject.getJSONObject(key);
+
+            // targetArrayKey 배열 탐색
+            JSONArray courses = userObject.optJSONArray(targetArrayKey);
+            if (courses != null) {
+                // 배열의 요소를 탐색
+                for (int i = 0; i < courses.length(); i++) {
+                    JSONObject courseObject = courses.optJSONObject(i);
+
+                    // targetKey가 존재하고 값이 null 또는 빈 문자열이 아닌 경우
+                    if (courseObject != null && courseObject.has(targetKey) && !courseObject.optString(targetKey).isEmpty()) {
+                        matchingObjects.add(userObject);
+                        break; // 조건을 만족하면 현재 객체를 추가하고 루프 종료
+                    }
+                }
+            }
+        }
+
+        // 결과 반환
+        return matchingObjects.toArray(new Object[0]);
+    }
+
+    // 값을 수정하거나 설정하는 메서드 모음 입니다.
     /**
      * 특정 기준 키를 기준으로 사용자 정보를 수정합니다.
      * arrayKeyName 기본값으로 "courseList"를 사용하는 메서드 (기본값 설정)
@@ -371,7 +556,6 @@ public class JsonFile {
         // 수정된 내용을 파일에 저장
         saveToFile();
     }
-
 
     /**
      * 성적의 정보를 수정하기 위해 값을 검색해서 수정할 수 있도록 도와주는 메서드 입니다.
@@ -457,191 +641,6 @@ public class JsonFile {
         saveToFile();
     }
 
-
-    /**
-     * 기준 키를 기준으로 특정 사용자의 값을 반환합니다.
-     *
-     * @param standardKey 기준 키의 이름 (예: "userId", "userKey" 등).
-     * @param standardKeyValue 기준이 될 키값 (예: "S-027").
-     * @param targetKey 사용자 정보에서 가져올 키 (예: "name").
-     * @return 해당 키에 해당하는 값.
-     */
-    public Object getUserValueByStandardKey(String standardKey, String standardKeyValue, String targetKey) {
-        for (String key : jsonObject.keySet()) {
-            JSONObject userObject = jsonObject.getJSONObject(key);
-
-            // 기준 키가 일치하는 경우
-            if (userObject.getString(standardKey).equals(standardKeyValue)) {
-                // 해당 키에 해당하는 값을 반환
-                return userObject.opt(targetKey);
-            }
-        }
-        return null; // 해당 userId를 찾을 수 없으면 null 반환
-    }
-
-    /**
-     * 특정 기준 키와 값에 맞는 JSON 객체에서 배열을 찾아, 해당 배열의 특정 키 값을 모두 반환합니다.
-     *
-     * @param standardKey 기준 키의 이름 (예: "userId", "userKey" 등).
-     * @param standardKeyValue 기준이 될 키값 (예: "S-027").
-     * @param targetArrayKey Json 배열의 키 이름 (예: "courseList").
-     * @param targetKey Json 배열의 키의 값 (예: "course").
-     * @return Object[] targetKey에 해당하는 값을 포함하는 배열 (예: "courseList" 배열 내의 "course" 값들).
-     *                  반환되는 배열은 다양한 타입(int, double, String 등)을 처리할 수 있습니다.
-     * @부가설명 현재 자신이 신청한 과목, 현재 자신이 신청 한 학점, 현재 자신의 과목 별 성적, 을 처리하기 위해 만들어진 함수 입니다.
-     * @사용예시 Object[] courseValues = jsonFile.getAllJsonArrayValue("userId", "S-027", "courseList", "course");
-     * @출력 for (Object value : courseValues) {System.out.println(value);}
-     */
-    public Object[] getAllJsonArrayValue(String standardKey, String standardKeyValue, String targetArrayKey, String targetKey) {
-        // 결과를 담을 리스트 (Object 타입으로 선언하여 다양한 타입을 처리)
-        List<Object> courseList = new ArrayList<>();
-
-        // JSON 객체의 모든 키 탐색
-        for (String key : jsonObject.keySet()) {
-            JSONObject userObject = jsonObject.getJSONObject(key);
-
-            // 기준 키가 일치하는 경우
-            if (userObject.optString(standardKey).equals(standardKeyValue)) {
-
-                // targetArrayKey 배열을 찾음
-                JSONArray courses = userObject.optJSONArray(targetArrayKey);
-                if (courses != null) {
-
-                    // 배열 내에서 targetKey 값을 추출
-                    for (int i = 0; i < courses.length(); i++) {
-                        JSONObject courseObject = courses.optJSONObject(i);
-
-                        if (courseObject != null && courseObject.has(targetKey)) {
-                            // targetKey 값 추가
-                            courseList.add(courseObject.get(targetKey));
-                        }
-                    }
-                }
-            }
-        }
-
-        // 결과가 없으면 빈 배열 반환
-        return courseList.toArray(new Object[0]);
-    }
-
-
-    /**
-     * JSON 객체에서 특정 기준 키와 값에 맞는 사용자 정보를 찾고, 해당 사용자의 배열 안에서 지정된 값을 반환합니다.
-     *
-     * @param standardKey 기준 키의 이름 (예: "userId").
-     * @param standardKeyValue 기준 키의 값 (예: "P-092").
-     * @param targetArrayKey 탐색할 배열의 키 이름 (예: "courseList").
-     * @param targetKey 배열 항목의 키 이름 (예: "course").
-     * @param targetValue 배열 항목에서 찾아야 할 값 (예: "비주얼프로그래밍").
-     * @param arrayKeyName 반환할 값의 키 이름 (예: "unit").
-     * @return 해당 값 (예: "unit" 값) 또는 해당 값이 없으면 null.
-     *
-     * @부가설명 원하는 사용자의 성적 정보에 접근해서 출력할때 사용하기 위한 메서드 입니다.
-     * @사용예시 Object unitValue = jsonFile.getJsonArrayValue("userId", "P-092", "courseList", "course", "비주얼프로그래밍", "score");
-     * @출력 System.out.println("Unit Value: " + unitValue);
-     */
-    public Object getJsonArrayValue(String standardKey, String standardKeyValue, String targetArrayKey, String targetKey, String targetValue, String arrayKeyName) {
-        // JSON 객체의 모든 키 탐색 (예: user1, user2 등)
-        for (String key : jsonObject.keySet()) {
-            JSONObject userObject = jsonObject.getJSONObject(key);
-
-            // 기준 키가 일치하는 경우 (예: userId가 P-092인 경우)
-            if (userObject.getString(standardKey).equals(standardKeyValue)) {
-
-                // targetArrayKey (예: "courseList") 배열을 찾음
-                if (userObject.has(targetArrayKey)) {
-                    JSONArray courseList = userObject.getJSONArray(targetArrayKey);
-
-                    // 배열 내에서 targetKey ("course") 값이 targetValue ("비주얼프로그래밍")인 항목을 찾음
-                    for (int i = 0; i < courseList.length(); i++) {
-                        JSONObject courseObject = courseList.getJSONObject(i);
-
-                        // targetKey ("course")의 값이 targetValue ("비주얼프로그래밍")과 일치하는 항목 찾기
-                        if (courseObject.getString(targetKey).equals(targetValue)) {
-                            // 해당 항목의 arrayKeyName ("unit") 값을 반환
-                            return courseObject.get(arrayKeyName);
-                        }
-                    }
-                }
-            }
-        }
-
-        // 값이 없으면 null 반환
-        return null;
-    }
-
-    /**
-     * 특정 배열의 내부 요소 조건에 따라 JSON 객체 전체를 반환합니다.
-     *
-     * @param targetArrayKey JSON 배열의 키 이름 (예: "courseList").
-     * @param targetKey 배열 내부 요소의 키 이름 (예: "course").
-     * @param targetKeyValue 배열 내부 요소에서 찾을 값 (예: "Math101").
-     * @return Object[] 조건을 만족하는 JSON 객체 배열.
-     */
-    public Object[] getAllJsonObjectWhereTargetKeyValue(String targetArrayKey, String targetKey, String targetKeyValue) {
-        // 조건을 만족하는 JSON 객체를 담을 리스트
-        List<JSONObject> matchingObjects = new ArrayList<>();
-
-        // JSON 객체의 모든 키 탐색
-        for (String key : jsonObject.keySet()) {
-            JSONObject userObject = jsonObject.getJSONObject(key);
-
-            // targetArrayKey 배열 탐색
-            JSONArray courses = userObject.optJSONArray(targetArrayKey);
-            if (courses != null) {
-                // 배열의 요소를 탐색
-                for (int i = 0; i < courses.length(); i++) {
-                    JSONObject courseObject = courses.optJSONObject(i);
-
-                    // 조건을 만족하는 경우
-                    if (courseObject != null && targetKeyValue.equals(courseObject.optString(targetKey))) {
-                        matchingObjects.add(userObject);
-                        break; // 조건을 만족하면 현재 객체를 추가하고 루프 종료
-                    }
-                }
-            }
-        }
-
-        // 결과 반환
-        return matchingObjects.toArray(new Object[0]);
-    }
-
-
-    /**
-     * 특정 배열의 내부 요소 중 targetKey의 값이 하나라도 존재하는 모든 JSON 객체를 반환합니다.
-     *
-     * @param targetArrayKey JSON 배열의 키 이름 (예: "courseList").
-     * @param targetKey 배열 내부 요소의 키 이름 (예: "course").
-     * @return Object[] targetKey의 값이 하나라도 존재하는 JSON 객체 배열.
-     */
-    public Object[] getAllJsonObjectWhereTargetKeyExists(String targetArrayKey, String targetKey) {
-        // 조건을 만족하는 JSON 객체를 담을 리스트
-        List<JSONObject> matchingObjects = new ArrayList<>();
-
-        // JSON 객체의 모든 키 탐색
-        for (String key : jsonObject.keySet()) {
-            JSONObject userObject = jsonObject.getJSONObject(key);
-
-            // targetArrayKey 배열 탐색
-            JSONArray courses = userObject.optJSONArray(targetArrayKey);
-            if (courses != null) {
-                // 배열의 요소를 탐색
-                for (int i = 0; i < courses.length(); i++) {
-                    JSONObject courseObject = courses.optJSONObject(i);
-
-                    // targetKey가 존재하고 값이 null 또는 빈 문자열이 아닌 경우
-                    if (courseObject != null && courseObject.has(targetKey) && !courseObject.optString(targetKey).isEmpty()) {
-                        matchingObjects.add(userObject);
-                        break; // 조건을 만족하면 현재 객체를 추가하고 루프 종료
-                    }
-                }
-            }
-        }
-
-        // 결과 반환
-        return matchingObjects.toArray(new Object[0]);
-    }
-
     /**
      * JSON 객체에서 기준 키와 값을 사용하여 해당 객체에 새로운 키-값 쌍을 추가하거나 수정합니다.
      *
@@ -662,11 +661,6 @@ public class JsonFile {
 
         // 수정된 내용을 파일에 저장
         saveToFile();
-    }
-
-
-    public void addValueByCourse(String userId, String p092, String courseList, JTextArea courseName, int i, JTextArea courseUnit) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
@@ -724,21 +718,12 @@ public class JsonFile {
         saveToFile();
     }
 
-}
+    /**
+     * 해당 메서드는 더이상 허용하지 않습니다.
+     *
+     */
+    public void addValueByCourse(String userId, String p092, String courseList, JTextArea courseName, int i, JTextArea courseUnit) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
-/* 사용 예시 */
-/*
- *
- * //JsonFile 객체 생성 (data.json 파일을 로드)
- * JsonFile jsonFile = new JsonFile("data.json", "src/data.json");
- *
- * // 'userId':'S-027'을 가지는 객체 중 'age' 값
- * System.out.println("'userId':'S-027'을 가지는 객체 중 'age' 의 값: " + jsonFile.getUserValueByStandardKey("userId", "S-027", "age"));
- *
- * // 'userId':'S-027'을 가지는 객체 중 'age' 값 30 으로 수정
- * jsonFile.setValueByStandardKey("userId", "S-027", "age", 30);
- *
- * // 수정 후 S-027의 'name' 값을 출력 (age 만 수정되었지만 전체 JSON 객체를 다시 출력)
- * System.out.println("Updated name for S-027: " + jsonFile.getUserValueByStandardKey("userId","S-027",  "name"));
- *
- */
+}
