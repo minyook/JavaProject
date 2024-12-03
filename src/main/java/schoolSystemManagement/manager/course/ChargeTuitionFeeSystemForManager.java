@@ -72,95 +72,81 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panel_SubCourseStudents = new javax.swing.JPanel();
-        subStudentsFrame = new javax.swing.JScrollPane();
-        totalCourseSubStudentsListFrame = new javax.swing.JList<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        studentSubListFrame = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        studentNameFrame = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        studentTotalUnitFrame = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        coursesPriceFrame = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        submitPrice = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        studentMajorFrame = new javax.swing.JTextField();
-        studentUserIdFrame = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
-        managerIdFrame = new javax.swing.JTextField();
-        managerNameFrame = new javax.swing.JTextField();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        mainPanel = new javax.swing.JPanel();
+        subStudentsScrollPane = new javax.swing.JScrollPane();
+        CourseSubStudentsList = new javax.swing.JList<>();
+        subStudentCoursesScrollPane = new javax.swing.JScrollPane();
+        studentSubCoursesList = new javax.swing.JList<>();
+        subCoursesListLabel = new javax.swing.JLabel();
+        studentNameLabel = new javax.swing.JLabel();
+        studentNameTextField = new javax.swing.JTextField();
+        studentUnitLabel = new javax.swing.JLabel();
+        studentTotalUnitTextField = new javax.swing.JTextField();
+        studentSubCoursesLabel = new javax.swing.JLabel();
+        coursesPriceTextField = new javax.swing.JTextField();
+        tuitionLabel = new javax.swing.JLabel();
+        submitPriceButton = new javax.swing.JButton();
+        studentMajorLabel = new javax.swing.JLabel();
+        studentMajorTextField = new javax.swing.JTextField();
+        studentUserIdTextField = new javax.swing.JTextField();
+        studentIdLabel = new javax.swing.JLabel();
+        managerIdTextField = new javax.swing.JTextField();
+        managerNameTextField = new javax.swing.JTextField();
+        managerNameLabel = new javax.swing.JLabel();
+        managerIdLabel = new javax.swing.JLabel();
+        menuBar = new javax.swing.JMenuBar();
+        mainMenu = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        panel_SubCourseStudents.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        totalCourseSubStudentsListFrame.setBackground(new java.awt.Color(255, 255, 255));
-        totalCourseSubStudentsListFrame.setModel(new javax.swing.AbstractListModel<String>() {
+        CourseSubStudentsList.setBackground(new java.awt.Color(255, 255, 255));
+        CourseSubStudentsList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        totalCourseSubStudentsListFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        CourseSubStudentsList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                totalCourseSubStudentsListFrameAncestorAdded(evt);
+                CourseSubStudentsListAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        totalCourseSubStudentsListFrame.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+        CourseSubStudentsList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                totalCourseSubStudentsListFrameValueChanged(evt);
+                CourseSubStudentsListValueChanged(evt);
             }
         });
-        subStudentsFrame.setViewportView(totalCourseSubStudentsListFrame);
+        subStudentsScrollPane.setViewportView(CourseSubStudentsList);
 
-        studentSubListFrame.setBackground(new java.awt.Color(255, 255, 255));
-        studentSubListFrame.setModel(new javax.swing.AbstractListModel<String>() {
+        studentSubCoursesList.setBackground(new java.awt.Color(255, 255, 255));
+        studentSubCoursesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        studentSubListFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        studentSubCoursesList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentSubListFrameAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(studentSubListFrame);
+        subStudentCoursesScrollPane.setViewportView(studentSubCoursesList);
 
-        jLabel1.setText("수강 신청 한 학생 목록");
+        subCoursesListLabel.setText("수강 신청 한 학생 목록");
 
-        jLabel2.setText("학생 이름");
+        studentNameLabel.setText("학생 이름");
 
-        studentNameFrame.setBackground(new java.awt.Color(255, 255, 255));
-        studentNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        studentNameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentNameTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentNameFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-
-        jLabel4.setText("총 수강 신청 학점");
-
-        studentTotalUnitFrame.setBackground(new java.awt.Color(255, 255, 255));
-        studentTotalUnitFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentTotalUnitFrameAncestorAdded(evt);
+                studentNameTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -168,27 +154,40 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("신청 한 강의 목록");
+        studentUnitLabel.setText("총 수강 신청 학점");
 
-        coursesPriceFrame.setBackground(new java.awt.Color(255, 255, 255));
-        coursesPriceFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        studentTotalUnitTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentTotalUnitTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                studentTotalUnitTextFieldAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
 
-        jLabel6.setText("청구 할 금액");
+        studentSubCoursesLabel.setText("신청 한 강의 목록");
 
-        submitPrice.setBackground(new java.awt.Color(255, 255, 255));
-        submitPrice.setText("청구하기");
-        submitPrice.addActionListener(new java.awt.event.ActionListener() {
+        coursesPriceTextField.setBackground(new java.awt.Color(255, 255, 255));
+        coursesPriceTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        tuitionLabel.setText("청구 할 금액");
+
+        submitPriceButton.setBackground(new java.awt.Color(255, 255, 255));
+        submitPriceButton.setText("청구하기");
+        submitPriceButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 submitPriceActionPerformed(evt);
             }
         });
 
-        jLabel7.setText("학과");
+        studentMajorLabel.setText("학과");
 
-        studentMajorFrame.setBackground(new java.awt.Color(255, 255, 255));
-        studentMajorFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        studentMajorTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentMajorTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentMajorFrameAncestorAdded(evt);
+                studentMajorTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -196,11 +195,11 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
 
-        studentUserIdFrame.setBackground(new java.awt.Color(255, 255, 255));
-        studentUserIdFrame.setMinimumSize(new java.awt.Dimension(64, 26));
-        studentUserIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        studentUserIdTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentUserIdTextField.setMinimumSize(new java.awt.Dimension(64, 26));
+        studentUserIdTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentUserIdFrameAncestorAdded(evt);
+                studentUserIdTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -208,12 +207,12 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setText("사용자 아이디");
+        studentIdLabel.setText("사용자 아이디");
 
-        managerIdFrame.setBackground(new java.awt.Color(255, 255, 255));
-        managerIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        managerIdTextField.setBackground(new java.awt.Color(255, 255, 255));
+        managerIdTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                managerIdFrameAncestorAdded(evt);
+                managerIdTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -221,10 +220,10 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
 
-        managerNameFrame.setBackground(new java.awt.Color(255, 255, 255));
-        managerNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        managerNameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        managerNameTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                managerNameFrameAncestorAdded(evt);
+                managerNameTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -232,125 +231,125 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("관리자 이름");
+        managerNameLabel.setText("관리자 이름");
 
-        jLabel10.setText("관리자 아이디");
+        managerIdLabel.setText("관리자 아이디");
 
-        javax.swing.GroupLayout panel_SubCourseStudentsLayout = new javax.swing.GroupLayout(panel_SubCourseStudents);
-        panel_SubCourseStudents.setLayout(panel_SubCourseStudentsLayout);
-        panel_SubCourseStudentsLayout.setHorizontalGroup(
-            panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                        .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(managerNameLabel)
                                 .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(managerNameFrame))
+                            .addComponent(managerNameTextField))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                                .addComponent(jLabel10)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(managerIdLabel)
                                 .addGap(186, 186, 186))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseStudentsLayout.createSequentialGroup()
-                                .addComponent(managerIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(managerIdTextField)
                                 .addContainerGap())))
-                    .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                        .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                                .addComponent(subStudentsFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(subCoursesListLabel)
+                            .addGroup(mainPanelLayout.createSequentialGroup()
+                                .addComponent(subStudentsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1)
-                                    .addComponent(studentNameFrame)
-                                    .addComponent(coursesPriceFrame)
-                                    .addComponent(submitPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(studentMajorFrame)
-                                    .addComponent(studentTotalUnitFrame)
-                                    .addComponent(studentUserIdFrame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                                        .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel8)
-                                            .addComponent(jLabel5))
+                                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(subStudentCoursesScrollPane)
+                                    .addComponent(studentNameTextField)
+                                    .addComponent(coursesPriceTextField)
+                                    .addComponent(submitPriceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(studentMajorTextField)
+                                    .addComponent(studentTotalUnitTextField)
+                                    .addComponent(studentUserIdTextField, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(mainPanelLayout.createSequentialGroup()
+                                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(studentNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(tuitionLabel)
+                                            .addComponent(studentMajorLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(studentUnitLabel)
+                                            .addComponent(studentIdLabel)
+                                            .addComponent(studentSubCoursesLabel))
                                         .addGap(0, 127, Short.MAX_VALUE)))))
                         .addContainerGap())))
         );
-        panel_SubCourseStudentsLayout.setVerticalGroup(
-            panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseStudentsLayout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseStudentsLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(managerNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(managerNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(managerIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel_SubCourseStudentsLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(managerNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(managerIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(managerIdLabel)
                         .addGap(44, 44, 44)))
-                .addComponent(jLabel1)
+                .addComponent(subCoursesListLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panel_SubCourseStudentsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panel_SubCourseStudentsLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(studentNameLabel)
                         .addGap(5, 5, 5)
-                        .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(studentNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel7)
+                        .addComponent(studentMajorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentMajorFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(studentMajorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel8)
+                        .addComponent(studentIdLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentUserIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(studentUserIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4)
+                        .addComponent(studentUnitLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(studentTotalUnitFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(studentTotalUnitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
+                        .addComponent(studentSubCoursesLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(subStudentCoursesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6)
+                        .addComponent(tuitionLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(coursesPriceFrame, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(coursesPriceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(submitPrice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(subStudentsFrame))
+                        .addComponent(submitPriceButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(subStudentsScrollPane))
                 .addGap(14, 14, 14))
         );
 
-        jMenuBar1.setBackground(new java.awt.Color(255, 255, 255));
+        menuBar.setBackground(new java.awt.Color(255, 255, 255));
 
-        jMenu1.setText("메뉴");
-        jMenuBar1.add(jMenu1);
+        mainMenu.setText("메뉴");
+        menuBar.add(mainMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_SubCourseStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panel_SubCourseStudents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void totalCourseSubStudentsListFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_totalCourseSubStudentsListFrameAncestorAdded
+    private void CourseSubStudentsListAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_CourseSubStudentsListAncestorAdded
         Object[] subStudentsData = usersFile.getAllJsonObjectWhereTargetKeyExists("courseList","course");
         ArrayList<UserData> subStudents = new ArrayList<>();
 
@@ -359,7 +358,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             // JList에 "학생이 존재하지 않습니다." 메시지 추가
             DefaultListModel<String> emptyModel = new DefaultListModel<>();
             emptyModel.addElement("학생이 존재하지 않습니다.");
-            totalCourseSubStudentsListFrame.setModel(emptyModel);
+            CourseSubStudentsList.setModel(emptyModel);
             return;  // 더 이상 진행하지 않음
         }
 
@@ -387,12 +386,12 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         }
 
         // JList에 모델 설정
-        totalCourseSubStudentsListFrame.setModel(listModel);
-    }//GEN-LAST:event_totalCourseSubStudentsListFrameAncestorAdded
+        CourseSubStudentsList.setModel(listModel);
+    }//GEN-LAST:event_CourseSubStudentsListAncestorAdded
 
-    private void totalCourseSubStudentsListFrameValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_totalCourseSubStudentsListFrameValueChanged
+    private void CourseSubStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_CourseSubStudentsListValueChanged
         // 리스트에서 선택한 부분의 문자열을 가져온다.
-        String selectedStudentNameAndNumber = totalCourseSubStudentsListFrame.getSelectedValue();
+        String selectedStudentNameAndNumber = CourseSubStudentsList.getSelectedValue();
 
         // fullString이 null인 경우, 즉 선택된 값이 없을 때 처리
         if (selectedStudentNameAndNumber == null) {
@@ -421,9 +420,9 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             return;  // 종료
         }
 
-        studentNameFrame.setText(name);
-        studentMajorFrame.setText(major);
-        studentUserIdFrame.setText(userId);
+        studentNameTextField.setText(name);
+        studentMajorTextField.setText(major);
+        studentUserIdTextField.setText(userId);
 
         // 내 학점 가져오기
         Object[] updateCourseUnitValues = usersFile.getAllJsonArrayValue("userId", userId, "courseList", "unit");
@@ -434,7 +433,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             // Object를 String으로 변환한 후, Integer로 변환
             unitSum += Integer.parseInt(unitValue.toString());  // toString()을 호출하여 Object를 String으로 변환
         }
-        studentTotalUnitFrame.setText(Integer.toString(unitSum));
+        studentTotalUnitTextField.setText(Integer.toString(unitSum));
 
         // 특정 조건에 따라 신청한 과 배열 값 가져와서 출력하
         Object[] courseValues = usersFile.getAllJsonArrayValue("userId", userId, "courseList", "course");
@@ -447,25 +446,25 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         }
 
         // JList에 모델 설정
-        studentSubListFrame.setModel(listModel);
+        studentSubCoursesList.setModel(listModel);
 
         // 필드 비활성화
-        studentNameFrame.setEditable(false);
-        studentMajorFrame.setEditable(false);
-        studentTotalUnitFrame.setEditable(false);
-        studentUserIdFrame.setEditable(false);
-    }//GEN-LAST:event_totalCourseSubStudentsListFrameValueChanged
+        studentNameTextField.setEditable(false);
+        studentMajorTextField.setEditable(false);
+        studentTotalUnitTextField.setEditable(false);
+        studentUserIdTextField.setEditable(false);
+    }//GEN-LAST:event_CourseSubStudentsListValueChanged
 
     private void studentSubListFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {
         DefaultListModel<String> emptyModel = new DefaultListModel<>();
         emptyModel.addElement("학생을 선택 해 주세요");
-        studentSubListFrame.setModel(emptyModel);
-        studentSubListFrame.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        studentSubListFrame.setEnabled(false);
+        studentSubCoursesList.setModel(emptyModel);
+        studentSubCoursesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        studentSubCoursesList.setEnabled(false);
     }                                                 
 
     private void submitPriceActionPerformed(java.awt.event.ActionEvent evt) {
-        String tuition = coursesPriceFrame.getText();
+        String tuition = coursesPriceTextField.getText();
 
         // 필수 데이터가 없다면 종료
         if (tuition == null || tuition.isEmpty()) {
@@ -474,9 +473,9 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         }
 
         // 값 가져오기
-        String studentName = studentNameFrame.getText();
-        String studentMajor = studentMajorFrame.getText();
-        String studentUserId = studentUserIdFrame.getText();
+        String studentName = studentNameTextField.getText();
+        String studentMajor = studentMajorTextField.getText();
+        String studentUserId = studentUserIdTextField.getText();
 
         // 학생 이름 확인
         if (studentName == null || studentName.isEmpty()) {
@@ -517,35 +516,35 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         }
     }                                           
 
-    private void managerNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_managerNameFrameAncestorAdded
-        managerNameFrame.setText(managerName);
+    private void managerNameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_managerNameTextFieldAncestorAdded
+        managerNameTextField.setText(managerName);
 
         // 필드 비활성화
-        managerNameFrame.setEnabled(false);
-    }//GEN-LAST:event_managerNameFrameAncestorAdded
+        managerNameTextField.setEnabled(false);
+    }//GEN-LAST:event_managerNameTextFieldAncestorAdded
 
-    private void managerIdFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_managerIdFrameAncestorAdded
-        managerIdFrame.setText(managerId);
+    private void managerIdTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_managerIdTextFieldAncestorAdded
+        managerIdTextField.setText(managerId);
 
         // 필드 비활성화
-        managerIdFrame.setEnabled(false);
-    }//GEN-LAST:event_managerIdFrameAncestorAdded
+        managerIdTextField.setEnabled(false);
+    }//GEN-LAST:event_managerIdTextFieldAncestorAdded
 
-    private void studentNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNameFrameAncestorAdded
-        studentNameFrame.setEnabled(false);
-    }//GEN-LAST:event_studentNameFrameAncestorAdded
+    private void studentNameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNameTextFieldAncestorAdded
+        studentNameTextField.setEnabled(false);
+    }//GEN-LAST:event_studentNameTextFieldAncestorAdded
 
-    private void studentMajorFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentMajorFrameAncestorAdded
-        studentMajorFrame.setEnabled(false);
-    }//GEN-LAST:event_studentMajorFrameAncestorAdded
+    private void studentMajorTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentMajorTextFieldAncestorAdded
+        studentMajorTextField.setEnabled(false);
+    }//GEN-LAST:event_studentMajorTextFieldAncestorAdded
 
-    private void studentUserIdFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentUserIdFrameAncestorAdded
-        studentUserIdFrame.setEnabled(false);
-    }//GEN-LAST:event_studentUserIdFrameAncestorAdded
+    private void studentUserIdTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentUserIdTextFieldAncestorAdded
+        studentUserIdTextField.setEnabled(false);
+    }//GEN-LAST:event_studentUserIdTextFieldAncestorAdded
 
-    private void studentTotalUnitFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentTotalUnitFrameAncestorAdded
-        studentTotalUnitFrame.setEnabled(false);
-    }//GEN-LAST:event_studentTotalUnitFrameAncestorAdded
+    private void studentTotalUnitTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentTotalUnitTextFieldAncestorAdded
+        studentTotalUnitTextField.setEnabled(false);
+    }//GEN-LAST:event_studentTotalUnitTextFieldAncestorAdded
 
     /**
      * @param args the command line arguments
@@ -583,29 +582,29 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField coursesPriceFrame;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField managerIdFrame;
-    private javax.swing.JTextField managerNameFrame;
-    private javax.swing.JPanel panel_SubCourseStudents;
-    private javax.swing.JTextField studentMajorFrame;
-    private javax.swing.JTextField studentNameFrame;
-    private javax.swing.JList<String> studentSubListFrame;
-    private javax.swing.JTextField studentTotalUnitFrame;
-    private javax.swing.JTextField studentUserIdFrame;
-    private javax.swing.JScrollPane subStudentsFrame;
-    private javax.swing.JButton submitPrice;
-    private javax.swing.JList<String> totalCourseSubStudentsListFrame;
+    private javax.swing.JList<String> CourseSubStudentsList;
+    private javax.swing.JTextField coursesPriceTextField;
+    private javax.swing.JMenu mainMenu;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel managerIdLabel;
+    private javax.swing.JTextField managerIdTextField;
+    private javax.swing.JLabel managerNameLabel;
+    private javax.swing.JTextField managerNameTextField;
+    private javax.swing.JMenuBar menuBar;
+    private javax.swing.JLabel studentIdLabel;
+    private javax.swing.JLabel studentMajorLabel;
+    private javax.swing.JTextField studentMajorTextField;
+    private javax.swing.JLabel studentNameLabel;
+    private javax.swing.JTextField studentNameTextField;
+    private javax.swing.JLabel studentSubCoursesLabel;
+    private javax.swing.JList<String> studentSubCoursesList;
+    private javax.swing.JTextField studentTotalUnitTextField;
+    private javax.swing.JLabel studentUnitLabel;
+    private javax.swing.JTextField studentUserIdTextField;
+    private javax.swing.JLabel subCoursesListLabel;
+    private javax.swing.JScrollPane subStudentCoursesScrollPane;
+    private javax.swing.JScrollPane subStudentsScrollPane;
+    private javax.swing.JButton submitPriceButton;
+    private javax.swing.JLabel tuitionLabel;
     // End of variables declaration//GEN-END:variables
 }
