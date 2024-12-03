@@ -12,18 +12,24 @@ import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.file.JsonFile;
 
 /**
+ * 강의 관리자의 메인 프레임 입니다
  *
- * @author admin
+ * @author 주정현
+ * @version 1.0
+ * @since 2024-12-03
  */
 public class CourseManagerHome extends javax.swing.JFrame {
-    
+
+    // 테스트를 위한 초기화 값 입니다.
     public String courseManagerName = "김영진";
     public String courseManagerId = "S-695";
+
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
     /**
-     * Creates new form StudentHome
+     * 기본 생성자
      */
     public CourseManagerHome() {
         initComponents();
@@ -31,6 +37,13 @@ public class CourseManagerHome extends javax.swing.JFrame {
         setResizable(false);
         setTitle("수업 담당자 메뉴");
     }
+
+    /**
+     * 부모 프레임으로부터 이름과 아이디 값을 전달 받아 사용합니다.
+     *
+     * @param courseManagerName
+     * @param courseManagerId
+     */
     public CourseManagerHome(String courseManagerName, String courseManagerId) {
         this.courseManagerName = courseManagerName;
         this.courseManagerId = courseManagerId;
@@ -253,8 +266,6 @@ public class CourseManagerHome extends javax.swing.JFrame {
 
         // 새 창을 표시
         selfUserEditManagementScreen.setVisible(true);
-
-        //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
     private void majorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_majorTextFieldActionPerformed
