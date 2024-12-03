@@ -14,10 +14,7 @@ import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/**
- *
- * @author oxxultus
- */
+
 public class CourseManagementSystemForStudents extends javax.swing.JFrame {
 
     // 테스트를 위한 기본 값 설정입니다.

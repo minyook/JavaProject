@@ -10,10 +10,7 @@ import javax.swing.event.AncestorEvent;
 import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.file.JsonFile;
 
-/**
- *
- * @author admin
- */
+
 public class StudentHome extends javax.swing.JFrame {
 
     // 테스트를 위한 기본 값 설정
