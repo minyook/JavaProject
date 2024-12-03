@@ -6,7 +6,7 @@ package schoolSystemManagement.manager.course;
 
 import java.util.ArrayList;
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
+
 import org.json.JSONObject;
 import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.dto.UserData;
