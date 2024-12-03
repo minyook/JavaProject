@@ -3,11 +3,18 @@
         "number": "4444444",
         "major": "전산학과",
         "name": "김영진",
-        "courseList": [{
-            "score": 0,
-            "unit": 2,
-            "course": "안녕하세요"
-        }],
+        "courseList": [
+            {
+                "score": 0,
+                "unit": 2,
+                "course": "안녕하세요"
+            },
+            {
+                "score": 0,
+                "unit": 2,
+                "course": "반갑다"
+            }
+        ],
         "userType": "학생",
         "tuition": "200000",
         "userId": "S-695"

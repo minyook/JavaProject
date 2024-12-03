@@ -12,7 +12,7 @@
     "course-2": {
         "professor": "이선권",
         "unit": "2",
-        "countStudents": "0",
+        "countStudents": 1,
         "name": "반갑다",
         "maxStudents": "22",
         "description": "강의에 대한 설명을 작성해 주세요.",

@@ -15,12 +15,16 @@ import schoolSystemManagement.file.JsonFile;
  * @author admin
  */
 public class StudentHome extends javax.swing.JFrame {
-    
+
+    // 테스트를 위한 기본 값 설정
     public String studentName = "김영진";
     public String studentId = "S-695";
+
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
+    // 수강 신청 한 목록을 업데이트 하기 위한 메서드 입니다.
     public void updateCoursesListFrame(){
         // 수강신청 한 목록
         // 특정 조건에 따라 JSON 배열 값 가져오기
@@ -41,7 +45,7 @@ public class StudentHome extends javax.swing.JFrame {
         studentCoursesListFrame.setEnabled(false);
     }
     /**
-     * Creates new form StudentHome
+     * 기본 생성자 입니다.
      */
     public StudentHome() {
         initComponents();
@@ -49,7 +53,13 @@ public class StudentHome extends javax.swing.JFrame {
         setResizable(false);
         setTitle("학생 메뉴");
     }
-    
+
+    /**
+     * 부모 프레임으로 부터 이름과 아이디를 전달받아 사용하는 생성자 입니다.
+     *
+     * @param studentName
+     * @param studentId
+     */
     public StudentHome(String studentName, String studentId) {
         this.studentName = studentName;
         this.studentId = studentId;
@@ -68,24 +78,24 @@ public class StudentHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         studentCourseManagementButton = new javax.swing.JButton();
-        studentEditProfil = new javax.swing.JButton();
+        studentEditProfile = new javax.swing.JButton();
         studentMajorFrame = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        studentMajorLabel = new javax.swing.JLabel();
+        studentIdLabel = new javax.swing.JLabel();
         studentIdFrame = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        studentNameLabel = new javax.swing.JLabel();
         studentNameFrame = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        subCoursesLabel = new javax.swing.JLabel();
+        studentCoursesScroolPane = new javax.swing.JScrollPane();
         studentCoursesListFrame = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        titleLabel = new javax.swing.JLabel();
+        reloadButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         studentCourseManagementButton.setBackground(new java.awt.Color(255, 255, 255));
         studentCourseManagementButton.setText("내 수강 관리");
@@ -95,11 +105,11 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
-        studentEditProfil.setBackground(new java.awt.Color(255, 255, 255));
-        studentEditProfil.setText("내 정보 수정");
-        studentEditProfil.addActionListener(new java.awt.event.ActionListener() {
+        studentEditProfile.setBackground(new java.awt.Color(255, 255, 255));
+        studentEditProfile.setText("내 정보 수정");
+        studentEditProfile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                studentEditProfilActionPerformed(evt);
+                studentEditProfileActionPerformed(evt);
             }
         });
 
@@ -117,11 +127,11 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("학과");
+        studentMajorLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        studentMajorLabel.setText("학과");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("아이디");
+        studentIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        studentIdLabel.setText("아이디");
 
         studentIdFrame.setEditable(false);
         studentIdFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,8 +147,8 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("이름");
+        studentNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        studentNameLabel.setText("이름");
 
         studentNameFrame.setEditable(false);
         studentNameFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -154,8 +164,8 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("신청 한 강의");
+        subCoursesLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        subCoursesLabel.setText("신청 한 강의");
 
         studentCoursesListFrame.setBackground(new java.awt.Color(255, 255, 255));
         studentCoursesListFrame.setModel(new javax.swing.AbstractListModel<String>() {
@@ -172,69 +182,69 @@ public class StudentHome extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(studentCoursesListFrame);
+        studentCoursesScroolPane.setViewportView(studentCoursesListFrame);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("학생 메뉴");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        titleLabel.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("학생 메뉴");
+        titleLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("새로고침");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        reloadButton.setBackground(new java.awt.Color(255, 255, 255));
+        reloadButton.setText("새로고침");
+        reloadButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                reloadButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(subCoursesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentCoursesScroolPane)
                     .addComponent(studentMajorFrame)
                     .addComponent(studentCourseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(studentEditProfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentEditProfile, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(studentMajorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentIdLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentIdFrame)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(studentNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentNameFrame)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(reloadButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1)
+                .addComponent(reloadButton)
                 .addGap(4, 4, 4)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(studentNameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(studentIdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(studentMajorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentMajorFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(subCoursesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentCoursesScroolPane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(studentCourseManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(studentEditProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(studentEditProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -242,11 +252,11 @@ public class StudentHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -263,7 +273,7 @@ public class StudentHome extends javax.swing.JFrame {
         studentCourseManagementScreen.setVisible(true);
     }//GEN-LAST:event_studentCourseManagementButtonActionPerformed
 
-    private void studentEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditProfilActionPerformed
+    private void studentEditProfileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentEditProfileActionPerformed
         // 내 정보 수정 버튼을 눌렀을 때 이벤트
         SelfUserEdit selfUserEditManagementScreen = new SelfUserEdit(studentName, studentId);
 
@@ -274,7 +284,7 @@ public class StudentHome extends javax.swing.JFrame {
         selfUserEditManagementScreen.setVisible(true);
         
         //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_studentEditProfilActionPerformed
+    }//GEN-LAST:event_studentEditProfileActionPerformed
 
     private void studentNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNameFrameAncestorAdded
       studentNameFrame.setText(studentName);
@@ -309,9 +319,9 @@ public class StudentHome extends javax.swing.JFrame {
         studentCoursesListFrame.setEnabled(false);
     }//GEN-LAST:event_studentCoursesListFrameAncestorAdded
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void reloadButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reloadButtonActionPerformed
         updateCoursesListFrame();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_reloadButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,19 +359,19 @@ public class StudentHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JButton reloadButton;
     private javax.swing.JButton studentCourseManagementButton;
     private javax.swing.JList<String> studentCoursesListFrame;
-    private javax.swing.JButton studentEditProfil;
+    private javax.swing.JScrollPane studentCoursesScroolPane;
+    private javax.swing.JButton studentEditProfile;
     private javax.swing.JTextField studentIdFrame;
+    private javax.swing.JLabel studentIdLabel;
     private javax.swing.JTextField studentMajorFrame;
+    private javax.swing.JLabel studentMajorLabel;
     private javax.swing.JTextField studentNameFrame;
+    private javax.swing.JLabel studentNameLabel;
+    private javax.swing.JLabel subCoursesLabel;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
