@@ -487,7 +487,7 @@ public class UserEditData extends javax.swing.JFrame {
         userType.removeAllItems();
     
         // 새로운 항목 추가
-        String[] majors = {"","학생", "교수", "기계공학과", "학사당담자", "수업당담자"};
+        String[] majors = {"","학생", "교수", "기계공학과", "학사 당담자", "수업 당담자"};
         for (String major : majors) {
             userType.addItem(major);
         }
