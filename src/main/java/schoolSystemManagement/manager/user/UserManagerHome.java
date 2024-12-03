@@ -18,14 +18,17 @@ import schoolSystemManagement.file.JsonFile;
  */
 public class UserManagerHome extends javax.swing.JFrame {
 
+    // 테스트를 위한 기본 값 설정입니다.
     public String userManagerName = "김영진";
     public String userManagerId = "S-027";
+
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
 
     /**
-     * Creates new form StudentHome
+     * 기본 생성자 입니다.
      */
     public UserManagerHome() {
         initComponents();
@@ -35,6 +38,12 @@ public class UserManagerHome extends javax.swing.JFrame {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
+    /**
+     * 부모 프레임으로 부터 이름과 아이디를 전달받아 사용하는 생성자 입니다.
+     *
+     * @param userManagerName
+     * @param userManagerId
+     */
     public UserManagerHome(String userManagerName, String userManagerId) {
         this.userManagerName = userManagerName;
         this.userManagerId = userManagerId;
@@ -54,24 +63,24 @@ public class UserManagerHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        mainPanel = new javax.swing.JPanel();
         userManagementButton = new javax.swing.JButton();
         userManagerEditProfil = new javax.swing.JButton();
         courseManagerMajorFrame = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        roleLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
         userManagerIdFrame = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         userManagerNameFrame = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
+        usersLabel = new javax.swing.JLabel();
+        usersScrollPane = new javax.swing.JScrollPane();
+        usersTable = new javax.swing.JTable();
+        titleLabel = new javax.swing.JLabel();
         reData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         userManagementButton.setBackground(new java.awt.Color(255, 255, 255));
         userManagementButton.setText("사용자 관리");
@@ -100,11 +109,11 @@ public class UserManagerHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("직책");
+        roleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        roleLabel.setText("직책");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("아이디");
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        idLabel.setText("아이디");
 
         userManagerIdFrame.setEditable(false);
         userManagerIdFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -120,8 +129,8 @@ public class UserManagerHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("이름");
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nameLabel.setText("이름");
 
         userManagerNameFrame.setEditable(false);
         userManagerNameFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -137,11 +146,11 @@ public class UserManagerHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("가입 된 모든 사용자");
+        usersLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        usersLabel.setText("가입 된 모든 사용자");
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        usersTable.setBackground(new java.awt.Color(255, 255, 255));
+        usersTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -152,21 +161,21 @@ public class UserManagerHome extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jTable1.addAncestorListener(new javax.swing.event.AncestorListener() {
+        usersTable.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jTable1AncestorAdded(evt);
+                usersTableAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane2.setViewportView(jTable1);
+        usersScrollPane.setViewportView(usersTable);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("학사 담당자 메뉴");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        titleLabel.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("학사 담당자 메뉴");
+        titleLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         reData.setBackground(new java.awt.Color(255, 255, 255));
         reData.setText("새로고침");
@@ -176,50 +185,50 @@ public class UserManagerHome extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(usersLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(courseManagerMajorFrame)
                     .addComponent(userManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userManagerEditProfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(roleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userManagerIdFrame)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(userManagerNameFrame)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(usersScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(reData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(reData)
                 .addGap(4, 4, 4)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userManagerNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(userManagerIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(roleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(courseManagerMajorFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(usersLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(usersScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(userManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -231,11 +240,11 @@ public class UserManagerHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -277,7 +286,7 @@ public class UserManagerHome extends javax.swing.JFrame {
         userManagerIdFrame.setText(userManagerId);
     }//GEN-LAST:event_userManagerIdFrameAncestorAdded
 
-    private void jTable1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jTable1AncestorAdded
+    private void usersTableAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_usersTableAncestorAdded
         // JSON 데이터 가져오기 (테스트용 예제 JSON)
         JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
 
@@ -315,11 +324,11 @@ public class UserManagerHome extends javax.swing.JFrame {
         }
 
         // jTable1에 모델 설정
-        jTable1.setModel(tableModel);
+        usersTable.setModel(tableModel);
 
         // 읽기 전용 설정
-        jTable1.setEnabled(false);
-    }//GEN-LAST:event_jTable1AncestorAdded
+        usersTable.setEnabled(false);
+    }//GEN-LAST:event_usersTableAncestorAdded
 
     private void reDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDataActionPerformed
         usersFile = new JsonFile("user_data.json", "user_data.json");
@@ -363,8 +372,8 @@ public class UserManagerHome extends javax.swing.JFrame {
         }
 
         // jTable1에 모델 설정 및 초기화
-        jTable1.setModel(tableModel);
-        jTable1.setEnabled(false); // 읽기 전용 설정
+        usersTable.setModel(tableModel);
+        usersTable.setEnabled(false); // 읽기 전용 설정
     }//GEN-LAST:event_reDataActionPerformed
 
     /**
@@ -419,18 +428,18 @@ public class UserManagerHome extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField courseManagerMajorFrame;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel nameLabel;
     private javax.swing.JButton reData;
+    private javax.swing.JLabel roleLabel;
+    private javax.swing.JLabel titleLabel;
     private javax.swing.JButton userManagementButton;
     private javax.swing.JButton userManagerEditProfil;
     private javax.swing.JTextField userManagerIdFrame;
     private javax.swing.JTextField userManagerNameFrame;
+    private javax.swing.JLabel usersLabel;
+    private javax.swing.JScrollPane usersScrollPane;
+    private javax.swing.JTable usersTable;
     // End of variables declaration//GEN-END:variables
 }
