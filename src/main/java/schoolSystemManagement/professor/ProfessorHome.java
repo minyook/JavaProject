@@ -53,15 +53,15 @@ public class ProfessorHome extends javax.swing.JFrame {
         professorCourseManagementButton = new javax.swing.JButton();
         professorEditProfil = new javax.swing.JButton();
         professorMajorFrame = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        majorLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
         professorIdFrame = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        nameLabel = new javax.swing.JLabel();
         professorNameFrame = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
+        openCoursesLabel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         professorOpenCoursesListFrame = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
+        titleLabel = new javax.swing.JLabel();
         reData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -98,11 +98,11 @@ public class ProfessorHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("학과");
+        majorLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        majorLabel.setText("학과");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("아이디");
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        idLabel.setText("아이디");
 
         professorIdFrame.setEditable(false);
         professorIdFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -118,8 +118,8 @@ public class ProfessorHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("이름");
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nameLabel.setText("이름");
 
         professorNameFrame.setEditable(false);
         professorNameFrame.setBackground(new java.awt.Color(255, 255, 255));
@@ -135,8 +135,8 @@ public class ProfessorHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("개설 된 강의");
+        openCoursesLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        openCoursesLabel.setText("개설 된 강의");
 
         professorOpenCoursesListFrame.setBackground(new java.awt.Color(255, 255, 255));
         professorOpenCoursesListFrame.setModel(new javax.swing.AbstractListModel<String>() {
@@ -155,10 +155,10 @@ public class ProfessorHome extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(professorOpenCoursesListFrame);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("교수 메뉴");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        titleLabel.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("교수 메뉴");
+        titleLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         reData.setBackground(new java.awt.Color(255, 255, 255));
         reData.setText("새로고침");
@@ -175,17 +175,17 @@ public class ProfessorHome extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(openCoursesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1)
                     .addComponent(professorMajorFrame)
                     .addComponent(professorCourseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(professorEditProfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(majorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(professorIdFrame)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(professorNameFrame)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(reData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -195,21 +195,21 @@ public class ProfessorHome extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(reData)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(professorNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(professorIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(majorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(professorMajorFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(openCoursesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -387,13 +387,12 @@ public class ProfessorHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel majorLabel;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JLabel openCoursesLabel;
     private javax.swing.JButton professorCourseManagementButton;
     private javax.swing.JButton professorEditProfil;
     private javax.swing.JTextField professorIdFrame;
@@ -401,5 +400,6 @@ public class ProfessorHome extends javax.swing.JFrame {
     private javax.swing.JTextField professorNameFrame;
     private javax.swing.JList<String> professorOpenCoursesListFrame;
     private javax.swing.JButton reData;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

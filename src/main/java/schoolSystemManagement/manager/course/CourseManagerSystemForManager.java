@@ -12,18 +12,21 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
-import schoolSystemManagement.common.SelfUserEdit;
 
 /**
+ * 강의 관리를 위한 프레임 입니다.
  *
- * @author admin
+ * @author 주정현
+ * @version 1.0
+ * @since 2024-12-03
  */
 public class CourseManagerSystemForManager extends javax.swing.JFrame {
 
-
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
-    
+
+    // 개설 된 강의 리스트를 업데이트 하기 위한 메서드 입니다.
     public void updateCloseCourseList(){
         // coursesFile.getJsonObject()가 빈 값인지 확인하고 필터링된 객체 가져오기
         coursesFile = new JsonFile("course_data.json", "course_data.json");
@@ -81,6 +84,8 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
         }
 
     }
+
+    // 개설 되지 않은 강의 리스트를 업데이트 하기 위한 메서드 입니다.
     public void updateOpenCourseList(){
         // 필터링된 객체 가져오기
         coursesFile = new JsonFile("course_data.json", "course_data.json");
@@ -138,7 +143,7 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
 
     }
 
-    // addKeyAndValue 중복 코드 제거를 위한 메서드
+    // addKeyAndValue 중복 코드 제거를 위한 메서드 입니다.
     private void updateCourseData(JsonFile coursesFile, String courseName, String courseUnit, String courseMaxStudents,
                                   String courseCountStudents, String courseStatus, String courseDescription) {
         coursesFile.addKeyAndValue("name", courseName, "unit", courseUnit);
@@ -149,7 +154,7 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
     }
 
     /**
-     * Creates new form CourseManagerSystemForManager
+     * 기본 생성자 입니다
      */
     public CourseManagerSystemForManager() {
         initComponents();
@@ -582,37 +587,61 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
     }//GEN-LAST:event_reloadButtonActionPerformed
 
     private void closeCoursesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeCoursesTableMouseClicked
-        // 열러있지 않은 강의 마우스 클릭시 
-        int selectedRow = closeCoursesTable.getSelectedRow(); // 선택된 행의 인덱스 가져오기
-        if (selectedRow != -1) {
+        // 열려있지 않은 강의를 마우스 클릭했을 때 실행되는 이벤트 핸들러
+
+        // 선택된 행의 인덱스를 가져옵니다.
+        // 사용자가 클릭한 강의가 위치한 테이블의 행 번호를 반환합니다.
+        // -1일 경우, 아무것도 선택되지 않은 상태임을 의미합니다.
+        int selectedRow = closeCoursesTable.getSelectedRow();
+
+        if (selectedRow != -1) { // 선택된 행이 있을 경우에만 실행
+            // 테이블의 모델을 가져옵니다.
+            // 선택된 행에서 데이터를 읽기 위해 DefaultTableModel 객체를 사용합니다.
             DefaultTableModel model = (DefaultTableModel) closeCoursesTable.getModel();
 
-            String courseNameValue = model.getValueAt(selectedRow, 0).toString();
-            String professorNameValue = model.getValueAt(selectedRow, 1).toString();
-            String professorIdValue = model.getValueAt(selectedRow, 2).toString();
-            String maxStudents = model.getValueAt(selectedRow, 3).toString();
-            String courseUnitValue = model.getValueAt(selectedRow, 4).toString();
-            
+            // 선택된 행의 각 열 데이터를 가져옵니다.
+            // 강의 이름, 교수 이름, 교수 ID, 최대 학생 수, 학점 수를 문자열로 추출합니다.
+            String courseNameValue = model.getValueAt(selectedRow, 0).toString(); // 강의 이름
+            String professorNameValue = model.getValueAt(selectedRow, 1).toString(); // 교수 이름
+            String professorIdValue = model.getValueAt(selectedRow, 2).toString(); // 교수 ID
+            String maxStudents = model.getValueAt(selectedRow, 3).toString(); // 최대 학생 수
+            String courseUnitValue = model.getValueAt(selectedRow, 4).toString(); // 학점
 
-            courseNameTextField.setText(courseNameValue);
-            courseProfessorTextField.setText(professorNameValue);
-            courseProfessorIdTextField.setText(professorIdValue);
-            courseUnitTextField.setText(courseUnitValue);
-            courseMaxStudentsTextField.setText(maxStudents);
-            courseCountStudentsTextField.setText(coursesFile.getUserValueByStandardKey("name", courseNameValue, "countStudents").toString());
-            courseStatusComboBox.setSelectedItem(coursesFile.getUserValueByStandardKey("name", courseNameValue, "status").toString());
-            courseDescriptionTextArea.setText(coursesFile.getUserValueByStandardKey("name", courseNameValue, "description").toString());
+            // 추출한 데이터를 텍스트 필드에 채웁니다.
+            courseNameTextField.setText(courseNameValue); // 강의 이름 텍스트 필드
+            courseProfessorTextField.setText(professorNameValue); // 교수 이름 텍스트 필드
+            courseProfessorIdTextField.setText(professorIdValue); // 교수 ID 텍스트 필드
+            courseUnitTextField.setText(courseUnitValue); // 학점 텍스트 필드
+            courseMaxStudentsTextField.setText(maxStudents); // 최대 학생 수 텍스트 필드
+
+            // 추가 데이터를 파일에서 가져와 텍스트 필드 또는 콤보박스에 설정
+            // 현재 학생 수, 상태, 강의 설명을 각각 설정합니다.
+            courseCountStudentsTextField.setText(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "countStudents").toString()
+            );
+            courseStatusComboBox.setSelectedItem(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "status").toString()
+            );
+            courseDescriptionTextArea.setText(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "description").toString()
+            );
         }
-        courseNameTextField.setEnabled(false);
-        courseProfessorTextField.setEnabled(false);
-        courseProfessorIdTextField.setEnabled(false);
-        courseUnitTextField.setEnabled(true);
-        courseMaxStudentsTextField.setEnabled(true);
-        courseCountStudentsTextField.setEnabled(true);
-        courseStatusComboBox.setEnabled(true);
-        courseDescriptionTextArea.setEnabled(true);
-        saveButton.setEnabled(true);
-        deleteButton.setEnabled(true);
+
+        // 필드와 UI 요소의 활성화 상태 설정
+        // 일부 필드들은 편집 불가능하도록 설정하고, 나머지는 활성화합니다.
+        courseNameTextField.setEnabled(false); // 강의 이름은 수정 불가
+        courseProfessorTextField.setEnabled(false); // 교수 이름은 수정 불가
+        courseProfessorIdTextField.setEnabled(false); // 교수 ID는 수정 불가
+        courseUnitTextField.setEnabled(true); // 학점은 수정 가능
+        courseMaxStudentsTextField.setEnabled(true); // 최대 학생 수는 수정 가능
+        courseCountStudentsTextField.setEnabled(true); // 현재 학생 수는 수정 가능
+        courseStatusComboBox.setEnabled(true); // 상태 변경 가능
+        courseDescriptionTextArea.setEnabled(true); // 강의 설명 변경 가능
+
+        // 저장 및 삭제 버튼 활성화
+        saveButton.setEnabled(true); // 저장 버튼 활성화
+        deleteButton.setEnabled(true); // 삭제 버튼 활성화
+
     }//GEN-LAST:event_closeCoursesTableMouseClicked
 
     private void courseUnitTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseUnitTextFieldActionPerformed
@@ -630,70 +659,101 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
         // 기본값을 "true"로 설정
         courseStatusComboBox.setSelectedItem("false");
         
-        
+        // 상태 변경 불가능
         courseStatusComboBox.setEnabled(false);
     }//GEN-LAST:event_courseStatusComboBoxAncestorAdded
 
     private void courseNameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseNameTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseNameTextField.setEnabled(false);
     }//GEN-LAST:event_courseNameTextFieldAncestorAdded
 
     private void courseProfessorTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseProfessorTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseProfessorTextField.setEnabled(false);
     }//GEN-LAST:event_courseProfessorTextFieldAncestorAdded
 
     private void courseProfessorIdTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseProfessorIdTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseProfessorIdTextField.setEnabled(false);
     }//GEN-LAST:event_courseProfessorIdTextFieldAncestorAdded
 
     private void courseUnitTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseUnitTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseUnitTextField.setEnabled(false);
     }//GEN-LAST:event_courseUnitTextFieldAncestorAdded
 
     private void courseMaxStudentsTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseMaxStudentsTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseMaxStudentsTextField.setEnabled(false);
     }//GEN-LAST:event_courseMaxStudentsTextFieldAncestorAdded
 
     private void courseCountStudentsTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseCountStudentsTextFieldAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseCountStudentsTextField.setEnabled(false);
     }//GEN-LAST:event_courseCountStudentsTextFieldAncestorAdded
 
     private void courseDescriptionTextAreaAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseDescriptionTextAreaAncestorAdded
+        // 기본적으로 상태 변경 불가능
         courseDescriptionTextArea.setEnabled(false);
     }//GEN-LAST:event_courseDescriptionTextAreaAncestorAdded
 
     private void openCoursesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_openCoursesTableMouseClicked
-        // 열린 강의 마우스 클릭시 
-        int selectedRow = openCoursesTable.getSelectedRow(); // 선택된 행의 인덱스 가져오기
-        if (selectedRow != -1) {
+        // 열린 강의를 마우스 클릭했을 때 실행되는 이벤트 핸들러
+
+        // 선택된 행의 인덱스를 가져옵니다.
+        // 사용자가 클릭한 강의가 위치한 테이블의 행 번호를 반환합니다.
+        // -1일 경우, 아무것도 선택되지 않은 상태임을 의미합니다.
+        int selectedRow = openCoursesTable.getSelectedRow();
+
+        if (selectedRow != -1) { // 선택된 행이 있을 경우에만 실행
+            // 테이블의 모델을 가져옵니다.
+            // 선택된 행에서 데이터를 읽기 위해 DefaultTableModel 객체를 사용합니다.
             DefaultTableModel model = (DefaultTableModel) openCoursesTable.getModel();
 
-            String courseNameValue = model.getValueAt(selectedRow, 0).toString();
-            String professorNameValue = model.getValueAt(selectedRow, 1).toString();
-            String professorIdValue = model.getValueAt(selectedRow, 2).toString();
-            String maxStudents = model.getValueAt(selectedRow, 3).toString();
-            String courseUnitValue = model.getValueAt(selectedRow, 4).toString();
-            
+            // 선택된 행의 각 열 데이터를 가져옵니다.
+            // 강의 이름, 교수 이름, 교수 ID, 최대 학생 수, 학점 수를 문자열로 추출합니다.
+            String courseNameValue = model.getValueAt(selectedRow, 0).toString(); // 강의 이름
+            String professorNameValue = model.getValueAt(selectedRow, 1).toString(); // 교수 이름
+            String professorIdValue = model.getValueAt(selectedRow, 2).toString(); // 교수 ID
+            String maxStudents = model.getValueAt(selectedRow, 3).toString(); // 최대 학생 수
+            String courseUnitValue = model.getValueAt(selectedRow, 4).toString(); // 학점
 
-            courseNameTextField.setText(courseNameValue);
-            courseProfessorTextField.setText(professorNameValue);
-            courseProfessorIdTextField.setText(professorIdValue);
-            courseUnitTextField.setText(courseUnitValue);
-            courseMaxStudentsTextField.setText(maxStudents);
-            courseCountStudentsTextField.setText(coursesFile.getUserValueByStandardKey("name", courseNameValue, "countStudents").toString());
-            courseStatusComboBox.setSelectedItem(coursesFile.getUserValueByStandardKey("name", courseNameValue, "status").toString());
-            courseDescriptionTextArea.setText(coursesFile.getUserValueByStandardKey("name", courseNameValue, "description").toString());
+            // 추출한 데이터를 텍스트 필드에 채웁니다.
+            courseNameTextField.setText(courseNameValue); // 강의 이름 텍스트 필드
+            courseProfessorTextField.setText(professorNameValue); // 교수 이름 텍스트 필드
+            courseProfessorIdTextField.setText(professorIdValue); // 교수 ID 텍스트 필드
+            courseUnitTextField.setText(courseUnitValue); // 학점 텍스트 필드
+            courseMaxStudentsTextField.setText(maxStudents); // 최대 학생 수 텍스트 필드
+
+            // 추가 데이터를 파일에서 가져와 텍스트 필드 또는 콤보박스에 설정
+            // 현재 학생 수, 상태, 강의 설명을 각각 설정합니다.
+            courseCountStudentsTextField.setText(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "countStudents").toString()
+            );
+            courseStatusComboBox.setSelectedItem(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "status").toString()
+            );
+            courseDescriptionTextArea.setText(
+                    coursesFile.getUserValueByStandardKey("name", courseNameValue, "description").toString()
+            );
         }
-        courseNameTextField.setEnabled(false);
-        courseProfessorTextField.setEnabled(false);
-        courseProfessorIdTextField.setEnabled(false);
-        courseUnitTextField.setEnabled(false);
-        courseMaxStudentsTextField.setEnabled(false);
-        courseCountStudentsTextField.setEnabled(false);
-        courseStatusComboBox.setEnabled(true);
-        courseDescriptionTextArea.setEnabled(false);
-        saveButton.setEnabled(true);
-        deleteButton.setEnabled(false);
+
+        // 필드와 UI 요소의 활성화 상태 설정
+        // 열린 강의의 경우 대부분 필드가 비활성화되어 편집할 수 없도록 설정합니다.
+        courseNameTextField.setEnabled(false); // 강의 이름은 수정 불가
+        courseProfessorTextField.setEnabled(false); // 교수 이름은 수정 불가
+        courseProfessorIdTextField.setEnabled(false); // 교수 ID는 수정 불가
+        courseUnitTextField.setEnabled(false); // 학점은 수정 불가
+        courseMaxStudentsTextField.setEnabled(false); // 최대 학생 수는 수정 불가
+        courseCountStudentsTextField.setEnabled(false); // 현재 학생 수는 수정 불가
+        courseStatusComboBox.setEnabled(true); // 상태 변경 가능
+        courseDescriptionTextArea.setEnabled(false); // 강의 설명은 수정 불가
+
+        // 버튼 활성화 상태 설정
+        saveButton.setEnabled(true); // 저장 버튼 활성화
+        deleteButton.setEnabled(false); // 삭제 버튼 비활성화
+
     }//GEN-LAST:event_openCoursesTableMouseClicked
 
     private void openCoursesTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_openCoursesTablePropertyChange
@@ -709,47 +769,79 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
     }//GEN-LAST:event_deleteButtonAncestorAdded
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
-        // 입력 값 가져오기
-        String courseName = courseNameTextField.getText();
-        String courseProfessor = courseProfessorTextField.getText();
-        String courseProfessorId = courseProfessorIdTextField.getText();
-        String courseUnit = courseUnitTextField.getText();
-        String courseMaxStudents = courseMaxStudentsTextField.getText();
-        String courseCountStudents = courseCountStudentsTextField.getText();
-        String courseStatus = courseStatusComboBox.getSelectedItem().toString();
-        String courseDescription = courseDescriptionTextArea.getText();
 
-        // 값이 비어 있는지 확인하고 경고 메시지 출력
+        // 각 UI 컴포넌트에서 입력된 값을 읽어와 변수에 저장합니다.
+        String courseName = courseNameTextField.getText(); // 강의 이름
+        String courseProfessor = courseProfessorTextField.getText(); // 교수 이름
+        String courseProfessorId = courseProfessorIdTextField.getText(); // 교수 ID
+        String courseUnit = courseUnitTextField.getText(); // 학점
+        String courseMaxStudents = courseMaxStudentsTextField.getText(); // 최대 학생 수
+        String courseCountStudents = courseCountStudentsTextField.getText(); // 등록된 학생 수
+        String courseStatus = courseStatusComboBox.getSelectedItem().toString(); // 상태
+        String courseDescription = courseDescriptionTextArea.getText(); // 강의 설명
+
+        // 필수 입력값 검증
+        // 필드 중 하나라도 비어 있으면 경고 메시지를 표시하고 작업을 중단합니다.
         if (courseName.isEmpty() || courseProfessor.isEmpty() || courseProfessorId.isEmpty() ||
                 courseUnit.isEmpty() || courseMaxStudents.isEmpty() || courseCountStudents.isEmpty() ||
                 courseStatus.isEmpty() || courseDescription.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "모든 필드를 채워야 합니다.", "경고", JOptionPane.WARNING_MESSAGE);
-            return;  // 값이 비어 있으면 종료
+            JOptionPane.showMessageDialog(
+                    null,
+                    "모든 필드를 채워야 합니다.",
+                    "경고",
+                    JOptionPane.WARNING_MESSAGE
+            );
+            return; // 값이 비어 있으면 메서드 실행 종료
         }
 
-        // 추가적인 유효성 검사 (예: 숫자 형식 확인)
+        // 숫자 유효성 검사
+        // 학생 수 관련 필드가 숫자로 입력되었는지 확인합니다.
         try {
             Integer.parseInt(courseMaxStudents); // 최대 학생 수가 숫자인지 확인
             Integer.parseInt(courseCountStudents); // 등록된 학생 수가 숫자인지 확인
         } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "학생 수는 숫자여야 합니다.", "유효성 검사 오류", JOptionPane.ERROR_MESSAGE);
-            return;  // 유효하지 않으면 종료
+            // 숫자가 아닌 경우 경고 메시지를 표시하고 작업을 중단합니다.
+            JOptionPane.showMessageDialog(
+                    null,
+                    "학생 수는 숫자여야 합니다.",
+                    "유효성 검사 오류",
+                    JOptionPane.ERROR_MESSAGE
+            );
+            return; // 유효하지 않으면 메서드 실행 종료
         }
 
         // 데이터 업데이트
-        coursesFile = new JsonFile("course_data.json", "course_data.json");
+        // JSON 파일을 로드하고 강의 데이터를 업데이트합니다.
+        coursesFile = new JsonFile("course_data.json", "course_data.json"); // JSON 파일 경로
 
-        // addKeyAndValue 호출을 간소화하는 메서드 사용
-        updateCourseData(coursesFile, courseName, courseUnit, courseMaxStudents, courseCountStudents, courseStatus, courseDescription);
+        // 강의 데이터를 업데이트하는 별도의 메서드를 호출하여 코드 재사용성을 높임
+        updateCourseData(
+                coursesFile,
+                courseName,
+                courseUnit,
+                courseMaxStudents,
+                courseCountStudents,
+                courseStatus,
+                courseDescription
+        );
 
-        // 수정 완료 알림 메시지
-        updateOpenCourseList(); // 테이블 갱신
-        updateCloseCourseList(); // 테이블 갱신
-        JOptionPane.showMessageDialog(null, "수정이 완료되었습니다.", "알림", JOptionPane.INFORMATION_MESSAGE);
+        // 수정 완료 후 UI 갱신
+        // 열린 강의와 닫힌 강의 테이블을 갱신합니다.
+        updateOpenCourseList(); // 열린 강의 목록 테이블 업데이트
+        updateCloseCourseList(); // 닫힌 강의 목록 테이블 업데이트
+
+        // 수정 완료 메시지
+        JOptionPane.showMessageDialog(
+                null,
+                "수정이 완료되었습니다.",
+                "알림",
+                JOptionPane.INFORMATION_MESSAGE
+        );
 
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // 삭제 버튼 클릭시 이벤트
         String courseName = courseNameTextField.getText();
 
         // 삭제 확인 메시지 표시

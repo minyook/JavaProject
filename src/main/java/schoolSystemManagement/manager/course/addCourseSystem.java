@@ -13,16 +13,20 @@ import schoolSystemManagement.dto.UserData;
 import schoolSystemManagement.file.JsonFile;
 
 /**
+ * 강좌를 추가 할 수 있는 프레임 입니다.
  *
- * @author admin
+ * @author 주정현
+ * @version 1.0
+ * @since 2024-12-03
  */
 public class addCourseSystem extends javax.swing.JFrame {
-    
+
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
 
     /**
-     * Creates new form addCourseSystem
+     * 기본 생성자 입니다,
      */
     public addCourseSystem() {
         initComponents();

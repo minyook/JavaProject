@@ -1,10 +1,22 @@
-{"course-1": {
-    "professor": "이선권",
-    "unit": "2",
-    "countStudents": 1,
-    "name": "안녕하세요",
-    "maxStudents": "40",
-    "description": "강의에 대한 설명을 작성해 주세요.",
-    "userId": "P-908",
-    "status": "true"
-}}
+{
+    "course-1": {
+        "professor": "이선권",
+        "unit": "2",
+        "countStudents": "1",
+        "name": "안녕하세요",
+        "maxStudents": "40",
+        "description": "강의에 대한 설명을 작성해 주세요.ss",
+        "userId": "P-908",
+        "status": "false"
+    },
+    "course-2": {
+        "professor": "이선권",
+        "unit": "2",
+        "countStudents": "0",
+        "name": "반갑다",
+        "maxStudents": "22",
+        "description": "강의에 대한 설명을 작성해 주세요.",
+        "userId": "P-908",
+        "status": "true"
+    }
+}

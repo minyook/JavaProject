@@ -14,17 +14,23 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 /**
+ * 수강 관리자가 학비를 청구하기 위한 프레임 입니다.
  *
- * @author oxxultus
+ * @author 김영진
+ * @version 1.0
+ * @since 2024-12-03
  */
 public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
 
+    // 테스트를 위한 초기화 값 입니다.
     public String managerName = "김영진";
     public String managerId = "S-027";
+
+    // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
     JsonFile coursesFile = new JsonFile("course_data.json", "course_data.json");
     /**
-     * Creates new form CourseManagementSystemForManager
+     * 기본 생성자 입니다.
      */
     public ChargeTuitionFeeSystemForManager() {
         initComponents();
@@ -43,6 +49,13 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             }
         });
     }
+
+    /**
+     * 부모 프레임으로 부터 이름과 아이디를 전달받아 사용합니다.
+     *
+     * @param managerName
+     * @param managerId
+     */
     public ChargeTuitionFeeSystemForManager(String managerName, String managerId) {
         this.managerName = managerName;
         this.managerId = managerId;
