@@ -1,9 +1,9 @@
 {"course-1": {
     "professor": "이선권",
-    "unit": "3",
-    "countStudents": "0",
+    "unit": "2",
+    "countStudents": 1,
     "name": "안녕하세요",
-    "maxStudents": "34",
+    "maxStudents": "40",
     "description": "강의에 대한 설명을 작성해 주세요.",
     "userId": "P-908",
     "status": "true"

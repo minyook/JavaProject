@@ -23,17 +23,17 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="mainPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jPanel1">
+    <Container class="javax.swing.JPanel" name="mainPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -46,44 +46,44 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="courseNameFrame" max="32767" attributes="0"/>
-                      <Component id="jLabel3" max="32767" attributes="0"/>
-                      <Component id="jButton1" max="32767" attributes="0"/>
+                      <Component id="nameTextField" max="32767" attributes="0"/>
+                      <Component id="titleLabel" max="32767" attributes="0"/>
+                      <Component id="saveButton" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel1" max="32767" attributes="0"/>
+                          <Component id="courseDiscriptionLabel" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="courseDiscriptionScrollPane" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="courseCountStudentsFrame" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="countStudentsTextField" min="-2" pref="304" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="courseMaxStudentsFrame" max="32767" attributes="0"/>
+                          <Component id="maxStudentsTextField" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel6" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="countStudentsLabel" min="-2" pref="304" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel2" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="maxStudentsLabel" min="-2" pref="304" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="courseProfessorIdFrame" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="professorIdTextField" min="-2" pref="304" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="courseStatusFrame" max="32767" attributes="0"/>
+                          <Component id="statusTextField" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel8" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="professorIdLabel" min="-2" pref="304" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="jLabel7" min="-2" pref="304" max="-2" attributes="0"/>
+                          <Component id="statusLabel" min="-2" pref="304" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jLabel12" alignment="0" max="32767" attributes="0"/>
+                      <Component id="nameLabel" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="courseProfessorFrame" max="32767" attributes="0"/>
-                              <Component id="jLabel9" pref="304" max="32767" attributes="0"/>
+                              <Component id="professorComboBox" max="32767" attributes="0"/>
+                              <Component id="professorLabel" pref="304" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="jLabel10" pref="304" max="32767" attributes="0"/>
-                              <Component id="courseUnitFrame" max="32767" attributes="0"/>
+                              <Component id="unitLabel" pref="304" max="32767" attributes="0"/>
+                              <Component id="unitTextField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -95,63 +95,63 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jLabel3" pref="82" max="32767" attributes="0"/>
+                  <Component id="titleLabel" pref="82" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                  <Component id="nameLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="courseNameFrame" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="nameTextField" min="-2" pref="50" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="unitLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="professorLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="courseUnitFrame" pref="50" max="32767" attributes="0"/>
-                      <Component id="courseProfessorFrame" max="32767" attributes="0"/>
+                      <Component id="unitTextField" pref="50" max="32767" attributes="0"/>
+                      <Component id="professorComboBox" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="statusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="professorIdLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="courseProfessorIdFrame" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="courseStatusFrame" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="professorIdTextField" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="statusTextField" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="maxStudentsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="countStudentsLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <Component id="courseCountStudentsFrame" min="-2" pref="50" max="-2" attributes="0"/>
+                          <Component id="countStudentsTextField" min="-2" pref="50" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="courseDiscriptionLabel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="courseMaxStudentsFrame" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="maxStudentsTextField" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" pref="69" max="-2" attributes="0"/>
+                  <Component id="courseDiscriptionScrollPane" min="-2" pref="69" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="42" max="-2" attributes="0"/>
+                  <Component id="saveButton" min="-2" pref="42" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+        <Container class="javax.swing.JScrollPane" name="courseDiscriptionScrollPane">
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="courseDiscriptionFrame">
+            <Component class="javax.swing.JTextArea" name="courseDiscriptionTextArea">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -163,7 +163,7 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="saveButton">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -171,16 +171,16 @@
             <Property name="text" type="java.lang.String" value="&#xcd94;&#xac00;"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saveButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel1">
+        <Component class="javax.swing.JLabel" name="courseDiscriptionLabel">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="2"/>
             <Property name="text" type="java.lang.String" value="&#xac15;&#xc758; &#xc124;&#xba85;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseMaxStudentsFrame">
+        <Component class="javax.swing.JTextField" name="maxStudentsTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -192,15 +192,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseMaxStudentsFrameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="maxStudentsTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel2">
+        <Component class="javax.swing.JLabel" name="maxStudentsLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xcd5c;&#xb300; &#xc218;&#xac15;&#xc0dd; &#xc218;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseCountStudentsFrame">
+        <Component class="javax.swing.JTextField" name="countStudentsTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -214,12 +214,12 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel6">
+        <Component class="javax.swing.JLabel" name="countStudentsLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xd604;&#xc7ac; &#xc218;&#xac15;&#xc0dd; &#xc218;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseStatusFrame">
+        <Component class="javax.swing.JTextField" name="statusTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -233,15 +233,15 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseStatusFrameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="statusTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel7">
+        <Component class="javax.swing.JLabel" name="statusLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xac1c;&#xc124; &#xc5ec;&#xbd80;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseProfessorIdFrame">
+        <Component class="javax.swing.JTextField" name="professorIdTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -254,20 +254,20 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="courseProfessorIdFrameAncestorAdded"/>
+            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="professorIdTextFieldAncestorAdded"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel8">
+        <Component class="javax.swing.JLabel" name="professorIdLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xb2f4;&#xb2f9; &#xad50;&#xc218; &#xc544;&#xc774;&#xb514;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel9">
+        <Component class="javax.swing.JLabel" name="professorLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xb2f4;&#xb2f9; &#xad50;&#xc218;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseUnitFrame">
+        <Component class="javax.swing.JTextField" name="unitTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -279,15 +279,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseUnitFrameActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="unitTextFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel10">
+        <Component class="javax.swing.JLabel" name="unitLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xd559;&#xc810;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="courseNameFrame">
+        <Component class="javax.swing.JTextField" name="nameTextField">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -299,12 +299,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel12">
+        <Component class="javax.swing.JLabel" name="nameLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#xac15;&#xc758; &#xc774;&#xb984;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="titleLabel">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="HY&#xacac;&#xace0;&#xb515;" size="24" style="0"/>
@@ -318,7 +318,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="courseProfessorFrame">
+        <Component class="javax.swing.JComboBox" name="professorComboBox">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -333,9 +333,9 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="courseProfessorFrameAncestorAdded"/>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseProfessorFrameActionPerformed"/>
-            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="courseProfessorFramePropertyChange"/>
+            <EventHandler event="ancestorAdded" listener="javax.swing.event.AncestorListener" parameters="javax.swing.event.AncestorEvent" handler="professorComboBoxAncestorAdded"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="professorComboBoxActionPerformed"/>
+            <EventHandler event="propertyChange" listener="java.beans.PropertyChangeListener" parameters="java.beans.PropertyChangeEvent" handler="professorComboBoxPropertyChange"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

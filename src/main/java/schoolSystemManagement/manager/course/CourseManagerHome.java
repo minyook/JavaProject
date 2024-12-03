@@ -49,66 +49,66 @@ public class CourseManagerHome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        courseManagerCourseManagementButton = new javax.swing.JButton();
-        courseManagerEditProfil = new javax.swing.JButton();
-        courseManagerMajorFrame = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        courseManagerIdFrame = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        courseManagerNameFrame = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        courseManagerOpenCoursesListFrame = new javax.swing.JList<>();
-        jLabel1 = new javax.swing.JLabel();
-        ChargeTuitionFeeButton = new javax.swing.JButton();
-        reData = new javax.swing.JButton();
+        mainPanel = new javax.swing.JPanel();
+        courseManagementButton = new javax.swing.JButton();
+        editProfileButton = new javax.swing.JButton();
+        majorTextField = new javax.swing.JTextField();
+        majorLabel = new javax.swing.JLabel();
+        idLabel = new javax.swing.JLabel();
+        idTextField = new javax.swing.JTextField();
+        nameLabel = new javax.swing.JLabel();
+        nameTextField = new javax.swing.JTextField();
+        openCoursesLabel = new javax.swing.JLabel();
+        openCoursesScrollPane = new javax.swing.JScrollPane();
+        openCoursesList = new javax.swing.JList<>();
+        titleLabel = new javax.swing.JLabel();
+        chargeTuitionFeeButton = new javax.swing.JButton();
+        refreshButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        mainPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        courseManagerCourseManagementButton.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerCourseManagementButton.setText("강의 관리");
-        courseManagerCourseManagementButton.addActionListener(new java.awt.event.ActionListener() {
+        courseManagementButton.setBackground(new java.awt.Color(255, 255, 255));
+        courseManagementButton.setText("강의 관리");
+        courseManagementButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseManagerCourseManagementButtonActionPerformed(evt);
+                courseManagementButtonActionPerformed(evt);
             }
         });
 
-        courseManagerEditProfil.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerEditProfil.setText("내 정보 수정");
-        courseManagerEditProfil.addActionListener(new java.awt.event.ActionListener() {
+        editProfileButton.setBackground(new java.awt.Color(255, 255, 255));
+        editProfileButton.setText("내 정보 수정");
+        editProfileButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseManagerEditProfilActionPerformed(evt);
+                editProfileButtonActionPerformed(evt);
             }
         });
 
-        courseManagerMajorFrame.setEditable(false);
-        courseManagerMajorFrame.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerMajorFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        courseManagerMajorFrame.setText("수업 담당자");
-        courseManagerMajorFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        courseManagerMajorFrame.addActionListener(new java.awt.event.ActionListener() {
+        majorTextField.setEditable(false);
+        majorTextField.setBackground(new java.awt.Color(255, 255, 255));
+        majorTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        majorTextField.setText("수업 담당자");
+        majorTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        majorTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseManagerMajorFrameActionPerformed(evt);
+                majorTextFieldActionPerformed(evt);
             }
         });
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel2.setText("직책");
+        majorLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        majorLabel.setText("직책");
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel3.setText("아이디");
+        idLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        idLabel.setText("아이디");
 
-        courseManagerIdFrame.setEditable(false);
-        courseManagerIdFrame.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerIdFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        courseManagerIdFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        courseManagerIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        idTextField.setEditable(false);
+        idTextField.setBackground(new java.awt.Color(255, 255, 255));
+        idTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        idTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        idTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                courseManagerIdFrameAncestorAdded(evt);
+                idTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -116,16 +116,16 @@ public class CourseManagerHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel4.setText("이름");
+        nameLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nameLabel.setText("이름");
 
-        courseManagerNameFrame.setEditable(false);
-        courseManagerNameFrame.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerNameFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        courseManagerNameFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        courseManagerNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        nameTextField.setEditable(false);
+        nameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        nameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nameTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        nameTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                courseManagerNameFrameAncestorAdded(evt);
+                nameTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -133,100 +133,100 @@ public class CourseManagerHome extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("개설 된 모든 강의");
+        openCoursesLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        openCoursesLabel.setText("개설 된 모든 강의");
 
-        courseManagerOpenCoursesListFrame.setBackground(new java.awt.Color(255, 255, 255));
-        courseManagerOpenCoursesListFrame.setModel(new javax.swing.AbstractListModel<String>() {
+        openCoursesList.setBackground(new java.awt.Color(255, 255, 255));
+        openCoursesList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
-        courseManagerOpenCoursesListFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
+        openCoursesList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                courseManagerOpenCoursesListFrameAncestorAdded(evt);
+                openCoursesListAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jScrollPane1.setViewportView(courseManagerOpenCoursesListFrame);
+        openCoursesScrollPane.setViewportView(openCoursesList);
 
-        jLabel1.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("수업 담당자 메뉴");
-        jLabel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        titleLabel.setFont(new java.awt.Font("HY견고딕", 0, 18)); // NOI18N
+        titleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titleLabel.setText("수업 담당자 메뉴");
+        titleLabel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        ChargeTuitionFeeButton.setBackground(new java.awt.Color(255, 255, 255));
-        ChargeTuitionFeeButton.setText("청구 관리");
-        ChargeTuitionFeeButton.addActionListener(new java.awt.event.ActionListener() {
+        chargeTuitionFeeButton.setBackground(new java.awt.Color(255, 255, 255));
+        chargeTuitionFeeButton.setText("청구 관리");
+        chargeTuitionFeeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ChargeTuitionFeeButtonActionPerformed(evt);
+                chargeTuitionFeeButtonActionPerformed(evt);
             }
         });
 
-        reData.setBackground(new java.awt.Color(255, 255, 255));
-        reData.setText("새로고침");
-        reData.addActionListener(new java.awt.event.ActionListener() {
+        refreshButton.setBackground(new java.awt.Color(255, 255, 255));
+        refreshButton.setText("새로고침");
+        refreshButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                reDataActionPerformed(evt);
+                refreshButtonActionPerformed(evt);
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
+        mainPanel.setLayout(mainPanelLayout);
+        mainPanelLayout.setHorizontalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1)
-                    .addComponent(courseManagerMajorFrame)
-                    .addComponent(courseManagerEditProfil, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(courseManagerIdFrame)
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(courseManagerNameFrame)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(ChargeTuitionFeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(openCoursesLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(openCoursesScrollPane)
+                    .addComponent(majorTextField)
+                    .addComponent(editProfileButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                    .addComponent(majorLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(idTextField)
+                    .addComponent(nameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nameTextField)
+                    .addComponent(titleLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(chargeTuitionFeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(courseManagerCourseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(reData, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(courseManagementButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(refreshButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        mainPanelLayout.setVerticalGroup(
+            mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(reData)
+                .addComponent(refreshButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addComponent(nameLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseManagerNameFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel3)
+                .addComponent(idLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseManagerIdFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel2)
+                .addComponent(majorLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseManagerMajorFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(majorTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel5)
+                .addComponent(openCoursesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(openCoursesScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(courseManagerCourseManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ChargeTuitionFeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(courseManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(chargeTuitionFeeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(courseManagerEditProfil, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(editProfileButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -234,17 +234,17 @@ public class CourseManagerHome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void courseManagerEditProfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagerEditProfilActionPerformed
+    private void editProfileButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfileButtonActionPerformed
         // 내 정보 수정 버튼을 눌렀을 때 이벤트
         SelfUserEdit selfUserEditManagementScreen = new SelfUserEdit(courseManagerName, courseManagerId);
 
@@ -255,23 +255,23 @@ public class CourseManagerHome extends javax.swing.JFrame {
         selfUserEditManagementScreen.setVisible(true);
 
         //setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_courseManagerEditProfilActionPerformed
+    }//GEN-LAST:event_editProfileButtonActionPerformed
 
-    private void courseManagerMajorFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagerMajorFrameActionPerformed
+    private void majorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_majorTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_courseManagerMajorFrameActionPerformed
+    }//GEN-LAST:event_majorTextFieldActionPerformed
 
-    private void courseManagerNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseManagerNameFrameAncestorAdded
+    private void nameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_nameTextFieldAncestorAdded
         // 이름 불러오기
-        courseManagerNameFrame.setText(courseManagerName);
-    }//GEN-LAST:event_courseManagerNameFrameAncestorAdded
+        nameTextField.setText(courseManagerName);
+    }//GEN-LAST:event_nameTextFieldAncestorAdded
 
-    private void courseManagerIdFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseManagerIdFrameAncestorAdded
+    private void idTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_idTextFieldAncestorAdded
         // 아이디 불러오기
-        courseManagerIdFrame.setText(courseManagerId);
-    }//GEN-LAST:event_courseManagerIdFrameAncestorAdded
+        idTextField.setText(courseManagerId);
+    }//GEN-LAST:event_idTextFieldAncestorAdded
 
-    private void courseManagerOpenCoursesListFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseManagerOpenCoursesListFrameAncestorAdded
+    private void openCoursesListAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_openCoursesListAncestorAdded
         // 본인에 대한 개설 된 강의 목록 가져오기
         JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
 
@@ -301,13 +301,13 @@ public class CourseManagerHome extends javax.swing.JFrame {
         }
 
         // JList에 모델 설정
-        courseManagerOpenCoursesListFrame.setModel(listModel);
+        openCoursesList.setModel(listModel);
 
         // 읽기 전용으로 설정
-        courseManagerOpenCoursesListFrame.setEnabled(false);  // 입력 불가
-    }//GEN-LAST:event_courseManagerOpenCoursesListFrameAncestorAdded
+        openCoursesList.setEnabled(false);  // 입력 불가
+    }//GEN-LAST:event_openCoursesListAncestorAdded
 
-    private void ChargeTuitionFeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChargeTuitionFeeButtonActionPerformed
+    private void chargeTuitionFeeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chargeTuitionFeeButtonActionPerformed
         // 수업료 청구 버튼 이벤트
         ChargeTuitionFeeSystemForManager chargeTuitionFeeManagementScreen = new ChargeTuitionFeeSystemForManager(courseManagerName, courseManagerId);
 
@@ -316,9 +316,9 @@ public class CourseManagerHome extends javax.swing.JFrame {
 
         // 새 창을 표시
         chargeTuitionFeeManagementScreen.setVisible(true);
-    }//GEN-LAST:event_ChargeTuitionFeeButtonActionPerformed
+    }//GEN-LAST:event_chargeTuitionFeeButtonActionPerformed
 
-    private void courseManagerCourseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagerCourseManagementButtonActionPerformed
+    private void courseManagementButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagementButtonActionPerformed
         // 강의 관리 버튼 클릭시
         CourseManagerSystemForManager courseManagerSystemManagementScreen = new CourseManagerSystemForManager();
 
@@ -327,9 +327,9 @@ public class CourseManagerHome extends javax.swing.JFrame {
 
         // 새 창을 표시
         courseManagerSystemManagementScreen.setVisible(true);
-    }//GEN-LAST:event_courseManagerCourseManagementButtonActionPerformed
+    }//GEN-LAST:event_courseManagementButtonActionPerformed
 
-    private void reDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reDataActionPerformed
+    private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
         // 본인에 대한 개설 된 강의 목록 가져오기
         coursesFile = new JsonFile("course_data.json", "course_data.json");
         JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
@@ -360,11 +360,11 @@ public class CourseManagerHome extends javax.swing.JFrame {
         }
 
         // JList에 모델 설정
-        courseManagerOpenCoursesListFrame.setModel(listModel);
+        openCoursesList.setModel(listModel);
 
         // 읽기 전용으로 설정
-        courseManagerOpenCoursesListFrame.setEnabled(false);  // 입력 불가
-    }//GEN-LAST:event_reDataActionPerformed
+        openCoursesList.setEnabled(false);  // 입력 불가
+    }//GEN-LAST:event_refreshButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -405,20 +405,20 @@ public class CourseManagerHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ChargeTuitionFeeButton;
-    private javax.swing.JButton courseManagerCourseManagementButton;
-    private javax.swing.JButton courseManagerEditProfil;
-    private javax.swing.JTextField courseManagerIdFrame;
-    private javax.swing.JTextField courseManagerMajorFrame;
-    private javax.swing.JTextField courseManagerNameFrame;
-    private javax.swing.JList<String> courseManagerOpenCoursesListFrame;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton reData;
+    private javax.swing.JButton chargeTuitionFeeButton;
+    private javax.swing.JButton courseManagementButton;
+    private javax.swing.JButton editProfileButton;
+    private javax.swing.JLabel idLabel;
+    private javax.swing.JTextField idTextField;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JLabel majorLabel;
+    private javax.swing.JTextField majorTextField;
+    private javax.swing.JLabel nameLabel;
+    private javax.swing.JTextField nameTextField;
+    private javax.swing.JLabel openCoursesLabel;
+    private javax.swing.JList<String> openCoursesList;
+    private javax.swing.JScrollPane openCoursesScrollPane;
+    private javax.swing.JButton refreshButton;
+    private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
