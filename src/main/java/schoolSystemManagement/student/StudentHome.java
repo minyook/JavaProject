@@ -5,10 +5,14 @@
 package schoolSystemManagement.student;
 
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.AncestorEvent;
+import schoolSystemManagement.Management;
 
 import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.file.JsonFile;
+
+import java.awt.*;
 
 
 public class StudentHome extends javax.swing.JFrame {
@@ -89,6 +93,7 @@ public class StudentHome extends javax.swing.JFrame {
         studentCoursesListFrame = new javax.swing.JList<>();
         titleLabel = new javax.swing.JLabel();
         reloadButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -194,6 +199,14 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
+        logoutButton.setBackground(new java.awt.Color(255, 255, 255));
+        logoutButton.setText("로그아웃");
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -212,14 +225,19 @@ public class StudentHome extends javax.swing.JFrame {
                     .addComponent(studentIdFrame)
                     .addComponent(studentNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(studentNameFrame)
-                    .addComponent(reloadButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
+                        .addComponent(logoutButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(reloadButton)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(reloadButton)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(reloadButton)
+                    .addComponent(logoutButton))
                 .addGap(4, 4, 4)
                 .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -320,6 +338,29 @@ public class StudentHome extends javax.swing.JFrame {
         updateCoursesListFrame();
     }//GEN-LAST:event_reloadButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // 로그아웃 버튼 클릭 시
+
+        // 로그아웃 확인 메시지 표시
+        int response = JOptionPane.showConfirmDialog(null, "정말로 로그아웃 하시겠습니까?", "로그아웃 확인", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+            // "예"를 선택했을 경우, 현재 창을 종료
+            Window[] windows = Window.getWindows(); // 현재 열린 모든 창을 가져옴
+            for (Window window : windows) {
+                window.dispose(); // 모든 창을 닫음
+            }
+
+            // 새로운 창을 표시
+            Management management = new Management(); // Management 객체 생성
+            management.setVisible(true); // Management 창을 보이도록 설정
+        } else {
+            // "아니오"를 선택했을 경우, 로그아웃을 취소하고 아무 작업도 하지 않음
+            JOptionPane.showMessageDialog(null, "로그아웃이 취소되었습니다.", "취소", JOptionPane.INFORMATION_MESSAGE);
+        }
+
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -356,6 +397,7 @@ public class StudentHome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JButton reloadButton;
     private javax.swing.JButton studentCourseManagementButton;
