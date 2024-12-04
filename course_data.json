@@ -1,15 +1,45 @@
 {
-    "course-1": {
+    "course-5": {
         "professor": "테스트교수3",
         "unit": "3",
-        "countStudents": 31,
+        "countStudents": "30",
         "name": "고급 컴퓨터 과학",
         "maxStudents": "50",
         "description": "이 강의는 고급 컴퓨터 과학을 다룹니다.",
         "userId": "P-102",
         "status": "true"
     },
-    "course-2": {
+    "course-4": {
+        "professor": "테스트교수3",
+        "unit": "3",
+        "countStudents": "25",
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "40",
+        "description": "웹 개발에 대한 강의",
+        "userId": "P-102",
+        "status": "true"
+    },
+    "course-3": {
+        "professor": "테스트교수3",
+        "unit": "3",
+        "countStudents": "25",
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "40",
+        "description": "웹 개발에 대한 강의",
+        "userId": "P-102",
+        "status": "true"
+    },
+    "course-8": {
+        "professor": "테스트교수3",
+        "unit": "3",
+        "countStudents": "25",
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "40",
+        "description": "웹 개발에 대한 강의",
+        "userId": "P-102",
+        "status": "true"
+    },
+    "course-6": {
         "professor": "테스트교수3",
         "unit": "3",
         "countStudents": "25",
