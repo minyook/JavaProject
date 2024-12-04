@@ -27,11 +27,11 @@ public class Management extends javax.swing.JFrame {
 
     private JPanel newpanel;
     // 주민번호 키를 String으로 처리
-    private HashMap<String, HashMap<String, String>> userMap = new HashMap<>();
+    HashMap<String, HashMap<String, String>> userMap = new HashMap<>();
     private static final String FILE_PATH = "user_data.json"; // JSON 파일 경로
     private final Gson gson = new Gson(); // GSON 객체
     
-    private HashMap<String, HashMap<String, Object>> userMapForSignUp = new HashMap<>();
+    HashMap<String, HashMap<String, Object>> userMapForSignUp = new HashMap<>();
     private final Gson gsonForSignUp = new Gson(); // GSON 객체
     
 
@@ -76,7 +76,7 @@ public class Management extends javax.swing.JFrame {
     }
 
     // 파일을 json 으로부터 불러옵니다.
-    private void loadFromJson() {
+    void loadFromJson() {
         try (Reader reader = new FileReader(FILE_PATH)) {
             // JSON 데이터를 읽어오는 Map 타입
             java.lang.reflect.Type type = new TypeToken<HashMap<String, Map<String, Object>>>() {}.getType();
@@ -186,7 +186,7 @@ public class Management extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
         }
     }
-    private boolean isBackPartDuplicate(String backPart) {
+    boolean isBackPartDuplicate(String backPart) {
         for (HashMap<String, Object> userData : userMapForSignUp.values()) {
             // 'number' 필드를 String으로 안전하게 캐스팅
             String existingBackPart = (String) userData.get("number"); // 주민번호 뒷자리
@@ -472,7 +472,7 @@ public class Management extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
+    void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
 
         // 회원가입 버튼 클릭 시
         try {
@@ -551,7 +551,7 @@ public class Management extends javax.swing.JFrame {
         signUpPanel.setVisible(true);
     }//GEN-LAST:event_SignupbuttonActionPerformed
 
-    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+    void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
         try {
             String idInput = idField.getText().trim(); // 사용자 ID
             String passwordInput = passwordField.getText().trim(); // 비밀번호
@@ -662,18 +662,18 @@ public class Management extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Major;
+    javax.swing.JComboBox<String> Major;
     private javax.swing.JButton Signupbutton;
     private javax.swing.JButton Submit;
-    private javax.swing.JComboBox<String> Usertype;
+    javax.swing.JComboBox<String> Usertype;
     private javax.swing.JButton backButton;
-    private javax.swing.JTextField idField;
+    javax.swing.JTextField idField;
     private javax.swing.JButton loginButton;
     private javax.swing.JLabel loginIdLabel;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel loginTitleLabel;
     private javax.swing.JPanel mainImagePanel;
-    private javax.swing.JTextField passwordField;
+    javax.swing.JTextField passwordField;
     private javax.swing.JTextArea signUpExplain;
     private javax.swing.JScrollPane signUpExplainScrollPane;
     private javax.swing.JLabel signUpMajorLabel;
@@ -682,8 +682,8 @@ public class Management extends javax.swing.JFrame {
     private javax.swing.JPanel signUpPanel;
     private javax.swing.JLabel signUpRoleLabel;
     private javax.swing.JLabel signUpTitleLabel;
-    private javax.swing.JTextField userName;
-    private javax.swing.JTextField userNumber;
-    private javax.swing.JTextField userNumber1;
+    javax.swing.JTextField userName;
+    javax.swing.JTextField userNumber;
+    javax.swing.JTextField userNumber1;
     // End of variables declaration//GEN-END:variables
 }

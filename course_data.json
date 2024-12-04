@@ -1,32 +1,22 @@
 {
     "course-1": {
-        "professor": "이선권",
-        "unit": "2",
-        "countStudents": 2,
-        "name": "안녕하세요",
-        "maxStudents": "40",
-        "description": "강의에 대한 설명을 작성해 주세요.ss",
-        "userId": "P-908",
-        "status": "true"
-    },
-    "course-3": {
-        "professor": "교수",
+        "professor": "테스트교수3",
         "unit": "3",
-        "countStudents": "1",
-        "name": "교수강의",
-        "maxStudents": "30",
-        "description": "교수강의테스트중",
-        "userId": "P-934",
+        "countStudents": 31,
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "50",
+        "description": "이 강의는 고급 컴퓨터 과학을 다룹니다.",
+        "userId": "P-102",
         "status": "true"
     },
     "course-2": {
-        "professor": "이선권",
-        "unit": "2",
-        "countStudents": "2",
-        "name": "반갑다",
-        "maxStudents": "22",
-        "description": "강의에 대한 설명을 작성해 주세요.",
-        "userId": "P-908",
+        "professor": "테스트교수3",
+        "unit": "3",
+        "countStudents": "25",
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "40",
+        "description": "웹 개발에 대한 강의",
+        "userId": "P-102",
         "status": "true"
     }
 }
