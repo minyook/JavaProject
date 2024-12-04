@@ -15,9 +15,6 @@ import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.dto.UserData;
 import schoolSystemManagement.file.JsonFile;
 
-/**
- * @author admin
- */
 public class UserManagerHome extends javax.swing.JFrame {
 
     // 테스트를 위한 기본 값 설정입니다.
@@ -106,11 +103,6 @@ public class UserManagerHome extends javax.swing.JFrame {
         courseManagerMajorFrame.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         courseManagerMajorFrame.setText("학사 담당자");
         courseManagerMajorFrame.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        courseManagerMajorFrame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseManagerMajorFrameActionPerformed(evt);
-            }
-        });
 
         roleLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         roleLabel.setText("직책");
@@ -287,10 +279,6 @@ public class UserManagerHome extends javax.swing.JFrame {
         // 새 창을 표시
         selfUserEditManagementScreen.setVisible(true);
     }//GEN-LAST:event_userManagerEditProfilActionPerformed
-
-    private void courseManagerMajorFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseManagerMajorFrameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseManagerMajorFrameActionPerformed
 
     private void userManagerNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_userManagerNameFrameAncestorAdded
         // 이름 불러오기

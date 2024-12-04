@@ -14,13 +14,7 @@ import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.file.JsonFile;
 
-/**
- * 강의 관리자의 메인 프레임 입니다
- *
- * @author 주정현
- * @version 1.0
- * @since 2024-12-03
- */
+
 public class CourseManagerHome extends javax.swing.JFrame {
 
     // 테스트를 위한 초기화 값 입니다.
@@ -44,8 +38,8 @@ public class CourseManagerHome extends javax.swing.JFrame {
     /**
      * 부모 프레임으로부터 이름과 아이디 값을 전달 받아 사용합니다.
      *
-     * @param courseManagerName
-     * @param courseManagerId
+     * @param courseManagerName 관리자 이름
+     * @param courseManagerId 관리자 아이디
      */
     public CourseManagerHome(String courseManagerName, String courseManagerId) {
         this.courseManagerName = courseManagerName;
@@ -107,11 +101,6 @@ public class CourseManagerHome extends javax.swing.JFrame {
         majorTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         majorTextField.setText("수업 담당자");
         majorTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        majorTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                majorTextFieldActionPerformed(evt);
-            }
-        });
 
         majorLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         majorLabel.setText("직책");
@@ -285,10 +274,6 @@ public class CourseManagerHome extends javax.swing.JFrame {
         selfUserEditManagementScreen.setVisible(true);
     }//GEN-LAST:event_editProfileButtonActionPerformed
 
-    private void majorTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_majorTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_majorTextFieldActionPerformed
-
     private void nameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_nameTextFieldAncestorAdded
         // 이름 불러오기
         nameTextField.setText(courseManagerName);
@@ -358,6 +343,7 @@ public class CourseManagerHome extends javax.swing.JFrame {
     }//GEN-LAST:event_courseManagementButtonActionPerformed
 
     private void refreshButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshButtonActionPerformed
+
         // 본인에 대한 개설 된 강의 목록 가져오기
         coursesFile = new JsonFile("course_data.json", "course_data.json");
         JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
@@ -397,7 +383,7 @@ public class CourseManagerHome extends javax.swing.JFrame {
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         // 로그아웃 버튼 클릭 시
 
-// 로그아웃 확인 메시지 표시
+        // 로그아웃 확인 메시지 표시
         int response = JOptionPane.showConfirmDialog(null, "정말로 로그아웃 하시겠습니까?", "로그아웃 확인", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 
         if (response == JOptionPane.YES_OPTION) {

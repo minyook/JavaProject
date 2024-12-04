@@ -13,13 +13,6 @@ import javax.swing.table.DefaultTableModel;
 
 import java.util.ArrayList;
 
-/**
- * 강의 관리를 위한 프레임 입니다.
- *
- * @author 주정현
- * @version 1.0
- * @since 2024-12-03
- */
 public class CourseManagerSystemForManager extends javax.swing.JFrame {
 
     // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
@@ -232,11 +225,6 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
         openCoursesTable.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 openCoursesTableMouseClicked(evt);
-            }
-        });
-        openCoursesTable.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                openCoursesTablePropertyChange(evt);
             }
         });
         openCoursesTableScrollPane.setViewportView(openCoursesTable);
@@ -756,10 +744,6 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
 
     }//GEN-LAST:event_openCoursesTableMouseClicked
 
-    private void openCoursesTablePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_openCoursesTablePropertyChange
-        
-    }//GEN-LAST:event_openCoursesTablePropertyChange
-
     private void saveButtonAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_saveButtonAncestorAdded
         saveButton.setEnabled(false);
     }//GEN-LAST:event_saveButtonAncestorAdded
@@ -814,7 +798,7 @@ public class CourseManagerSystemForManager extends javax.swing.JFrame {
         // JSON 파일을 로드하고 강의 데이터를 업데이트합니다.
         coursesFile = new JsonFile("course_data.json", "course_data.json"); // JSON 파일 경로
 
-        // 강의 데이터를 업데이트하는 별도의 메서드를 호출하여 코드 재사용성을 높임
+        // 강의 데이터를 업데이트하는 별도의 메서드를 호출하여 코드 재사용성을 높혔습니다.
         updateCourseData(
                 coursesFile,
                 courseName,

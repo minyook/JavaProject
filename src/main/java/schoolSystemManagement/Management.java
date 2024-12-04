@@ -40,9 +40,8 @@ public class Management extends javax.swing.JFrame {
     
 
     /**
-     * Creates new form Management s
+     * 기본 생성자.
      */
-
     public Management() {
         setTitle("대학 정보 시스템");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,7 +78,8 @@ public class Management extends javax.swing.JFrame {
         signUpPanel.setVisible(false);
         loginPanel.setVisible(true);
     }
-    
+
+    // 파일을 json 으로부터 불러옵니다.
     private void loadFromJson() {
         try (Reader reader = new FileReader(FILE_PATH)) {
             // JSON 데이터를 읽어오는 Map 타입
@@ -113,6 +113,7 @@ public class Management extends javax.swing.JFrame {
         }
     }
 
+    // 배경 이미지를 설정합니다.
     private void setBackgroundImage() {
         try {
             String imageUrl = "test.jpeg";
@@ -157,6 +158,7 @@ public class Management extends javax.swing.JFrame {
         userNumber1.setColumns(7);
     }
 
+    // 파일을 json 에 저장합니다.
     private void saveToJson() {
         try (FileWriter writer = new FileWriter(FILE_PATH)) {
             // Save the entire userMap to JSON
@@ -188,7 +190,6 @@ public class Management extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "데이터를 로드하는 중 오류가 발생했습니다.");
         }
     }
-
     private boolean isBackPartDuplicate(String backPart) {
         for (HashMap<String, Object> userData : userMapForSignUp.values()) {
             // 'number' 필드를 String으로 안전하게 캐스팅
@@ -199,9 +200,8 @@ public class Management extends javax.swing.JFrame {
         }
         return false; // 중복 없음
     }
-    
 
-    // 사용자 추가
+    // 사용자를 추가 합니다.
     private void addUser(String fullNumber, HashMap<String, Object> userData) {
         userMapForSignUp.put(fullNumber, userData);
         saveToJson(); // Save the updated userMap
@@ -241,21 +241,6 @@ public class Management extends javax.swing.JFrame {
         signUpExplain = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        mainImagePanel.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                mainImagePanelAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        mainImagePanel.addComponentListener(new java.awt.event.ComponentAdapter() {
-            public void componentResized(java.awt.event.ComponentEvent evt) {
-                mainImagePanelComponentResized(evt);
-            }
-        });
 
         javax.swing.GroupLayout mainImagePanelLayout = new javax.swing.GroupLayout(mainImagePanel);
         mainImagePanel.setLayout(mainImagePanelLayout);
@@ -340,35 +325,15 @@ public class Management extends javax.swing.JFrame {
 
         userName.setBackground(new java.awt.Color(255, 255, 255));
         userName.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        userName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
-            }
-        });
 
         userNumber.setBackground(new java.awt.Color(255, 255, 255));
         userNumber.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        userNumber.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNumberActionPerformed(evt);
-            }
-        });
 
         Major.setBackground(new java.awt.Color(255, 255, 255));
         Major.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "전산학과", "전자공학과", "기계공학과", "화학공학과", "항공우주공학과" }));
-        Major.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MajorActionPerformed(evt);
-            }
-        });
 
         Usertype.setBackground(new java.awt.Color(255, 255, 255));
         Usertype.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "학생", "교수", "학사 담당자", "수업 담당자" }));
-        Usertype.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                UsertypeActionPerformed(evt);
-            }
-        });
 
         Submit.setBackground(new java.awt.Color(255, 255, 255));
         Submit.setText("회원가입");
@@ -395,11 +360,6 @@ public class Management extends javax.swing.JFrame {
 
         userNumber1.setBackground(new java.awt.Color(255, 255, 255));
         userNumber1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        userNumber1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNumber1ActionPerformed(evt);
-            }
-        });
 
         backButton.setBackground(new java.awt.Color(255, 255, 255));
         backButton.setText("돌아가기");
@@ -516,30 +476,6 @@ public class Management extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void mainImagePanelAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_mainImagePanelAncestorAdded
-
-    }//GEN-LAST:event_mainImagePanelAncestorAdded
-
-    private void mainImagePanelComponentResized(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_mainImagePanelComponentResized
-        // TODO add your handling code here:
-    }//GEN-LAST:event_mainImagePanelComponentResized
-
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
-
-    private void userNumberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNumberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNumberActionPerformed
-
-    private void MajorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MajorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_MajorActionPerformed
-
-    private void UsertypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsertypeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_UsertypeActionPerformed
-
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitActionPerformed
 
         // 회원가입 버튼 클릭 시
@@ -604,10 +540,6 @@ public class Management extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "알 수 없는 오류가 발생했습니다.");
         }
     }//GEN-LAST:event_SubmitActionPerformed
-
-    private void userNumber1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNumber1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNumber1ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         loginPanel.setVisible(true);
