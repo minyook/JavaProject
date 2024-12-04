@@ -10,13 +10,6 @@ import schoolSystemManagement.student.StudentHome;
 import javax.swing.*;
 import javax.swing.event.AncestorEvent;
 
-/**
- * 접속 한 사용자가 개인 정보를 수정하기 위한 Swing 프레임 입니다.
- *
- * @author 지민승
- * @version 1.0
- * @since 2024-12-03
- */
 public class SelfUserEdit extends javax.swing.JFrame {
 
     // 테스트를 위한 초기화 값 입니다.
