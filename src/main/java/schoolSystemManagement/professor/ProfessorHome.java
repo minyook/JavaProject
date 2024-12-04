@@ -14,10 +14,6 @@ import schoolSystemManagement.common.SelfUserEdit;
 import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.file.JsonFile;
 
-/**
- *
- * @author admin
- */
 public class ProfessorHome extends javax.swing.JFrame {
     
     public String professorName = "이선권";

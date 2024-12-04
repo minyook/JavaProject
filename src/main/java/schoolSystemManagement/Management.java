@@ -23,10 +23,6 @@ import java.util.HashMap;
 import java.util.Map;
 import javax.swing.*;
 
-/**
- *
- * @author limmi
- */
 public class Management extends javax.swing.JFrame {
 
     private JPanel newpanel;
