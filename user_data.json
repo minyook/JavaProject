@@ -19,7 +19,7 @@
         "name": "학생",
         "courseList": [
             {
-                "score": 0,
+                "score": 2,
                 "unit": 2,
                 "course": "반갑다"
             },
@@ -35,7 +35,7 @@
             }
         ],
         "userType": "학생",
-        "tuition": "3000000",
+        "tuition": "2",
         "userId": "S-184"
     },
     "111111-1111111": {

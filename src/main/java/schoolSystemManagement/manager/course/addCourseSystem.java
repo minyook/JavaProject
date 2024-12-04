@@ -12,13 +12,6 @@ import schoolSystemManagement.dto.CourseData;
 import schoolSystemManagement.dto.UserData;
 import schoolSystemManagement.file.JsonFile;
 
-/**
- * 강좌를 추가 할 수 있는 프레임 입니다.
- *
- * @author 주정현
- * @version 1.0
- * @since 2024-12-03
- */
 public class addCourseSystem extends javax.swing.JFrame {
 
     // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
@@ -92,7 +85,6 @@ public class addCourseSystem extends javax.swing.JFrame {
         maxStudentsTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         maxStudentsTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                maxStudentsTextFieldActionPerformed(evt);
             }
         });
 
@@ -111,7 +103,6 @@ public class addCourseSystem extends javax.swing.JFrame {
         statusTextField.setEnabled(false);
         statusTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                statusTextFieldActionPerformed(evt);
             }
         });
 
@@ -122,7 +113,6 @@ public class addCourseSystem extends javax.swing.JFrame {
         professorIdTextField.setEnabled(false);
         professorIdTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                professorIdTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -138,7 +128,6 @@ public class addCourseSystem extends javax.swing.JFrame {
         unitTextField.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         unitTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                unitTextFieldActionPerformed(evt);
             }
         });
 
@@ -172,7 +161,6 @@ public class addCourseSystem extends javax.swing.JFrame {
         });
         professorComboBox.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                professorComboBoxPropertyChange(evt);
             }
         });
 
@@ -273,18 +261,6 @@ public class addCourseSystem extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void maxStudentsTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_maxStudentsTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_maxStudentsTextFieldActionPerformed
-
-    private void statusTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statusTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_statusTextFieldActionPerformed
-
-    private void unitTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_unitTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_unitTextFieldActionPerformed
 
     private void professorComboBoxAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_professorComboBoxAncestorAdded
         // 사용자 리스트에서 교수 목록을 가져온다.
@@ -481,14 +457,6 @@ public class addCourseSystem extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "강의 추가가 취소되었습니다.", "취소", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_saveButtonActionPerformed
-
-    private void professorComboBoxPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_professorComboBoxPropertyChange
-        
-    }//GEN-LAST:event_professorComboBoxPropertyChange
-
-    private void professorIdTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_professorIdTextFieldAncestorAdded
-        
-    }//GEN-LAST:event_professorIdTextFieldAncestorAdded
 
     private void professorComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorComboBoxActionPerformed
         // JComboBox에서 선택된 항목 가져오기

@@ -28,6 +28,7 @@ public class UserEditData extends javax.swing.JFrame {
     // 프레임 내의 테이블을 갱신 하는 메서드 입니다.
     public void updateTable(){
         // 데이터를 가져와서 테이블에 삽입하는 부분입니다.
+
         JSONObject filteredObjects = usersFile.getJsonObject(); // 이미 정의된 JSON 데이터 객체
 
         ArrayList<UserData> usersDataList = new ArrayList<>();
@@ -141,11 +142,6 @@ public class UserEditData extends javax.swing.JFrame {
                 userDataListFrameMouseClicked(evt);
             }
         });
-        userDataListFrame.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                userDataListFramePropertyChange(evt);
-            }
-        });
         userDataScrollPane.setViewportView(userDataListFrame);
 
         editButton.setBackground(new java.awt.Color(255, 255, 255));
@@ -177,11 +173,6 @@ public class UserEditData extends javax.swing.JFrame {
         userName.setEditable(false);
         userName.setBackground(new java.awt.Color(255, 255, 255));
         userName.setEnabled(false);
-        userName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                userNameActionPerformed(evt);
-            }
-        });
 
         nameLabel.setText("이름");
 
@@ -194,11 +185,6 @@ public class UserEditData extends javax.swing.JFrame {
         jTextField8.setEditable(false);
         jTextField8.setBackground(new java.awt.Color(255, 255, 255));
         jTextField8.setEnabled(false);
-        jTextField8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField8ActionPerformed(evt);
-            }
-        });
 
         search.setBackground(new java.awt.Color(255, 255, 255));
         search.setText("검색");
@@ -381,14 +367,6 @@ public class UserEditData extends javax.swing.JFrame {
             userDataListFrame.setModel(tableModel);
     }//GEN-LAST:event_userDataListFrameAncestorAdded
 
-    private void userNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_userNameActionPerformed
-
-    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField8ActionPerformed
-
     private void searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchActionPerformed
         // 검색 버튼에 대한 이벤트
         // 1. JSON 데이터를 파싱하여 DTO 객체로 변환
@@ -466,10 +444,6 @@ public class UserEditData extends javax.swing.JFrame {
             userNumberPassword.setText(userNumberPwd);
         }
     }//GEN-LAST:event_userDataListFrameMouseClicked
-
-    private void userDataListFramePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_userDataListFramePropertyChange
-
-    }//GEN-LAST:event_userDataListFramePropertyChange
 
     private void userMajorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_userMajorAncestorAdded
        // 기존 항목 제거

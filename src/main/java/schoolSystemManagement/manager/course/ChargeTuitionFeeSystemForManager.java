@@ -13,13 +13,6 @@ import org.json.JSONObject;
 import javax.swing.*;
 import java.util.ArrayList;
 
-/**
- * 수강 관리자가 학비를 청구하기 위한 프레임 입니다.
- *
- * @author 김영진
- * @version 1.0
- * @since 2024-12-03
- */
 public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
 
     // 테스트를 위한 초기화 값 입니다.
@@ -144,6 +137,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         });
         studentSubCoursesList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                studentSubListFrameAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -157,9 +151,9 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         studentNameLabel.setText("학생 이름");
 
         studentNameTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentNameTextField.setEnabled(false);
         studentNameTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentNameTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -170,9 +164,9 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         studentUnitLabel.setText("총 수강 신청 학점");
 
         studentTotalUnitTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentTotalUnitTextField.setEnabled(false);
         studentTotalUnitTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentTotalUnitTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -198,9 +192,9 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         studentMajorLabel.setText("학과");
 
         studentMajorTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentMajorTextField.setEnabled(false);
         studentMajorTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentMajorTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -209,10 +203,10 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         });
 
         studentUserIdTextField.setBackground(new java.awt.Color(255, 255, 255));
+        studentUserIdTextField.setEnabled(false);
         studentUserIdTextField.setMinimumSize(new java.awt.Dimension(64, 26));
         studentUserIdTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                studentUserIdTextFieldAncestorAdded(evt);
             }
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -403,6 +397,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
     }//GEN-LAST:event_CourseSubStudentsListAncestorAdded
 
     private void CourseSubStudentsListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_CourseSubStudentsListValueChanged
+
         // 리스트에서 선택한 부분의 문자열을 가져온다.
         String selectedStudentNameAndNumber = CourseSubStudentsList.getSelectedValue();
 
@@ -468,15 +463,15 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         studentUserIdTextField.setEditable(false);
     }//GEN-LAST:event_CourseSubStudentsListValueChanged
 
-    private void studentSubListFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {
+    private void studentSubListFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentSubListFrameAncestorAdded
         DefaultListModel<String> emptyModel = new DefaultListModel<>();
         emptyModel.addElement("학생을 선택 해 주세요");
         studentSubCoursesList.setModel(emptyModel);
         studentSubCoursesList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         studentSubCoursesList.setEnabled(false);
-    }                                                 
+    }//GEN-LAST:event_studentSubListFrameAncestorAdded
 
-    private void submitPriceActionPerformed(java.awt.event.ActionEvent evt) {
+    private void submitPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentSubListFrameAncestorAdded
         String tuition = coursesPriceTextField.getText();
 
         // 필수 데이터가 없다면 종료
@@ -527,7 +522,7 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
             // 사용자가 "아니요"를 선택했을 때
             JOptionPane.showMessageDialog(this, "저장이 취소되었습니다.");
         }
-    }                                           
+    }//GEN-LAST:event_studentSubListFrameAncestorAdded
 
     private void managerNameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_managerNameTextFieldAncestorAdded
         managerNameTextField.setText(managerName);
@@ -542,22 +537,6 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         // 필드 비활성화
         managerIdTextField.setEnabled(false);
     }//GEN-LAST:event_managerIdTextFieldAncestorAdded
-
-    private void studentNameTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentNameTextFieldAncestorAdded
-        studentNameTextField.setEnabled(false);
-    }//GEN-LAST:event_studentNameTextFieldAncestorAdded
-
-    private void studentMajorTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentMajorTextFieldAncestorAdded
-        studentMajorTextField.setEnabled(false);
-    }//GEN-LAST:event_studentMajorTextFieldAncestorAdded
-
-    private void studentUserIdTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentUserIdTextFieldAncestorAdded
-        studentUserIdTextField.setEnabled(false);
-    }//GEN-LAST:event_studentUserIdTextFieldAncestorAdded
-
-    private void studentTotalUnitTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentTotalUnitTextFieldAncestorAdded
-        studentTotalUnitTextField.setEnabled(false);
-    }//GEN-LAST:event_studentTotalUnitTextFieldAncestorAdded
 
     /**
      * @param args the command line arguments

@@ -140,6 +140,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
             public String getElementAt(int i) { return strings[i]; }
         });
         ProfessorCloseCourseList.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        ProfessorCloseCourseList.setEnabled(false);
         ProfessorCloseCourseList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 ProfessorCloseCourseListAncestorAdded(evt);
@@ -152,20 +153,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         closeCourseScrollPane.setViewportView(ProfessorCloseCourseList);
 
         courseNameFromProfessor.setBackground(new java.awt.Color(255, 255, 255));
-        courseNameFromProfessor.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                courseNameFromProfessorAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        courseNameFromProfessor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                courseNameFromProfessorActionPerformed(evt);
-            }
-        });
+        courseNameFromProfessor.setEnabled(false);
 
         ProfessorOpenCourseList.setBackground(new java.awt.Color(255, 255, 255));
         ProfessorOpenCourseList.setModel(new javax.swing.AbstractListModel<String>() {
@@ -208,6 +196,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         explainProfessorCourseList.setBackground(new java.awt.Color(255, 255, 255));
         explainProfessorCourseList.setColumns(20);
         explainProfessorCourseList.setRows(5);
+        explainProfessorCourseList.setEnabled(false);
         explainProfessorCourseList.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 explainProfessorCourseListAncestorAdded(evt);
@@ -220,6 +209,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         explainScrollPane.setViewportView(explainProfessorCourseList);
 
         professorNameFrame.setBackground(new java.awt.Color(255, 255, 255));
+        professorNameFrame.setEnabled(false);
         professorNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 professorNameFrameAncestorAdded(evt);
@@ -233,6 +223,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         professorNameLabel.setText("교수 이름");
 
         professorIdFrame.setBackground(new java.awt.Color(255, 255, 255));
+        professorIdFrame.setEnabled(false);
         professorIdFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 professorIdFrameAncestorAdded(evt);
@@ -345,15 +336,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
 
         unitFrame.setBackground(new java.awt.Color(255, 255, 255));
         unitFrame.setText("강의 학점");
-        unitFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                unitFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        unitFrame.setEnabled(false);
 
         studentsLabel.setText("현재 수강 중인 학생");
 
@@ -361,41 +344,17 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
 
         maxStudentsFrame.setBackground(new java.awt.Color(255, 255, 255));
         maxStudentsFrame.setText("최대 수강 인원");
-        maxStudentsFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                maxStudentsFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        maxStudentsFrame.setEnabled(false);
 
         countStudentsFrame.setBackground(new java.awt.Color(255, 255, 255));
         countStudentsFrame.setText("현재 수강 인원");
-        countStudentsFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                countStudentsFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        countStudentsFrame.setEnabled(false);
 
         countStudentsLabel.setText("현재 수강 인원");
 
         CourseNameFrame.setBackground(new java.awt.Color(255, 255, 255));
         CourseNameFrame.setText("강의 이름");
-        CourseNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                CourseNameFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        CourseNameFrame.setEnabled(false);
 
         maxStudentsLabel.setText("최대 수강 인원");
 
@@ -403,20 +362,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
 
         professorFrame.setBackground(new java.awt.Color(255, 255, 255));
         professorFrame.setText("담당 교수 이름");
-        professorFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                professorFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        professorFrame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                professorFrameActionPerformed(evt);
-            }
-        });
+        professorFrame.setEnabled(false);
 
         subProfessorNameLabel.setText("교수 이름");
 
@@ -432,6 +378,7 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         exmplainCourseManagement.setBackground(new java.awt.Color(255, 255, 255));
         exmplainCourseManagement.setColumns(20);
         exmplainCourseManagement.setRows(5);
+        exmplainCourseManagement.setEnabled(false);
         exmplainCourseManagement.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
                 exmplainCourseManagementAncestorAdded(evt);
@@ -453,64 +400,25 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         });
 
         selectStudentNameFrame.setBackground(new java.awt.Color(255, 255, 255));
-        selectStudentNameFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                selectStudentNameFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
+        selectStudentNameFrame.setEnabled(false);
 
         studentNameLabel.setText("학생 이름");
 
         selectUnitScore.setBackground(new java.awt.Color(255, 255, 255));
         selectUnitScore.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         selectUnitScore.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        selectUnitScore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectUnitScoreActionPerformed(evt);
-            }
-        });
 
         studentUnitLabel.setText("학점 입력");
 
         studentIdLabel.setText("학생 아이디");
 
         selectStudentNumberFrame.setBackground(new java.awt.Color(255, 255, 255));
-        selectStudentNumberFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                selectStudentNumberFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        selectStudentNumberFrame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectStudentNumberFrameActionPerformed(evt);
-            }
-        });
+        selectStudentNumberFrame.setEnabled(false);
 
         studentMajorLabel.setText("학과");
 
         selectStudentMajorFrame.setBackground(new java.awt.Color(255, 255, 255));
-        selectStudentMajorFrame.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                selectStudentMajorFrameAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
-        selectStudentMajorFrame.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                selectStudentMajorFrameActionPerformed(evt);
-            }
-        });
+        selectStudentMajorFrame.setEnabled(false);
 
         javax.swing.GroupLayout subPanelLayout = new javax.swing.GroupLayout(subPanel);
         subPanel.setLayout(subPanelLayout);
@@ -647,10 +555,6 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void courseNameFromProfessorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_courseNameFromProfessorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_courseNameFromProfessorActionPerformed
-
     private void ProfessorOpenCourseListAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_ProfessorOpenCourseListAncestorAdded
         // 파일에서 개설 된 과목 정보만 가져옵니다.
         JSONObject filteredObjects = coursesFile.getAllObjectsByKeyValue("status", "true");
@@ -719,10 +623,6 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_goCourseManagementActionPerformed
 
-    private void professorFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorFrameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_professorFrameActionPerformed
-
     private void goProfessorCourseListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goProfessorCourseListActionPerformed
         int result = JOptionPane.showConfirmDialog(null, "정말로 이동하시겠습니까?", "확인", JOptionPane.YES_NO_OPTION);
         if (result == JOptionPane.YES_OPTION) {
@@ -780,10 +680,6 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         countStudentsFrame.setEnabled(false); // 입력 불가
         maxStudentsFrame.setEnabled(false); // 입력 불가
     }//GEN-LAST:event_subPanelAncestorAdded
-
-    private void selectUnitScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectUnitScoreActionPerformed
-
-    }//GEN-LAST:event_selectUnitScoreActionPerformed
 
     private void studentsAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentsAncestorAdded
         // 텍스트 필드에서 입력받은 강의 이름
@@ -1017,50 +913,6 @@ public class CourseManagementSystemForProfessor extends javax.swing.JFrame {
         // 필드 비활성화
         professorIdFrame.setEnabled(false);
     }//GEN-LAST:event_professorIdFrameAncestorAdded
-
-    private void courseNameFromProfessorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_courseNameFromProfessorAncestorAdded
-        courseNameFromProfessor.setEnabled(false);
-    }//GEN-LAST:event_courseNameFromProfessorAncestorAdded
-
-    private void selectStudentMajorFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStudentMajorFrameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectStudentMajorFrameActionPerformed
-
-    private void selectStudentMajorFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_selectStudentMajorFrameAncestorAdded
-        selectStudentMajorFrame.setEnabled(false);
-    }//GEN-LAST:event_selectStudentMajorFrameAncestorAdded
-
-    private void selectStudentNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_selectStudentNameFrameAncestorAdded
-        selectStudentNameFrame.setEnabled(false);
-    }//GEN-LAST:event_selectStudentNameFrameAncestorAdded
-
-    private void selectStudentNumberFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_selectStudentNumberFrameAncestorAdded
-        selectStudentNumberFrame.setEnabled(false);
-    }//GEN-LAST:event_selectStudentNumberFrameAncestorAdded
-
-    private void CourseNameFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_CourseNameFrameAncestorAdded
-        CourseNameFrame.setEnabled(false);
-    }//GEN-LAST:event_CourseNameFrameAncestorAdded
-
-    private void professorFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_professorFrameAncestorAdded
-        professorFrame.setEnabled(false);
-    }//GEN-LAST:event_professorFrameAncestorAdded
-
-    private void maxStudentsFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_maxStudentsFrameAncestorAdded
-        maxStudentsFrame.setEnabled(false);
-    }//GEN-LAST:event_maxStudentsFrameAncestorAdded
-
-    private void countStudentsFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_countStudentsFrameAncestorAdded
-        countStudentsFrame.setEnabled(false);
-    }//GEN-LAST:event_countStudentsFrameAncestorAdded
-
-    private void unitFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_unitFrameAncestorAdded
-        unitFrame.setEnabled(false);
-    }//GEN-LAST:event_unitFrameAncestorAdded
-
-    private void selectStudentNumberFrameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectStudentNumberFrameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_selectStudentNumberFrameActionPerformed
 
     /**
      * @param args the command line arguments
