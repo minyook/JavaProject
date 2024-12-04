@@ -7,6 +7,20 @@ import schoolSystemManagement.file.JsonFile;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/* 
+* 아래의 더미데이터를 추가하고 진행 해 주세요
+* "course-5": {
+        "professor": "테스트교수3",
+        "unit": "3",
+        "countStudents": "30",
+        "name": "고급 컴퓨터 과학",
+        "maxStudents": "50",
+        "description": "이 강의는 고급 컴퓨터 과학을 다룹니다.",
+        "userId": "P-102",
+        "status": "true"
+    }
+* */
+
 public class CourseManagerSystemForManagerTest {
 
     private JsonFile coursesFile;
@@ -79,16 +93,18 @@ public class CourseManagerSystemForManagerTest {
 
     @Test
     public void testDeleteCourse() {
-        // 기존에 존재하는 강의를 삭제
+        // 삭제할 강의 이름
         String courseName = "고급 컴퓨터 과학";
-        coursesFile.deleteJsonObject("name", courseName);
 
-        // 삭제된 강의가 존재하지 않는지 확인
-        JSONObject deletedCourse = coursesFile.getCourseByName(courseName);
+        // 강의를 삭제하고, 삭제된 JSON 객체를 반환받음
+        String deletedCourse = coursesFile.deleteJsonObject("name", courseName);
 
-        // 삭제된 강의는 존재하지 않아야 하므로 null이어야 함
-        assertNull(deletedCourse, "삭제된 강의는 존재하지 않아야 합니다.");
+        // 반환된 삭제된 JSON 객체가 null이 아니고, 삭제된 강의의 name이 기대값과 일치하는지 확인
+        assertNotNull(deletedCourse, "삭제된 강의 객체가 null이어서는 안 됩니다.");
+        assertEquals("course-5", deletedCourse, "삭제된 강의의 이름이 일치하지 않습니다.");
     }
+
+
 
     @Test
     public void testGetFilteredObjects() {
