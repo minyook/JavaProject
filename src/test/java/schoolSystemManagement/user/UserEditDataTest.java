@@ -7,6 +7,25 @@ import schoolSystemManagement.file.JsonFile;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// 해당 파일 테스트 이전에 아래 학생 정보를 파일에 추가하여야 합니다.
+/*
+   "666666-12345": {
+        "number": "12345",
+        "major": "전산학과",
+        "name": "학생",
+        "courseList": [
+            {
+                "score": 0,
+                "unit": 3,
+                "course": "고급 컴퓨터 과학"
+            }
+        ],
+        "userType": "학생",
+        "tuition": "2",
+        "userId": "S-111"
+    }
+*/
+
 public class UserEditDataTest {
 
     private JsonFile usersFile;
