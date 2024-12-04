@@ -23,6 +23,7 @@ import javax.swing.*;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 
@@ -161,7 +162,7 @@ public class JsonFile {
 
                             // 마지막 키가 일치하면 해당 값 수정
                             if (courseObject.has(keys[i + 1])) {
-                                System.out.println("Original " + keys[i + 1] + " in " + arrayKeyName + " for " + standardKey + ": " + courseObject.get(keys[i + 1]));
+                                System.out.println("원본 " + keys[i + 1] + " (" + arrayKeyName + ")의 " + standardKey + ": " + courseObject.get(keys[i + 1]));
 
                                 // 수정 로직: 값의 타입에 따라 처리
                                 if (newValue instanceof Integer) {
@@ -174,7 +175,7 @@ public class JsonFile {
                                     System.out.println("Unsupported data type for targetKey in " + arrayKeyName + ": " + keys[i + 1]);
                                 }
 
-                                System.out.println("Updated " + keys[i + 1] + " in " + arrayKeyName + " for " + standardKey + ": " + courseObject.get(keys[i + 1]));
+                                System.out.println("수정된 " + keys[i + 1] + " (" + arrayKeyName + ")의 " + standardKey + ": " + courseObject.get(keys[i + 1]));
                                 return; // 수정 후 종료
                             }
                         }
@@ -190,7 +191,7 @@ public class JsonFile {
 
                 // 마지막 키가 일치하면 수정
                 if (currentObject.has(keys[keys.length - 1])) {
-                    System.out.println("Original " + keys[keys.length - 1] + " for " + standardKey + ": " + currentObject.get(keys[keys.length - 1]));
+                    System.out.println("원본 " + keys[keys.length - 1] + " 에 대한 " + standardKey + ": " + currentObject.get(keys[keys.length - 1]));
 
                     // 수정 로직: 값의 타입에 따라 처리
                     if (newValue instanceof Integer) {
@@ -203,14 +204,14 @@ public class JsonFile {
                         System.out.println("Unsupported data type for targetKey: " + keys[keys.length - 1]);
                     }
 
-                    System.out.println("Updated " + keys[keys.length - 1] + " for " + standardKey + ": " + currentObject.get(keys[keys.length - 1]));
+                    System.out.println("업데이트된 " + keys[keys.length - 1] + " 에 대한 " + standardKey + ": " + currentObject.get(keys[keys.length - 1]));
                     return;
                 }
             }
         }
 
         // 기준 키에 해당하는 값이 없는 경우
-        System.out.println("No user found with " + standardKey + ": " + standardKeyValue);
+        System.out.println("다음과 같은 사용자를 찾을 수 없습니다. " + standardKey + ": " + standardKeyValue);
     }
 
     /**
@@ -259,7 +260,7 @@ public class JsonFile {
         }
 
         // 기준 키에 해당하는 값이 없으면
-        System.out.println("No user found with " + standardKey + ": " + standardKeyValue);
+        System.out.println("다음과 같은 사용자를 찾을 수 없습니다." + standardKey + ": " + standardKeyValue);
     }
 
     /**
@@ -608,7 +609,7 @@ public class JsonFile {
             }
         }
         // 만약 기준 키에 해당하는 값이 없거나, 해당하는 targetKey 가 없으면 메시지 출력
-        System.out.println("No user found with " + standardKey + ": " + standardKeyValue + " or course not found: " + targetValue);
+        System.out.println("다음과 같은 사용자를 찾을 수 없습니다." + standardKey + ": " + standardKeyValue + "또는 강좌를 찾을 수 없습니다:" + targetValue);
     }
 
     /**
@@ -724,6 +725,24 @@ public class JsonFile {
      */
     public void addValueByCourse(String userId, String p092, String courseList, JTextArea courseName, int i, JTextArea courseUnit) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    // 강의 정보를 이름으로 조회하는 메서드 테스트에서 사용힙니다.
+    public JSONObject getCourseByName(String courseName) {
+        // jsonObject에서 모든 강의들을 순회
+        Iterator<String> keys = jsonObject.keys();
+        while (keys.hasNext()) {
+            String key = keys.next();
+            JSONObject course = jsonObject.getJSONObject(key);  // 강의 정보 가져오기
+
+            // 강의의 이름을 "name" 필드로 비교
+            if (course.getString("name").equals(courseName)) {
+                return course;  // 해당 강의를 반환
+            }
+        }
+
+        // 강의를 찾을 수 없으면 null 반환
+        return null;
     }
 
 }
