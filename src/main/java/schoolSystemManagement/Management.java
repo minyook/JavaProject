@@ -593,6 +593,7 @@ public class Management extends javax.swing.JFrame {
 
             // 사용자 유형에 따른 화면 이동
             String userType = loggedInUser.get("userType");
+            System.out.println(userType);
 
             if ("학생".equals(userType)) {
                 StudentHome studentHomeScreen = new StudentHome(loggedInUser.get("name"), loggedInUser.get("userId"));
@@ -612,7 +613,7 @@ public class Management extends javax.swing.JFrame {
                 courseManagerScreen.setLocation(this.getX() - courseManagerScreen.getWidth(), this.getY());
                 courseManagerScreen.setVisible(true);
                 this.setVisible(false);
-            } else if ("학사 담당자".equals(userType)) {
+            } else if ("학사 당담자".equals(userType)) {
                 UserManagerHome userManagerScreen = new UserManagerHome(loggedInUser.get("name"), loggedInUser.get("userId"));
                 // 기존 창 기준으로 좌측에 위치 설정
                 userManagerScreen.setLocation(this.getX() - userManagerScreen.getWidth(), this.getY());
