@@ -40,12 +40,10 @@ public class ProfessorHomeTest {
         // 강의가 하나 이상이어야 함
         assertTrue(filteredObjects.length() > 0, "개설된 강의가 하나 이상 있어야 합니다.");
 
-        // 여기에 강의 정보를 업데이트하는 코드 추가 (예시)
-        // 예를 들어, 첫 번째 강의의 이름을 변경하는 등의 작업
+        // 여기에 강의 정보를 업데이트하는 테스트 부분
+
         String courseName = filteredObjects.keys().next();
         JSONObject course = filteredObjects.getJSONObject(courseName);
-
-        // 예시: "name" 필드를 수정하고, "status"를 변경
         course.put("name", "변경된 강의 이름");
         course.put("status", "false");
 

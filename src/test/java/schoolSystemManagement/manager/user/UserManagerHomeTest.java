@@ -1,4 +1,4 @@
-package schoolSystemManagement.user;
+package schoolSystemManagement.manager.user;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
@@ -14,16 +14,16 @@ public class UserManagerHomeTest {
     @Test
     public void testGetJsonObjectByUserId() {
         // userId로 JSON 객체 가져오기 (예상되는 JSON 객체)
-        String userId = "S-111";  // 검증할 userId
+        String userId = "S-184";  // 검증할 userId
         JSONObject filteredObjects = usersFile.getJsonObject();
 
         // JSON 객체가 null이 아니어야 함
         assertNotNull(filteredObjects, "JSON 객체가 null이면 안 됩니다.");
 
         // userId에 해당하는 JSON 객체를 찾아야 함
-        JSONObject userObject = filteredObjects.getJSONObject("666666-12345"); // userId에 해당하는 객체 가져오기
+        JSONObject userObject = filteredObjects.getJSONObject("666666-6666666"); // userId에 해당하는 객체 가져오기
 
-        // userId가 "S-111"인 사용자 확인
-        assertEquals("S-111", userObject.getString("userId"), "userId가 일치하지 않습니다.");
+        // userId가 "S-184"인 사용자 확인
+        assertEquals(userId, userObject.getString("userId"), "userId가 일치하지 않습니다.");
     }
 }

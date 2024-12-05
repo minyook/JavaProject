@@ -29,7 +29,7 @@ public class CourseManagementSystemForStudentsTest {
 
     @Test
     public void testGetCourseValuesByUserId() {
-        // 특정 조건에 따라 JSON 배열 값 가져오기
+        // 해당하는 학생의 수강신청 과목 리스트 가져오기
         Object[] courseValues = usersFile.getAllJsonArrayValue("userId", studentId, "courseList", "course");
 
         // courseValues가 null이 아니어야 함
@@ -48,7 +48,7 @@ public class CourseManagementSystemForStudentsTest {
 
     @Test
     public void testGetCourseScore() {
-        // 선택된 과목 이름을 사용하여 score 가져오기
+        // 선택된 과목 이름을 사용하여 학생의 학점 가져오기
         String courseScore = (usersFile.getJsonArrayValue("userId", studentId, "courseList", "course", selectedCourseName, "score")).toString();
 
         // score 값이 null이 아니어야 함
@@ -99,7 +99,7 @@ public class CourseManagementSystemForStudentsTest {
 
     @Test
     public void testGetCourseUnitValues() {
-        // 학생의 모든 강의 단위 값 가져오기
+        // 학생의 모든 강의 학점 값 가져오기
         Object[] courseUnitValues = usersFile.getAllJsonArrayValue("userId", studentId, "courseList", "unit");
 
         // courseUnitValues가 null이 아니어야 함
