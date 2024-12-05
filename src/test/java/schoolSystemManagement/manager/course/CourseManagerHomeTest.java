@@ -1,4 +1,4 @@
-package schoolSystemManagement.course;
+package schoolSystemManagement.manager.course;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;

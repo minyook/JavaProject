@@ -17,6 +17,8 @@ public class SelfUserEditTest {
         usersFile = new JsonFile("user_data.json", "user_data.json");
         userId = "S-184";
 
+
+
         // JsonFile 객체에 가상의 테스트 데이터를 미리 저장
         usersFile.setValueByStandardKey("userId", userId, "number", "12345");
         usersFile.setValueByStandardKey("userId", userId, "major", "전산학과");

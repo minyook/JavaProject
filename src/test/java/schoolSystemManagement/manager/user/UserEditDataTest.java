@@ -1,4 +1,4 @@
-package schoolSystemManagement.user;
+package schoolSystemManagement.manager.user;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -9,17 +9,10 @@ import static org.junit.jupiter.api.Assertions.*;
 
 // 해당 파일 테스트 이전에 아래 학생 정보를 파일에 추가하여야 합니다.
 /*
-   "666666-12345": {
-        "number": "12345",
+   "000000-0000000": {
+        "number": "00000",
         "major": "전산학과",
         "name": "학생",
-        "courseList": [
-            {
-                "score": 0,
-                "unit": 3,
-                "course": "고급 컴퓨터 과학"
-            }
-        ],
         "userType": "학생",
         "tuition": "2",
         "userId": "S-111"
@@ -42,10 +35,10 @@ public class UserEditDataTest {
 
         // 테스트용 데이터 초기화
         userId = "S-111"; // 예시 유저 ID
-        password = "12345";
+        password = "00000";
         major = "전산학과";
         type = "학생";
-        userKey = "666666-12345";
+        userKey = "000000-0000000";
     }
 
     @Test
@@ -107,5 +100,4 @@ public class UserEditDataTest {
         // result 값이 존재하면 삭제가 성공적으로 진행된 것
         assertEquals(result, userKey, "삭제된 유저의 ID와 반환된 ID가 일치하지 않습니다.");
     }
-
 }

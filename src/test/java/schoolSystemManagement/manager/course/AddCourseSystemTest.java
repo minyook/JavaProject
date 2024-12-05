@@ -1,4 +1,4 @@
-package schoolSystemManagement.course;
+package schoolSystemManagement.manager.course;
 
 import org.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
@@ -24,8 +24,8 @@ public class AddCourseSystemTest {
     public void setUp() {
         // 테스트에 사용할 초기 강의 정보 설정
         coursesFile = new JsonFile("course_data.json", "course_data.json");
-        courseName = "컴퓨터 과학 개론";
-        courseProfessor = "테스트교수1";
+        courseName = "기본 강의 이름";
+        courseProfessor = "기본 교수 이름";
         courseProfessorId = "P-101";
         courseUnitStr = "3";
         courseStatus = "true";
@@ -40,8 +40,8 @@ public class AddCourseSystemTest {
     @Test
     public void testUpdateCourse() {
         // 강의 정보를 업데이트
-        String updatedCourseName = "자바 프로그래밍";
-        String updatedCourseProfessor = "테스트교수2";
+        String updatedCourseName = "변경된 강의 이름";
+        String updatedCourseProfessor = "변경된 교수 이름";
         coursesFile.updateCourse(updatedCourseName, updatedCourseProfessor, courseProfessorId, courseUnitStr, courseStatus, courseCountStudentsStr, courseMaxStudentsStr, courseDescription);
 
         // 업데이트된 강의 정보를 파일에서 읽어오기
@@ -56,8 +56,8 @@ public class AddCourseSystemTest {
     @Test
     public void testAddCourse() {
         // 새로운 강의 추가
-        String newCourseName = "파이썬 프로그래밍";
-        String newCourseProfessor = "테스트교수3";
+        String newCourseName = "추가된 강의 이름";
+        String newCourseProfessor = "추가된 강의 교수 이름";
         coursesFile.updateCourse(newCourseName, newCourseProfessor, "P-102", "3", "true", "25", "40", "웹 개발에 대한 강의");
 
         // 추가된 강의 정보가 올바르게 파일에 반영되었는지 확인
