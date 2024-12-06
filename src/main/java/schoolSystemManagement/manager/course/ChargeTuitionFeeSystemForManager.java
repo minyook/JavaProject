@@ -438,10 +438,18 @@ public class ChargeTuitionFeeSystemForManager extends javax.swing.JFrame {
         // 학점 결과 계산 후 출력
         int unitSum = 0;
         for (Object unitValue : updateCourseUnitValues) {
-            // Object를 String으로 변환한 후, Integer로 변환
-            unitSum += Integer.parseInt(unitValue.toString());  // toString()을 호출하여 Object를 String으로 변환
+            String valueStr = unitValue.toString();
+
+            // 실수인 경우 Double.parseDouble로 변환 후 정수로 변환
+            if (valueStr.contains(".")) {
+                unitSum += (int) Double.parseDouble(valueStr);
+            } else {
+                // 정수인 경우 Integer.parseInt로 변환
+                unitSum += Integer.parseInt(valueStr);
+            }
         }
         studentTotalUnitTextField.setText(Integer.toString(unitSum));
+
 
         // 특정 조건에 따라 신청한 과 배열 값 가져와서 출력하
         Object[] courseValues = usersFile.getAllJsonArrayValue("userId", userId, "courseList", "course");
