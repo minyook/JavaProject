@@ -390,8 +390,8 @@ public class StudentHome extends javax.swing.JFrame {
     private void studentTuitionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentTuitionAncestorAdded
         // 학생의 학비 청구 정보 가져오가
         String tuition = usersFile.getUserValueByStandardKey("userId", studentId, "tuition").toString();
-        if (tuition.isEmpty()){
-            studentTuition.setText("");
+        if (tuition.isEmpty() || tuition.equals("null") || tuition.equals("0")){
+            studentTuition.setText("청구된 금액이 존재하지 않습니다.");
         }else {
             studentTuition.setText(tuition+" ₩");
         }
