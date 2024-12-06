@@ -40,10 +40,10 @@
         "status": "true"
     },
     "course-6": {
-        "professor": "두번째 교수 이름",
+        "professor": "추가된 강의 교수 이름",
         "unit": "3",
         "countStudents": "25",
-        "name": "두번째 기본 강의 이름",
+        "name": "추가된 강의 이름",
         "maxStudents": "40",
         "description": "웹 개발에 대한 강의",
         "userId": "P-102",

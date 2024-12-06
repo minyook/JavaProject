@@ -18,8 +18,8 @@ import java.awt.*;
 public class StudentHome extends javax.swing.JFrame {
 
     // 테스트를 위한 기본 값 설정
-    public String studentName = "김영진";
-    public String studentId = "S-695";
+    public String studentName = "학생";
+    public String studentId = "S-184";
 
     // 전체적으로 사용하기 위해 파일을 불러오는 부분입니다.
     JsonFile usersFile = new JsonFile("user_data.json", "user_data.json");
@@ -94,6 +94,8 @@ public class StudentHome extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         reloadButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
+        studentTuition = new javax.swing.JTextField();
+        subCoursesLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -207,6 +209,23 @@ public class StudentHome extends javax.swing.JFrame {
             }
         });
 
+        studentTuition.setEditable(false);
+        studentTuition.setBackground(new java.awt.Color(255, 255, 255));
+        studentTuition.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        studentTuition.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        studentTuition.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                studentTuitionAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
+        subCoursesLabel1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        subCoursesLabel1.setText("학비 청구 금액");
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -228,7 +247,9 @@ public class StudentHome extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                         .addComponent(logoutButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(reloadButton)))
+                        .addComponent(reloadButton))
+                    .addComponent(studentTuition, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(subCoursesLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -255,8 +276,12 @@ public class StudentHome extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(subCoursesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(studentCoursesScroolPane, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(studentCoursesScroolPane, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(subCoursesLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(studentTuition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(studentCourseManagementButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(studentEditProfile, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -310,9 +335,10 @@ public class StudentHome extends javax.swing.JFrame {
     }//GEN-LAST:event_studentIdFrameAncestorAdded
 
     private void studentMajorFrameAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentMajorFrameAncestorAdded
-        Object studentMajor = usersFile.getUserValueByStandardKey("userId", studentId, "major");
+        String studentMajor = usersFile.getUserValueByStandardKey("userId", studentId, "major").toString();
+        System.out.println(studentMajor);
 
-        studentMajorFrame.setText(studentMajor.toString());
+        studentMajorFrame.setText(studentMajor);
     }//GEN-LAST:event_studentMajorFrameAncestorAdded
 
     private void studentCoursesListFrameAncestorAdded(AncestorEvent evt) {//GEN-FIRST:event_studentCoursesListFrameAncestorAdded
@@ -361,6 +387,16 @@ public class StudentHome extends javax.swing.JFrame {
 
     }//GEN-LAST:event_logoutButtonActionPerformed
 
+    private void studentTuitionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_studentTuitionAncestorAdded
+        // 학생의 학비 청구 정보 가져오가
+        String tuition = usersFile.getUserValueByStandardKey("userId", studentId, "tuition").toString();
+        if (tuition.isEmpty()){
+            studentTuition.setText("");
+        }else {
+            studentTuition.setText(tuition+" ₩");
+        }
+    }//GEN-LAST:event_studentTuitionAncestorAdded
+
     /**
      * @param args the command line arguments
      */
@@ -391,7 +427,7 @@ public class StudentHome extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentHome("김영진", "S-695").setVisible(true);
+                new StudentHome().setVisible(true);
             }
         });
     }
@@ -410,7 +446,9 @@ public class StudentHome extends javax.swing.JFrame {
     private javax.swing.JLabel studentMajorLabel;
     private javax.swing.JTextField studentNameFrame;
     private javax.swing.JLabel studentNameLabel;
+    private javax.swing.JTextField studentTuition;
     private javax.swing.JLabel subCoursesLabel;
+    private javax.swing.JLabel subCoursesLabel1;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
