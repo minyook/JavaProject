@@ -531,6 +531,10 @@ public class Management extends javax.swing.JFrame {
             loginPanel.setVisible(true);
             signUpPanel.setVisible(false);
 
+            userName.setText("");
+            userNumber.setText("");
+            userNumber1.setText("");
+
         } catch (Exception e) {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "알 수 없는 오류가 발생했습니다.");
